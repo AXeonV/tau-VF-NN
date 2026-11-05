@@ -1,0 +1,24 @@
+{
+  "objective": 1.3025218886732275e-05,
+  "audit": {
+    "loss": 1.789982983311453e-05,
+    "rms": 0.0042308190499139205,
+    "worst_time_rms": 0.01077936229236945,
+    "max_point_residual": 0.025543108986236848,
+    "min_geometric_speed": -0.005221152431711444,
+    "min_pressure_speed": -0.004600140926400265,
+    "nodes": 1024,
+    "times": 321
+  },
+  "refined_audit": {
+    "loss": 1.7883834962336774e-05,
+    "rms": 0.004228928346796239,
+    "worst_time_rms": 0.010779362292367319,
+    "max_point_residual": 0.025543108994325804,
+    "min_geometric_speed": -0.0052211524317114025,
+    "min_pressure_speed": -0.0046001407860017385,
+    "nodes": 2048,
+    "times": 321
+  },
+  "seconds": 752.2243990898132
+}

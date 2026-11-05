@@ -1,0 +1,17 @@
+{
+  "T": 1000.0,
+  "n": 512,
+  "modes": 192,
+  "temporal_basis": 112,
+  "sigma": 0.015,
+  "aspect": 3.0,
+  "perturb": 0.0,
+  "initial_loss": 0.0002083128224503929,
+  "final_loss": 5.9473580195397454e-05,
+  "kinematic_loss": 2.5916867797944046e-05,
+  "retreat_loss": 3.35567123974534e-05,
+  "retreat_weight": 1.0,
+  "min_geometric_normal_speed": -0.004750645325841449,
+  "evaluations": 109,
+  "seconds": 280.9461386203766
+}

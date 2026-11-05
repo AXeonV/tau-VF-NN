@@ -1,0 +1,19 @@
+{
+  "T": 1000.0,
+  "aspect": 3.0,
+  "sigma": 0.015,
+  "final_loss": 1.2996438453380486e-05,
+  "initial_loss": 0.0002497443005996628,
+  "plot_history_file": "refinement_history.npy",
+  "step_label": "\u7269\u7406 loss \u8bc4\u4f30\u6b21\u6570\uff08\u542b\u7ebf\u641c\u7d22\uff09",
+  "auxiliary_state": "NN closed interface history",
+  "accuracy_targets_met": true,
+  "interface_times": [
+    0,
+    100,
+    300,
+    500,
+    750,
+    1000
+  ]
+}
