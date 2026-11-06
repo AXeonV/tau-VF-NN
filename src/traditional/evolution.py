@@ -39,10 +39,11 @@ def redistribute(z, *history):
 def evolve(initial, times, *, sigma=.015, cfl=.22, step_fraction=.012,
            max_step=2., device='cuda', progress=None, refinements=None,
            output_nodes=None, pressure_cache=None):
-    """Advance an oriented simple closed curve, with exact prescribed output times."""
+    """Advance a physical interface specified at times[0], with exact output times."""
     times = np.asarray(times, dtype=np.float64)
-    if len(times) < 2 or times[0] != 0 or np.any(np.diff(times) <= 0):
-        raise ValueError('Expected increasing output times starting at zero')
+    if (times.ndim != 1 or len(times) < 2 or not np.isfinite(times).all()
+            or times[0] < 0 or np.any(np.diff(times) <= 0)):
+        raise ValueError('Expected finite, increasing, nonnegative output times')
     initial = np.asarray(initial, dtype=np.complex128)
     n = len(initial)
     output_nodes = output_nodes or n
@@ -71,12 +72,12 @@ def evolve(initial, times, *, sigma=.015, cfl=.22, step_fraction=.012,
     a0 = area(z)
     if a0 <= 0:
         raise ValueError('Expected counterclockwise initial interface')
-    z *= np.sqrt(np.pi/a0)
+    t = float(times[0])
+    z *= np.sqrt(np.pi*(1+2*t)/a0)
     pressure = backend(n)
     k, spectrum_filter = spectrum(n)
     output = np.empty((len(times), output_nodes), dtype=np.complex128)
     output[0] = resample(z, output_nodes)
-    t = 0.
     previous = previous_velocity = previous_step = None
     steps = fallbacks = 0
     max_flux_error = max_area_correction = max_metric_variation = 0.

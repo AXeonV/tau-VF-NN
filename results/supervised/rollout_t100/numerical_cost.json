@@ -1,0 +1,118 @@
+{
+  "validation": [
+    {
+      "case": 6,
+      "prefix_steps": 2791,
+      "suffix_steps": 80,
+      "total_steps": 2871,
+      "terminal_error": 7.058886205034342e-05
+    },
+    {
+      "case": 14,
+      "prefix_steps": 2425,
+      "suffix_steps": 104,
+      "total_steps": 2529,
+      "terminal_error": 0.000857737761220457
+    },
+    {
+      "case": 22,
+      "prefix_steps": 2312,
+      "suffix_steps": 96,
+      "total_steps": 2408,
+      "terminal_error": 0.00012220673963934852
+    },
+    {
+      "case": 30,
+      "prefix_steps": 2165,
+      "suffix_steps": 69,
+      "total_steps": 2234,
+      "terminal_error": 2.603609623895595e-05
+    },
+    {
+      "case": 38,
+      "prefix_steps": 2054,
+      "suffix_steps": 84,
+      "total_steps": 2138,
+      "terminal_error": 5.485071938583529e-05
+    },
+    {
+      "case": 46,
+      "prefix_steps": 2041,
+      "suffix_steps": 84,
+      "total_steps": 2125,
+      "terminal_error": 0.00015916693081331382
+    },
+    {
+      "case": 54,
+      "prefix_steps": 1844,
+      "suffix_steps": 88,
+      "total_steps": 1932,
+      "terminal_error": 0.00013537470765309154
+    },
+    {
+      "case": 62,
+      "prefix_steps": 2006,
+      "suffix_steps": 136,
+      "total_steps": 2142,
+      "terminal_error": 0.0005505744398506419
+    }
+  ],
+  "test": [
+    {
+      "case": 7,
+      "prefix_steps": 2691,
+      "suffix_steps": 117,
+      "total_steps": 2808,
+      "terminal_error": 0.00016030939854178253
+    },
+    {
+      "case": 15,
+      "prefix_steps": 2578,
+      "suffix_steps": 113,
+      "total_steps": 2691,
+      "terminal_error": 4.644533011983196e-05
+    },
+    {
+      "case": 23,
+      "prefix_steps": 2414,
+      "suffix_steps": 103,
+      "total_steps": 2517,
+      "terminal_error": 0.00015996978641015454
+    },
+    {
+      "case": 31,
+      "prefix_steps": 2078,
+      "suffix_steps": 97,
+      "total_steps": 2175,
+      "terminal_error": 0.00011043486367733383
+    },
+    {
+      "case": 39,
+      "prefix_steps": 1936,
+      "suffix_steps": 83,
+      "total_steps": 2019,
+      "terminal_error": 1.926520659719774e-05
+    },
+    {
+      "case": 47,
+      "prefix_steps": 1896,
+      "suffix_steps": 92,
+      "total_steps": 1988,
+      "terminal_error": 3.553600754475008e-05
+    },
+    {
+      "case": 55,
+      "prefix_steps": 1776,
+      "suffix_steps": 91,
+      "total_steps": 1867,
+      "terminal_error": 0.00021926565115152708
+    },
+    {
+      "case": 63,
+      "prefix_steps": 2148,
+      "suffix_steps": 96,
+      "total_steps": 2244,
+      "terminal_error": 0.0001746356396034818
+    }
+  ]
+}

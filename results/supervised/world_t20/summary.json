@@ -1,0 +1,2946 @@
+{
+  "horizon": 20,
+  "frames": 69,
+  "splits": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61
+    ],
+    "validation": [
+      6,
+      14,
+      22,
+      30,
+      38,
+      46,
+      54,
+      62
+    ],
+    "test": [
+      7,
+      15,
+      23,
+      31,
+      39,
+      47,
+      55,
+      63
+    ]
+  },
+  "fold_steps": 4000,
+  "folds": [
+    {
+      "fit": [
+        1,
+        3,
+        5,
+        9,
+        11,
+        13,
+        17,
+        19,
+        21,
+        25,
+        27,
+        29,
+        33,
+        35,
+        37,
+        41,
+        43,
+        45,
+        49,
+        51,
+        53,
+        57,
+        59,
+        61
+      ],
+      "predicted": [
+        0,
+        2,
+        4,
+        8,
+        10,
+        12,
+        16,
+        18,
+        20,
+        24,
+        26,
+        28,
+        32,
+        34,
+        36,
+        40,
+        42,
+        44,
+        48,
+        50,
+        52,
+        56,
+        58,
+        60
+      ]
+    },
+    {
+      "fit": [
+        0,
+        2,
+        4,
+        8,
+        10,
+        12,
+        16,
+        18,
+        20,
+        24,
+        26,
+        28,
+        32,
+        34,
+        36,
+        40,
+        42,
+        44,
+        48,
+        50,
+        52,
+        56,
+        58,
+        60
+      ],
+      "predicted": [
+        1,
+        3,
+        5,
+        9,
+        11,
+        13,
+        17,
+        19,
+        21,
+        25,
+        27,
+        29,
+        33,
+        35,
+        37,
+        41,
+        43,
+        45,
+        49,
+        51,
+        53,
+        57,
+        59,
+        61
+      ]
+    }
+  ],
+  "repair_structure": "band",
+  "repeated_source": "band",
+  "selected": "band_x3",
+  "results": {
+    "nn": {
+      "validation": {
+        "coordinate_mse": 0.001279578311368823,
+        "final_coordinate_rms": 0.11465447396039963,
+        "worst_frame_coordinate_rms": 0.19199346005916595,
+        "mean_final_geometry_distance": 0.226551886516377,
+        "mean_worst_geometry_distance": 0.226551886516377,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 4,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3109980449310383,
+            "worst_time": 20.0,
+            "final": 0.3109980449310383,
+            "predicted_final_tips": 7,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.19740910352221344,
+            "worst_time": 20.0,
+            "final": 0.19740910352221344,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.17831938328221875,
+            "worst_time": 20.0,
+            "final": 0.17831938328221875,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.09713281113539536,
+            "worst_time": 20.0,
+            "final": 0.09713281113539536,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.08906205977271887,
+            "worst_time": 20.0,
+            "final": 0.08906205977271887,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.2695681411939731,
+            "worst_time": 20.0,
+            "final": 0.2695681411939731,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.3109158692339967,
+            "worst_time": 20.0,
+            "final": 0.3109158692339967,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3590096790594615,
+            "worst_time": 20.0,
+            "final": 0.3590096790594615,
+            "predicted_final_tips": 11,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09109485149383545,
+          0.06373084336519241,
+          0.010979007929563522
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.001009024796076119,
+        "final_coordinate_rms": 0.0978042408823967,
+        "worst_frame_coordinate_rms": 0.17873834073543549,
+        "mean_final_geometry_distance": 0.18888397807828614,
+        "mean_worst_geometry_distance": 0.19128986786158653,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 4,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.33588573636739094,
+            "worst_time": 15.0,
+            "final": 0.31872800158755155,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.2042594632940118,
+            "worst_time": 20.0,
+            "final": 0.2042594632940118,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.24652971331455958,
+            "worst_time": 20.0,
+            "final": 0.24652971331455958,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.10835470912695754,
+            "worst_time": 20.0,
+            "final": 0.10835470912695754,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.091144473698694,
+            "worst_time": 8.353625297546387,
+            "final": 0.09101207850391904,
+            "predicted_final_tips": 9,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07432454842826554,
+            "worst_time": 15.0,
+            "final": 0.07236756013647702,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.17305680515193228,
+            "worst_time": 20.0,
+            "final": 0.17305680515193228,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2967634935108804,
+            "worst_time": 20.0,
+            "final": 0.2967634935108804,
+            "predicted_final_tips": 13,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.382372260093689,
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08537691086530685,
+          0.043458886444568634,
+          0.011003712192177773
+        ]
+      }
+    },
+    "point": {
+      "validation": {
+        "coordinate_mse": 0.0012744426494464278,
+        "final_coordinate_rms": 0.11425051838159561,
+        "worst_frame_coordinate_rms": 0.19212409853935242,
+        "mean_final_geometry_distance": 0.21962785578230826,
+        "mean_worst_geometry_distance": 0.21962785578230826,
+        "self_intersecting_cases": 2,
+        "final_tip_matches": 5,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.30562278111626584,
+            "worst_time": 20.0,
+            "final": 0.30562278111626584,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.19473004104116473,
+            "worst_time": 20.0,
+            "final": 0.19473004104116473,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.17609531730801928,
+            "worst_time": 20.0,
+            "final": 0.17609531730801928,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.08680466639237788,
+            "worst_time": 20.0,
+            "final": 0.08680466639237788,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.08593015478434643,
+            "worst_time": 20.0,
+            "final": 0.08593015478434643,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.2539903477360138,
+            "worst_time": 20.0,
+            "final": 0.2539903477360138,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.31052219363141004,
+            "worst_time": 20.0,
+            "final": 0.31052219363141004,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.34332734424886807,
+            "worst_time": 20.0,
+            "final": 0.34332734424886807,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09096714109182358,
+          0.06321529299020767,
+          0.011129869148135185
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0010135493939742446,
+        "final_coordinate_rms": 0.09816239029169083,
+        "worst_frame_coordinate_rms": 0.1803942173719406,
+        "mean_final_geometry_distance": 0.18975811564180928,
+        "mean_worst_geometry_distance": 0.19253717649954216,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3525666802947525,
+            "worst_time": 15.0,
+            "final": 0.3354982986171319,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.20421228984367773,
+            "worst_time": 20.0,
+            "final": 0.20421228984367773,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.250385886367991,
+            "worst_time": 20.0,
+            "final": 0.250385886367991,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.10904505703731864,
+            "worst_time": 20.0,
+            "final": 0.10904505703731864,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.09981451849994842,
+            "worst_time": 20.0,
+            "final": 0.09981451849994842,
+            "predicted_final_tips": 10,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.08145573168958392,
+            "worst_time": 15.0,
+            "final": 0.07629162650534156,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.1621370314516204,
+            "worst_time": 20.0,
+            "final": 0.1621370314516204,
+            "predicted_final_tips": 10,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2806802168114446,
+            "worst_time": 20.0,
+            "final": 0.2806802168114446,
+            "predicted_final_tips": 13,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.0856495127081871,
+          0.04357557371258736,
+          0.01131314318627119
+        ]
+      },
+      "best_step": 1800,
+      "steps": 2000,
+      "validation_selection": 0.16974936425685883,
+      "structure": "point",
+      "seed": 20261106,
+      "repair_parameters": 23168,
+      "seconds": 34.821031200001016
+    },
+    "local": {
+      "validation": {
+        "coordinate_mse": 0.001219671219587326,
+        "final_coordinate_rms": 0.11245818436145782,
+        "worst_frame_coordinate_rms": 0.19095203280448914,
+        "mean_final_geometry_distance": 0.20573119233190088,
+        "mean_worst_geometry_distance": 0.20733053288780254,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.33478342717332743,
+            "worst_time": 20.0,
+            "final": 0.33478342717332743,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.16141513133156643,
+            "worst_time": 20.0,
+            "final": 0.16141513133156643,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.1606513085440883,
+            "worst_time": 20.0,
+            "final": 0.1606513085440883,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.07426451088860864,
+            "worst_time": 20.0,
+            "final": 0.07426451088860864,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.07283854991114096,
+            "worst_time": 3.3982083797454834,
+            "final": 0.07153090879126182,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.23503402484070582,
+            "worst_time": 20.0,
+            "final": 0.23503402484070582,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.27514260275682634,
+            "worst_time": 20.0,
+            "final": 0.27514260275682634,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3445147076561563,
+            "worst_time": 3.3982083797454834,
+            "final": 0.3330276243288222,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09030349552631378,
+          0.0612136609852314,
+          0.010824508033692837
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0009935169946402311,
+        "final_coordinate_rms": 0.09643645584583282,
+        "worst_frame_coordinate_rms": 0.18245495855808258,
+        "mean_final_geometry_distance": 0.18299146768157482,
+        "mean_worst_geometry_distance": 0.1868198179825624,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3836593674260014,
+            "worst_time": 15.0,
+            "final": 0.36003456843013554,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.19555034499893728,
+            "worst_time": 20.0,
+            "final": 0.19555034499893728,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.23383495072029492,
+            "worst_time": 20.0,
+            "final": 0.23383495072029492,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.0918060946511787,
+            "worst_time": 20.0,
+            "final": 0.0918060946511787,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.08110936256583678,
+            "worst_time": 8.353625297546387,
+            "final": 0.07911437995776742,
+            "predicted_final_tips": 10,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07816305752935998,
+            "worst_time": 15.0,
+            "final": 0.07315603672539452,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.15219159671999083,
+            "worst_time": 20.0,
+            "final": 0.15219159671999083,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2782437692488992,
+            "worst_time": 20.0,
+            "final": 0.2782437692488992,
+            "predicted_final_tips": 14,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.3713736534118652,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08442200720310211,
+          0.04233090952038765,
+          0.010791103355586529
+        ]
+      },
+      "best_step": 2000,
+      "steps": 2000,
+      "validation_selection": 0.15874379873275757,
+      "structure": "local",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 35.11223679999239
+    },
+    "near": {
+      "validation": {
+        "coordinate_mse": 0.0012090689269825816,
+        "final_coordinate_rms": 0.1123441532254219,
+        "worst_frame_coordinate_rms": 0.189377561211586,
+        "mean_final_geometry_distance": 0.20627572778337233,
+        "mean_worst_geometry_distance": 0.2079603240143707,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3313804660150565,
+            "worst_time": 20.0,
+            "final": 0.3313804660150565,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.16523829963666858,
+            "worst_time": 20.0,
+            "final": 0.16523829963666858,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.1592871592264692,
+            "worst_time": 20.0,
+            "final": 0.1592871592264692,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.0776027957116228,
+            "worst_time": 20.0,
+            "final": 0.0776027957116228,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.07908758759969303,
+            "worst_time": 20.0,
+            "final": 0.07908758759969303,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.2319087787636433,
+            "worst_time": 20.0,
+            "final": 0.2319087787636433,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.2793179288193346,
+            "worst_time": 20.0,
+            "final": 0.2793179288193346,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3398595763424774,
+            "worst_time": 3.3982083797454834,
+            "final": 0.3263828064944906,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09001018106937408,
+          0.06152450293302536,
+          0.01121827308088541
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0009830462513491511,
+        "final_coordinate_rms": 0.09594178944826126,
+        "worst_frame_coordinate_rms": 0.18171292543411255,
+        "mean_final_geometry_distance": 0.18062858826022074,
+        "mean_worst_geometry_distance": 0.1843209567816225,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 4,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.38666512353110444,
+            "worst_time": 15.0,
+            "final": 0.3634078997491614,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.1922774637388554,
+            "worst_time": 20.0,
+            "final": 0.1922774637388554,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.23189526155627793,
+            "worst_time": 20.0,
+            "final": 0.23189526155627793,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.09219387658632729,
+            "worst_time": 20.0,
+            "final": 0.09219387658632729,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.07584666268323004,
+            "worst_time": 8.353625297546387,
+            "final": 0.07518421933298904,
+            "predicted_final_tips": 10,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07727526218901219,
+            "worst_time": 15.0,
+            "final": 0.07165598114998209,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.14768572242016526,
+            "worst_time": 20.0,
+            "final": 0.14768572242016526,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2707282815480075,
+            "worst_time": 20.0,
+            "final": 0.2707282815480075,
+            "predicted_final_tips": 14,
+            "label_final_tips": 8,
+            "crossing_times": [
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08377274125814438,
+          0.04249117523431778,
+          0.010848470963537693
+        ]
+      },
+      "best_step": 2000,
+      "steps": 2000,
+      "validation_selection": 0.15861931443214417,
+      "structure": "near",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 33.51528619998135
+    },
+    "band": {
+      "validation": {
+        "coordinate_mse": 0.0012041742447763681,
+        "final_coordinate_rms": 0.11229224503040314,
+        "worst_frame_coordinate_rms": 0.1889364868402481,
+        "mean_final_geometry_distance": 0.20536488291353755,
+        "mean_worst_geometry_distance": 0.20706410757991095,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3289282642230906,
+            "worst_time": 20.0,
+            "final": 0.3289282642230906,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.16228561914368958,
+            "worst_time": 20.0,
+            "final": 0.16228561914368958,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.16249274928194576,
+            "worst_time": 20.0,
+            "final": 0.16249274928194576,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.07086867400875423,
+            "worst_time": 20.0,
+            "final": 0.07086867400875423,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.07178184753703001,
+            "worst_time": 20.0,
+            "final": 0.07178184753703001,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.2298923037398089,
+            "worst_time": 20.0,
+            "final": 0.2298923037398089,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.2881461731025387,
+            "worst_time": 20.0,
+            "final": 0.2881461731025387,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3421172296024297,
+            "worst_time": 3.3982083797454834,
+            "final": 0.32852343227144254,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09007308632135391,
+          0.06141575425863266,
+          0.011202408000826836
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0009841534774750471,
+        "final_coordinate_rms": 0.09594467282295227,
+        "worst_frame_coordinate_rms": 0.18238863348960876,
+        "mean_final_geometry_distance": 0.18138265220552519,
+        "mean_worst_geometry_distance": 0.18512679846346364,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 6,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3874582280403844,
+            "worst_time": 15.0,
+            "final": 0.36419126715055955,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.19181663637827331,
+            "worst_time": 20.0,
+            "final": 0.19181663637827331,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.2337108859842331,
+            "worst_time": 20.0,
+            "final": 0.2337108859842331,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.09104036912388458,
+            "worst_time": 20.0,
+            "final": 0.09104036912388458,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.07826431708493276,
+            "worst_time": 20.0,
+            "final": 0.07826431708493276,
+            "predicted_final_tips": 9,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07830172888896977,
+            "worst_time": 15.0,
+            "final": 0.07161551971528697,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.15057711624470144,
+            "worst_time": 20.0,
+            "final": 0.15057711624470144,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.26984510596232986,
+            "worst_time": 20.0,
+            "final": 0.26984510596232986,
+            "predicted_final_tips": 13,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.3713736534118652,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08394137024879456,
+          0.04219256341457367,
+          0.010615276172757149
+        ]
+      },
+      "best_step": 2000,
+      "steps": 2000,
+      "validation_selection": 0.15769705176353455,
+      "structure": "band",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 33.498608200025046
+    },
+    "jepa": {
+      "validation": {
+        "coordinate_mse": 0.0012140691978856921,
+        "final_coordinate_rms": 0.11255846172571182,
+        "worst_frame_coordinate_rms": 0.19019250571727753,
+        "mean_final_geometry_distance": 0.2080724915123593,
+        "mean_worst_geometry_distance": 0.2093439230643772,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.32853197671723305,
+            "worst_time": 20.0,
+            "final": 0.32853197671723305,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.16841214619050818,
+            "worst_time": 20.0,
+            "final": 0.16841214619050818,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.16454576739944154,
+            "worst_time": 20.0,
+            "final": 0.16454576739944154,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.07027994153751804,
+            "worst_time": 20.0,
+            "final": 0.07027994153751804,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.07604855833968129,
+            "worst_time": 20.0,
+            "final": 0.07604855833968129,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.23153226626045836,
+            "worst_time": 20.0,
+            "final": 0.23153226626045836,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.29675298858040255,
+            "worst_time": 20.0,
+            "final": 0.29675298858040255,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3386477394897748,
+            "worst_time": 3.3982083797454834,
+            "final": 0.3284762870736313,
+            "predicted_final_tips": 13,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09038716554641724,
+          0.06134851649403572,
+          0.011224036104977131
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0009897592244669795,
+        "final_coordinate_rms": 0.09624750167131424,
+        "worst_frame_coordinate_rms": 0.18221479654312134,
+        "mean_final_geometry_distance": 0.18083048554374145,
+        "mean_worst_geometry_distance": 0.1857385608923032,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.38479417270318983,
+            "worst_time": 15.0,
+            "final": 0.3620417034405388,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.197790173538733,
+            "worst_time": 20.0,
+            "final": 0.197790173538733,
+            "predicted_final_tips": 6,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.23187456396405973,
+            "worst_time": 20.0,
+            "final": 0.23187456396405973,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.08909090665468802,
+            "worst_time": 20.0,
+            "final": 0.08909090665468802,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.07946505808603334,
+            "worst_time": 8.353625297546387,
+            "final": 0.07408583734692899,
+            "predicted_final_tips": 10,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07381206116634567,
+            "worst_time": 15.0,
+            "final": 0.06903970843144869,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.15358719117147407,
+            "worst_time": 15.0,
+            "final": 0.14722663111963258,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.27549435985390186,
+            "worst_time": 20.0,
+            "final": 0.27549435985390186,
+            "predicted_final_tips": 14,
+            "label_final_tips": 8,
+            "crossing_times": [
+              4.869675159454346,
+              5.0,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08412664383649826,
+          0.04249228909611702,
+          0.010878837667405605
+        ]
+      },
+      "best_step": 2000,
+      "steps": 2000,
+      "validation_selection": 0.15960969030857086,
+      "structure": "jepa",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 43.966176799993264
+    },
+    "noise": {
+      "validation": {
+        "coordinate_mse": 0.0011416507186368108,
+        "final_coordinate_rms": 0.10837042331695557,
+        "worst_frame_coordinate_rms": 0.17549297213554382,
+        "mean_final_geometry_distance": 0.2142891422888864,
+        "mean_worst_geometry_distance": 0.22073084989562564,
+        "self_intersecting_cases": 5,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.32527547141193525,
+            "worst_time": 20.0,
+            "final": 0.32527547141193525,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.18562220455975081,
+            "worst_time": 15.0,
+            "final": 0.1777577292627288,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.22150848392052985,
+            "worst_time": 20.0,
+            "final": 0.22150848392052985,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.12415565324586543,
+            "worst_time": 20.0,
+            "final": 0.12415565324586543,
+            "predicted_final_tips": 9,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.10547628492619779,
+            "worst_time": 20.0,
+            "final": 0.10547628492619779,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.23954926837685442,
+            "worst_time": 20.0,
+            "final": 0.23954926837685442,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.23609098231718015,
+            "worst_time": 15.0,
+            "final": 0.20358900891860315,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3281684504066912,
+            "worst_time": 2.838736057281494,
+            "final": 0.3170012382483766,
+            "predicted_final_tips": 11,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08716000616550446,
+          0.059699252247810364,
+          0.010499087162315845
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.001069266232661903,
+        "final_coordinate_rms": 0.09914927929639816,
+        "worst_frame_coordinate_rms": 0.18499191105365753,
+        "mean_final_geometry_distance": 0.21054753110455104,
+        "mean_worst_geometry_distance": 0.21415195192752046,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3697422660448959,
+            "worst_time": 15.0,
+            "final": 0.34090689946114056,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.24191879431494193,
+            "worst_time": 20.0,
+            "final": 0.24191879431494193,
+            "predicted_final_tips": 6,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.24853882995841572,
+            "worst_time": 20.0,
+            "final": 0.24853882995841572,
+            "predicted_final_tips": 7,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.1644007100065117,
+            "worst_time": 20.0,
+            "final": 0.1644007100065117,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.10816069461708198,
+            "worst_time": 20.0,
+            "final": 0.10816069461708198,
+            "predicted_final_tips": 6,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.10331418496906031,
+            "worst_time": 20.0,
+            "final": 0.10331418496906031,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.18740969395227206,
+            "worst_time": 20.0,
+            "final": 0.18740969395227206,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2897304415569842,
+            "worst_time": 20.0,
+            "final": 0.2897304415569842,
+            "predicted_final_tips": 11,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08661855012178421,
+          0.0435061901807785,
+          0.00960386823862791
+        ]
+      },
+      "best_step": 800,
+      "steps": 2000,
+      "validation_selection": 0.16610753536224365,
+      "structure": "band",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 44.3689546000096
+    },
+    "oof": {
+      "validation": {
+        "coordinate_mse": 0.0013061355566605926,
+        "final_coordinate_rms": 0.11525671184062958,
+        "worst_frame_coordinate_rms": 0.19220544397830963,
+        "mean_final_geometry_distance": 0.225090313115166,
+        "mean_worst_geometry_distance": 0.225090313115166,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 4,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3107029253075859,
+            "worst_time": 20.0,
+            "final": 0.3107029253075859,
+            "predicted_final_tips": 7,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.2027825990082313,
+            "worst_time": 20.0,
+            "final": 0.2027825990082313,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.17478023525583228,
+            "worst_time": 20.0,
+            "final": 0.17478023525583228,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.10206850143125573,
+            "worst_time": 20.0,
+            "final": 0.10206850143125573,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.09769808971794036,
+            "worst_time": 20.0,
+            "final": 0.09769808971794036,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.26788056230934615,
+            "worst_time": 20.0,
+            "final": 0.26788056230934615,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.2966600054816675,
+            "worst_time": 20.0,
+            "final": 0.2966600054816675,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.34814958640946875,
+            "worst_time": 20.0,
+            "final": 0.34814958640946875,
+            "predicted_final_tips": 10,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.382372260093689,
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.0914725661277771,
+          0.06405944377183914,
+          0.011012670584022999
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0010001424234360456,
+        "final_coordinate_rms": 0.09768827259540558,
+        "worst_frame_coordinate_rms": 0.1785346269607544,
+        "mean_final_geometry_distance": 0.18290622632137515,
+        "mean_worst_geometry_distance": 0.18642447280003835,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3358711746323625,
+            "worst_time": 15.0,
+            "final": 0.31698924525618566,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.20080806530298756,
+            "worst_time": 20.0,
+            "final": 0.20080806530298756,
+            "predicted_final_tips": 6,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.2448278634371321,
+            "worst_time": 20.0,
+            "final": 0.2448278634371321,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.09981617418434213,
+            "worst_time": 20.0,
+            "final": 0.09981617418434213,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.08946453960720496,
+            "worst_time": 8.353625297546387,
+            "final": 0.08409132024207985,
+            "predicted_final_tips": 9,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07167482580527204,
+            "worst_time": 4.869675159454346,
+            "final": 0.06778400271726837,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.1623263522719608,
+            "worst_time": 20.0,
+            "final": 0.1623263522719608,
+            "predicted_final_tips": 11,
+            "label_final_tips": 8,
+            "crossing_times": [
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.2866067871590447,
+            "worst_time": 20.0,
+            "final": 0.2866067871590447,
+            "predicted_final_tips": 13,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.382372260093689,
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08532092720270157,
+          0.04352845251560211,
+          0.010916941799223423
+        ]
+      },
+      "best_step": 1,
+      "steps": 2000,
+      "validation_selection": 0.1731620579957962,
+      "structure": "band",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 43.580325399991125
+    },
+    "band_x2": {
+      "validation": {
+        "coordinate_mse": 0.0011831226292997599,
+        "final_coordinate_rms": 0.11176113784313202,
+        "worst_frame_coordinate_rms": 0.18784207105636597,
+        "mean_final_geometry_distance": 0.1956041247597979,
+        "mean_worst_geometry_distance": 0.19953255590146693,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3152411923226348,
+            "worst_time": 20.0,
+            "final": 0.3152411923226348,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.15002034974168932,
+            "worst_time": 20.0,
+            "final": 0.15002034974168932,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.14169696884314023,
+            "worst_time": 20.0,
+            "final": 0.14169696884314023,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.0797626740481863,
+            "worst_time": 15.0,
+            "final": 0.07031337888724917,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.06701228285810812,
+            "worst_time": 20.0,
+            "final": 0.06701228285810812,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.2229245785569444,
+            "worst_time": 20.0,
+            "final": 0.2229245785569444,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.2806913726387677,
+            "worst_time": 20.0,
+            "final": 0.2806913726387677,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.33891102820226454,
+            "worst_time": 3.3982083797454834,
+            "final": 0.3169328742298496,
+            "predicted_final_tips": 11,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09001842141151428,
+          0.06102299317717552,
+          0.012006298638880253
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0009886681800708175,
+        "final_coordinate_rms": 0.0953880324959755,
+        "worst_frame_coordinate_rms": 0.18568314611911774,
+        "mean_final_geometry_distance": 0.17435125537637888,
+        "mean_worst_geometry_distance": 0.17917921054118124,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 6,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.4154204297789211,
+            "worst_time": 15.0,
+            "final": 0.39068617958636637,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.17569804065101413,
+            "worst_time": 20.0,
+            "final": 0.17569804065101413,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.2146709053930076,
+            "worst_time": 20.0,
+            "final": 0.2146709053930076,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.08323125326275355,
+            "worst_time": 20.0,
+            "final": 0.08323125326275355,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.07626739516281285,
+            "worst_time": 20.0,
+            "final": 0.07626739516281285,
+            "predicted_final_tips": 9,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07761696793040154,
+            "worst_time": 15.0,
+            "final": 0.0716056532228611,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.1362134944136839,
+            "worst_time": 20.0,
+            "final": 0.1362134944136839,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.25431519773685524,
+            "worst_time": 2.838736057281494,
+            "final": 0.24643712131853157,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08268421143293381,
+          0.04331390932202339,
+          0.010911908932030201
+        ]
+      },
+      "source": "band",
+      "iterations": 2
+    },
+    "band_x3": {
+      "validation": {
+        "coordinate_mse": 0.0011876649223268032,
+        "final_coordinate_rms": 0.11198180168867111,
+        "worst_frame_coordinate_rms": 0.18962348997592926,
+        "mean_final_geometry_distance": 0.18884019491282922,
+        "mean_worst_geometry_distance": 0.19405750514059505,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 2,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.29951379101953407,
+            "worst_time": 20.0,
+            "final": 0.29951379101953407,
+            "predicted_final_tips": 7,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.14318517031153233,
+            "worst_time": 20.0,
+            "final": 0.14318517031153233,
+            "predicted_final_tips": 8,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.11837525741679804,
+            "worst_time": 20.0,
+            "final": 0.11837525741679804,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.09255438066940956,
+            "worst_time": 15.0,
+            "final": 0.0825463702574256,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.06454209834103958,
+            "worst_time": 20.0,
+            "final": 0.06454209834103958,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.22407518457388265,
+            "worst_time": 20.0,
+            "final": 0.22407518457388265,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.2726295527503394,
+            "worst_time": 20.0,
+            "final": 0.2726295527503394,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.3375846060422246,
+            "worst_time": 2.838736057281494,
+            "final": 0.305854134632082,
+            "predicted_final_tips": 10,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.09037037938833237,
+          0.061296503990888596,
+          0.01283014565706253
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.0010061791399493814,
+        "final_coordinate_rms": 0.09548254311084747,
+        "worst_frame_coordinate_rms": 0.1879492700099945,
+        "mean_final_geometry_distance": 0.17590443745392664,
+        "mean_worst_geometry_distance": 0.18466636917531637,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 5,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.44017209465132984,
+            "worst_time": 15.0,
+            "final": 0.4121878288299338,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.18454840329676245,
+            "worst_time": 20.0,
+            "final": 0.18454840329676245,
+            "predicted_final_tips": 8,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.20002646294304402,
+            "worst_time": 20.0,
+            "final": 0.20002646294304402,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.08945401300440653,
+            "worst_time": 20.0,
+            "final": 0.08945401300440653,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.07578980080674338,
+            "worst_time": 20.0,
+            "final": 0.07578980080674338,
+            "predicted_final_tips": 9,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07500800731494552,
+            "worst_time": 15.0,
+            "final": 0.06961227768741665,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.14772143501146842,
+            "worst_time": 20.0,
+            "final": 0.14772143501146842,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.26461073637383076,
+            "worst_time": 2.838736057281494,
+            "final": 0.2278952780516378,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08204095810651779,
+          0.04457199200987816,
+          0.011382192373275757
+        ]
+      },
+      "source": "band",
+      "iterations": 3
+    },
+    "unroll": {
+      "validation": {
+        "coordinate_mse": 0.0012083075707778335,
+        "final_coordinate_rms": 0.11193830519914627,
+        "worst_frame_coordinate_rms": 0.18908068537712097,
+        "mean_final_geometry_distance": 0.20622264169895696,
+        "mean_worst_geometry_distance": 0.20702542111286162,
+        "self_intersecting_cases": 4,
+        "final_tip_matches": 3,
+        "cases": [
+          {
+            "case": 6,
+            "sampled_frames": 69,
+            "maximum": 0.3266282363338423,
+            "worst_time": 20.0,
+            "final": 0.3266282363338423,
+            "predicted_final_tips": 7,
+            "label_final_tips": 8,
+            "crossing_times": [
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 14,
+            "sampled_frames": 69,
+            "maximum": 0.16520994217280682,
+            "worst_time": 20.0,
+            "final": 0.16520994217280682,
+            "predicted_final_tips": 6,
+            "label_final_tips": 6,
+            "crossing_times": []
+          },
+          {
+            "case": 22,
+            "sampled_frames": 69,
+            "maximum": 0.1595618135297957,
+            "worst_time": 20.0,
+            "final": 0.1595618135297957,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 30,
+            "sampled_frames": 69,
+            "maximum": 0.07865234075918705,
+            "worst_time": 20.0,
+            "final": 0.07865234075918705,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 38,
+            "sampled_frames": 69,
+            "maximum": 0.07685796831490127,
+            "worst_time": 20.0,
+            "final": 0.07685796831490127,
+            "predicted_final_tips": 8,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 46,
+            "sampled_frames": 69,
+            "maximum": 0.22144776093440344,
+            "worst_time": 20.0,
+            "final": 0.22144776093440344,
+            "predicted_final_tips": 7,
+            "label_final_tips": 10,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 54,
+            "sampled_frames": 69,
+            "maximum": 0.29175372942171884,
+            "worst_time": 20.0,
+            "final": 0.29175372942171884,
+            "predicted_final_tips": 9,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 62,
+            "sampled_frames": 69,
+            "maximum": 0.33609157743623763,
+            "worst_time": 2.838736057281494,
+            "final": 0.32966934212500015,
+            "predicted_final_tips": 12,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.0898069515824318,
+          0.061165474355220795,
+          0.011145531199872494
+        ]
+      },
+      "test": {
+        "coordinate_mse": 0.000985710765235126,
+        "final_coordinate_rms": 0.09604334831237793,
+        "worst_frame_coordinate_rms": 0.18293003737926483,
+        "mean_final_geometry_distance": 0.18239672933478823,
+        "mean_worst_geometry_distance": 0.18568271175817358,
+        "self_intersecting_cases": 3,
+        "final_tip_matches": 5,
+        "cases": [
+          {
+            "case": 7,
+            "sampled_frames": 69,
+            "maximum": 0.3911633394382943,
+            "worst_time": 15.0,
+            "final": 0.3695119410031037,
+            "predicted_final_tips": 6,
+            "label_final_tips": 8,
+            "crossing_times": [
+              20.0
+            ]
+          },
+          {
+            "case": 15,
+            "sampled_frames": 69,
+            "maximum": 0.19529277175201049,
+            "worst_time": 20.0,
+            "final": 0.19529277175201049,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 23,
+            "sampled_frames": 69,
+            "maximum": 0.22872373745684538,
+            "worst_time": 20.0,
+            "final": 0.22872373745684538,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": []
+          },
+          {
+            "case": 31,
+            "sampled_frames": 69,
+            "maximum": 0.09321918259633713,
+            "worst_time": 20.0,
+            "final": 0.09321918259633713,
+            "predicted_final_tips": 10,
+            "label_final_tips": 10,
+            "crossing_times": []
+          },
+          {
+            "case": 39,
+            "sampled_frames": 69,
+            "maximum": 0.08004388827836977,
+            "worst_time": 20.0,
+            "final": 0.08004388827836977,
+            "predicted_final_tips": 10,
+            "label_final_tips": 9,
+            "crossing_times": []
+          },
+          {
+            "case": 47,
+            "sampled_frames": 69,
+            "maximum": 0.07183674176565236,
+            "worst_time": 15.0,
+            "final": 0.06720028081376035,
+            "predicted_final_tips": 7,
+            "label_final_tips": 7,
+            "crossing_times": []
+          },
+          {
+            "case": 55,
+            "sampled_frames": 69,
+            "maximum": 0.15366256496707847,
+            "worst_time": 20.0,
+            "final": 0.15366256496707847,
+            "predicted_final_tips": 8,
+            "label_final_tips": 8,
+            "crossing_times": [
+              15.0,
+              20.0
+            ]
+          },
+          {
+            "case": 63,
+            "sampled_frames": 69,
+            "maximum": 0.27151946781080066,
+            "worst_time": 20.0,
+            "final": 0.27151946781080066,
+            "predicted_final_tips": 14,
+            "label_final_tips": 8,
+            "crossing_times": [
+              1.6548171043395996,
+              1.980956792831421,
+              2.3713736534118652,
+              2.838736057281494,
+              3.3982083797454834,
+              4.067944526672363,
+              4.869675159454346,
+              5.0,
+              5.829415321350098,
+              6.978305816650391,
+              8.353625297546387,
+              10.0,
+              15.0,
+              20.0
+            ]
+          }
+        ],
+        "final_band_rmse": [
+          0.08397367596626282,
+          0.04240979626774788,
+          0.010523968376219273
+        ]
+      },
+      "best_step": 2000,
+      "steps": 2000,
+      "validation_selection": 0.15863218903541565,
+      "structure": "band",
+      "seed": 20261106,
+      "repair_parameters": 24842,
+      "seconds": 101.29935470002238,
+      "iterations": 3,
+      "input_source": "band"
+    }
+  }
+}

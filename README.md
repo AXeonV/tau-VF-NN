@@ -5,6 +5,8 @@
 ```text
 src/traditional/   初始形状、FP64 边界积分、半隐式推进、标签验算
 src/nn/            数据增强、条件 CurveFNO、训练和推理
+src/nn_ins/        短窗界面更新对照
+src/nn_world/      同时刻局部修正、截断检查和数值回退
 utils/             界面图和 loss 图
 results/           仿真标签、模型和结果
 archive/           旧实验与代码快照
@@ -38,3 +40,40 @@ foreach ($T in 5,20,1000) {
 }
 python -m utils.compare
 ```
+
+## T=20 界面修正实验
+
+固定已有的 T=20 CurveFNO 和初值划分。先比较逐点修正、沿弧长卷积、空间邻近但弧长分离的界面段、分频带监督和 JEPA 未来几何特征。再固定修正器结构，对比训练输入来自原 FNO、加噪界面或交叉拟合的 FNO。两次训练种子共用相同的数据和粗预测。
+
+```sh
+python -m src.nn_world.proposals
+python -m src.nn_world.train --stage structure
+python -m src.nn_world.train --stage repair
+python -m src.nn_world.train --stage unroll
+python -m src.nn_world.audit
+python -m src.nn_world.verify
+python -m utils.render_world
+```
+
+复跑第二个修正器种子时，对三个训练阶段加上 `--seed 20261107 --cache results/supervised/world_t20 --out results/supervised/world_t20/seed2`。结果在 `results/supervised/world_t20`。截断阈值只用验证轨迹选定。密集核验帧用于测量首次超限时刻，触发回退后由初始界面重新推进。
+
+## T=100 长时预测对照
+
+沿用 48／8／8 初值划分。结构对照共用一个 Fourier 主干，依次增加任意时间对、跨时刻耦合、初值和近期运动。微调从同一个历史模型出发，对比真实历史、混合历史、截断梯度、自生成三块或六块、变噪声、尖端加权和路径一致性。独立数值推进用于测量初值敏感性，并提供重锚定界面。
+
+```sh
+python -m src.nn.train --horizon 100 --steps 4000 --out results/supervised/rollout_t100/curvefno --save-predictions
+python -m src.nn_rollout.experiment --stage structure
+python -m src.nn_rollout.experiment --stage finetune
+python -m src.nn_rollout.refine
+python -m src.nn_rollout.sensitivity
+python -m src.nn_rollout.anchors --stage prepare
+python -m src.nn_rollout.anchors --stage compare
+python -m src.nn_rollout.anchors --stage cost
+python -m src.nn_rollout.evaluate_events
+python -m utils.render_rollout
+```
+
+产物在 `results/supervised/rollout_t100`。`summary.json` 分别记录直接查询、自由滚动和每段使用仿真状态。持续新尖端统计要求径向峰延续到后一帧，并按时间和方位匹配，母尖端明确的分裂单独计数。
+
+第二个种子复验了五种结构和三种微调。结构阶段使用 `--only direct pairs block anchor history`，微调阶段使用 `--only teacher self pushforward`。两个阶段均加上 `--seed 20261107 --out results/supervised/rollout_t100/seed2`。

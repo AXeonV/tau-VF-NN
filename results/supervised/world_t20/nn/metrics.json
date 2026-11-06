@@ -1,0 +1,243 @@
+{
+  "validation": {
+    "coordinate_mse": 0.001279578311368823,
+    "final_coordinate_rms": 0.11465447396039963,
+    "worst_frame_coordinate_rms": 0.19199346005916595,
+    "mean_final_geometry_distance": 0.226551886516377,
+    "mean_worst_geometry_distance": 0.226551886516377,
+    "self_intersecting_cases": 3,
+    "final_tip_matches": 4,
+    "cases": [
+      {
+        "case": 6,
+        "sampled_frames": 69,
+        "maximum": 0.3109980449310383,
+        "worst_time": 20.0,
+        "final": 0.3109980449310383,
+        "predicted_final_tips": 7,
+        "label_final_tips": 8,
+        "crossing_times": []
+      },
+      {
+        "case": 14,
+        "sampled_frames": 69,
+        "maximum": 0.19740910352221344,
+        "worst_time": 20.0,
+        "final": 0.19740910352221344,
+        "predicted_final_tips": 6,
+        "label_final_tips": 6,
+        "crossing_times": []
+      },
+      {
+        "case": 22,
+        "sampled_frames": 69,
+        "maximum": 0.17831938328221875,
+        "worst_time": 20.0,
+        "final": 0.17831938328221875,
+        "predicted_final_tips": 8,
+        "label_final_tips": 8,
+        "crossing_times": []
+      },
+      {
+        "case": 30,
+        "sampled_frames": 69,
+        "maximum": 0.09713281113539536,
+        "worst_time": 20.0,
+        "final": 0.09713281113539536,
+        "predicted_final_tips": 10,
+        "label_final_tips": 10,
+        "crossing_times": []
+      },
+      {
+        "case": 38,
+        "sampled_frames": 69,
+        "maximum": 0.08906205977271887,
+        "worst_time": 20.0,
+        "final": 0.08906205977271887,
+        "predicted_final_tips": 8,
+        "label_final_tips": 10,
+        "crossing_times": []
+      },
+      {
+        "case": 46,
+        "sampled_frames": 69,
+        "maximum": 0.2695681411939731,
+        "worst_time": 20.0,
+        "final": 0.2695681411939731,
+        "predicted_final_tips": 7,
+        "label_final_tips": 10,
+        "crossing_times": [
+          20.0
+        ]
+      },
+      {
+        "case": 54,
+        "sampled_frames": 69,
+        "maximum": 0.3109158692339967,
+        "worst_time": 20.0,
+        "final": 0.3109158692339967,
+        "predicted_final_tips": 8,
+        "label_final_tips": 8,
+        "crossing_times": [
+          4.067944526672363,
+          4.869675159454346,
+          5.0,
+          5.829415321350098,
+          6.978305816650391,
+          8.353625297546387,
+          10.0,
+          15.0,
+          20.0
+        ]
+      },
+      {
+        "case": 62,
+        "sampled_frames": 69,
+        "maximum": 0.3590096790594615,
+        "worst_time": 20.0,
+        "final": 0.3590096790594615,
+        "predicted_final_tips": 11,
+        "label_final_tips": 8,
+        "crossing_times": [
+          1.980956792831421,
+          2.3713736534118652,
+          2.838736057281494,
+          3.3982083797454834,
+          4.067944526672363,
+          4.869675159454346,
+          5.0,
+          5.829415321350098,
+          6.978305816650391,
+          8.353625297546387,
+          10.0,
+          15.0,
+          20.0
+        ]
+      }
+    ],
+    "final_band_rmse": [
+      0.09109485149383545,
+      0.06373084336519241,
+      0.010979007929563522
+    ]
+  },
+  "test": {
+    "coordinate_mse": 0.001009024796076119,
+    "final_coordinate_rms": 0.0978042408823967,
+    "worst_frame_coordinate_rms": 0.17873834073543549,
+    "mean_final_geometry_distance": 0.18888397807828614,
+    "mean_worst_geometry_distance": 0.19128986786158653,
+    "self_intersecting_cases": 3,
+    "final_tip_matches": 4,
+    "cases": [
+      {
+        "case": 7,
+        "sampled_frames": 69,
+        "maximum": 0.33588573636739094,
+        "worst_time": 15.0,
+        "final": 0.31872800158755155,
+        "predicted_final_tips": 6,
+        "label_final_tips": 8,
+        "crossing_times": [
+          20.0
+        ]
+      },
+      {
+        "case": 15,
+        "sampled_frames": 69,
+        "maximum": 0.2042594632940118,
+        "worst_time": 20.0,
+        "final": 0.2042594632940118,
+        "predicted_final_tips": 7,
+        "label_final_tips": 7,
+        "crossing_times": []
+      },
+      {
+        "case": 23,
+        "sampled_frames": 69,
+        "maximum": 0.24652971331455958,
+        "worst_time": 20.0,
+        "final": 0.24652971331455958,
+        "predicted_final_tips": 8,
+        "label_final_tips": 8,
+        "crossing_times": []
+      },
+      {
+        "case": 31,
+        "sampled_frames": 69,
+        "maximum": 0.10835470912695754,
+        "worst_time": 20.0,
+        "final": 0.10835470912695754,
+        "predicted_final_tips": 10,
+        "label_final_tips": 10,
+        "crossing_times": []
+      },
+      {
+        "case": 39,
+        "sampled_frames": 69,
+        "maximum": 0.091144473698694,
+        "worst_time": 8.353625297546387,
+        "final": 0.09101207850391904,
+        "predicted_final_tips": 9,
+        "label_final_tips": 9,
+        "crossing_times": []
+      },
+      {
+        "case": 47,
+        "sampled_frames": 69,
+        "maximum": 0.07432454842826554,
+        "worst_time": 15.0,
+        "final": 0.07236756013647702,
+        "predicted_final_tips": 8,
+        "label_final_tips": 7,
+        "crossing_times": []
+      },
+      {
+        "case": 55,
+        "sampled_frames": 69,
+        "maximum": 0.17305680515193228,
+        "worst_time": 20.0,
+        "final": 0.17305680515193228,
+        "predicted_final_tips": 9,
+        "label_final_tips": 8,
+        "crossing_times": [
+          8.353625297546387,
+          10.0,
+          15.0,
+          20.0
+        ]
+      },
+      {
+        "case": 63,
+        "sampled_frames": 69,
+        "maximum": 0.2967634935108804,
+        "worst_time": 20.0,
+        "final": 0.2967634935108804,
+        "predicted_final_tips": 13,
+        "label_final_tips": 8,
+        "crossing_times": [
+          1.382372260093689,
+          1.6548171043395996,
+          1.980956792831421,
+          2.3713736534118652,
+          2.838736057281494,
+          3.3982083797454834,
+          4.067944526672363,
+          4.869675159454346,
+          5.0,
+          5.829415321350098,
+          6.978305816650391,
+          8.353625297546387,
+          10.0,
+          15.0,
+          20.0
+        ]
+      }
+    ],
+    "final_band_rmse": [
+      0.08537691086530685,
+      0.043458886444568634,
+      0.011003712192177773
+    ]
+  }
+}
