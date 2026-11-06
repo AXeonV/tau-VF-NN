@@ -5,78 +5,10 @@ from pathlib import Path
 from time import perf_counter
 
 import numpy as np
-from scipy.signal import resample, find_peaks
-from scipy.spatial import cKDTree
+from scipy.signal import resample
 
 from .cases import CASE_COUNT, case_description, initial_curve, output_times
-from .evolution import area, evolve
-
-
-def _points(z):
-    return np.column_stack([z.real, z.imag])
-
-
-def _distance_to_curve(source, curve):
-    points = _points(source)
-    target = _points(curve)
-    _, nearest = cKDTree(target).query(points)
-    next_index = (nearest+1) % len(curve)
-    prev_index = (nearest-1) % len(curve)
-    start = target[nearest]
-    sides = target[np.column_stack([prev_index, next_index])]-start[:, None, :]
-    difference = points-start
-    along = np.einsum('nki,ni->nk', sides, difference)/np.sum(sides*sides, axis=-1).clip(1e-30)
-    distances = np.linalg.norm(difference[:, None]-np.clip(along, 0., 1.)[..., None]*sides, axis=-1)
-    return distances.min(axis=1)
-
-
-def curve_difference(first, second, times, *, stride=3):
-    count = 2*max(first.shape[-1], second.shape[-1])
-    indices = np.unique(np.r_[np.arange(0, len(times), stride), len(times)-1])
-    maxima = []
-    for index in indices:
-        x = resample(first[index], count)
-        y = resample(second[index], count)
-        difference = max(_distance_to_curve(x, y).max(), _distance_to_curve(y, x).max())
-        maxima.append(float(difference/np.sqrt(1+2*times[index])))
-    worst = int(np.argmax(maxima))
-    return dict(sampled_frames=len(indices), maximum=maxima[worst],
-                worst_time=float(times[indices[worst]]), final=maxima[-1])
-
-
-def has_crossing(z):
-    edges = np.roll(z, -1)-z
-    midpoints = z+.5*edges
-    pairs = cKDTree(_points(midpoints)).query_pairs(float(abs(edges).max())*(1+1e-10), output_type='ndarray')
-    i, j = pairs.T
-    keep = (j-i > 1) & (j-i < len(z)-1)
-    i, j = i[keep], j[keep]
-    delta = z[j]-z[i]
-    denominator = (edges[i].conj()*edges[j]).imag
-    keep = abs(denominator) > 1e-14
-    i, j, delta, denominator = i[keep], j[keep], delta[keep], denominator[keep]
-    a = (delta.conj()*edges[j]).imag/denominator
-    b = (delta.conj()*edges[i]).imag/denominator
-    return bool(np.any((a > 1e-9) & (a < 1-1e-9) & (b > 1e-9) & (b < 1-1e-9)))
-
-
-def tip_count(z, time):
-    radius = abs(resample(z, 1024))/np.sqrt(1+2*time)
-    indices = find_peaks(np.tile(radius, 3), prominence=.025, distance=18)[0]
-    return int(((indices >= 1024) & (indices < 2048)).sum())
-
-
-def describe_geometry(curves, times):
-    crossings = [float(t) for t, z in zip(times, curves) if has_crossing(z)]
-    area_error = max(abs(area(z)/(np.pi*(1+2*t))-1) for t, z in zip(times, curves))
-    return dict(crossing_times=crossings, max_area_relative_error=float(area_error),
-                tips=[tip_count(z, t) for z, t in zip(curves, times)])
-
-
-def atomic_json(path, data):
-    temporary = path.with_suffix('.tmp')
-    temporary.write_text(json.dumps(data, indent=2)+'\n', encoding='utf-8')
-    temporary.replace(path)
+from ..trajectory_metrics import atomic_json, curve_difference, describe_geometry, has_crossing
 
 
 def save_case(path, times, curves, info):
@@ -131,6 +63,8 @@ def summarize(folder, *, compare_final=False):
 
 
 def main():
+    from .evolution import evolve
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, default=Path('results/supervised/trajectories'))
     parser.add_argument('--T', type=float, default=1000.)

@@ -9,17 +9,15 @@ import torch
 
 from .data import Trajectories, augment
 from .model import CurveFNO, signed_area
-from ..traditional.generate import atomic_json, describe_geometry, curve_difference
+from ..trajectory_metrics import atomic_json, probe_frames, report_predictions
 
 
 def frame_indices(bank):
-    horizon = bank.times[-1]
-    probes = horizon*bank.times.new_tensor([.005, .02, .10, .30, .60, 1.])
-    return (bank.times[:, None]-probes).abs().argmin(dim=0).unique()
+    return probe_frames(bank.times)
 
 
 @torch.no_grad()
-def evaluate(model, bank, split, batch, *, geometry=False):
+def evaluate(model, bank, split, batch, *, geometry=False, export=None):
     model.eval()
     frames = (torch.arange(len(bank.times), device=bank.times.device)
               if geometry else frame_indices(bank))
@@ -40,24 +38,8 @@ def evaluate(model, bank, split, batch, *, geometry=False):
                   final_coordinate_rms=float(error[:, -1].mean().sqrt()),
                   worst_frame_coordinate_rms=float(error.max().sqrt()))
     if geometry:
-        predicted = np.concatenate(forecasts)
-        target = bank.curves[rows, cols].cpu().numpy()
-        times = bank.times[frames].cpu().numpy().astype(float)
-        radii = np.sqrt(1+2*times)
-        shape = (-1, len(frames), predicted.shape[-1])
-        output = (predicted[:, 0]+1j*predicted[:, 1]).reshape(shape)*radii[None, :, None]
-        labels = (target[:, 0]+1j*target[:, 1]).reshape(shape)*radii[None, :, None]
-        result['cases'] = []
-        for case_index, z, label in zip(bank.splits[split].tolist(), output, labels):
-            contour = describe_geometry(z, times)
-            truth = describe_geometry(label, times)
-            result['cases'].append(dict(case=bank.ids[case_index],
-                                        **curve_difference(z, label, times, stride=1),
-                                        predicted_final_tips=contour['tips'][-1],
-                                        label_final_tips=truth['tips'][-1],
-                                        crossing_times=contour['crossing_times']))
-        result['mean_final_geometry_distance'] = float(np.mean([case['final'] for case in result['cases']]))
-        result['self_intersecting_cases'] = sum(bool(case['crossing_times']) for case in result['cases'])
+        predicted = np.concatenate(forecasts).reshape(len(bank.splits[split]), len(frames), 2, -1)
+        return report_predictions(bank, split, predicted, export=export)
     return result
 
 
@@ -66,6 +48,8 @@ def main():
     parser.add_argument('--data', type=Path, default=Path('results/supervised/trajectories'))
     parser.add_argument('--out', type=Path, default=Path('results/supervised/model'))
     parser.add_argument('--expected-cases', type=int, default=64)
+    parser.add_argument('--horizon', type=float)
+    parser.add_argument('--save-predictions', action='store_true')
     parser.add_argument('--steps', type=int, default=6000)
     parser.add_argument('--batch', type=int, default=8)
     parser.add_argument('--nodes', type=int, default=1024)
@@ -81,7 +65,7 @@ def main():
     torch.manual_seed(args.seed)
     torch.set_num_threads(4)
     args.out.mkdir(parents=True, exist_ok=True)
-    bank = Trajectories(args.data, args.nodes, args.device)
+    bank = Trajectories(args.data, args.nodes, args.device, args.horizon)
     if len(bank.ids) != args.expected_cases or any(len(split) == 0 for split in bank.splits.values()):
         raise ValueError('Training requires the configured accepted trajectories and all three splits')
     config = dict(horizon=float(bank.times[-1]), width=args.width, modes=args.modes, depth=args.depth)
@@ -125,9 +109,11 @@ def main():
                   f'validation={validation["coordinate_mse"]:.5e} elapsed={perf_counter()-started:.1f}s', flush=True)
     checkpoint = torch.load(args.out/'model.pt', map_location=args.device, weights_only=True)
     model.load_state_dict(checkpoint['model'])
-    test = evaluate(model, bank, 'test', args.batch, geometry=True)
+    export = args.out/'test_predictions.npz' if args.save_predictions else None
+    test = evaluate(model, bank, 'test', args.batch, geometry=True, export=export)
     atomic_json(args.out/'metrics.json', dict(best_step=checkpoint['step'],
                 validation_mse=best, test=test, elapsed=perf_counter()-started,
+                horizon=config['horizon'], steps=args.steps, seed=args.seed, frames=len(bank.times),
                 cases={name: [bank.ids[i] for i in ids.tolist()] for name, ids in bank.splits.items()}))
     print('held-out', json.dumps({key: value for key, value in test.items() if key != 'cases'}), flush=True)
 

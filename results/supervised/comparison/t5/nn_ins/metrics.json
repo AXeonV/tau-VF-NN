@@ -1,0 +1,288 @@
+{
+  "best_step": 1750,
+  "validation_mse": 0.007719187997281551,
+  "test": {
+    "coordinate_mse": 0.05421531945466995,
+    "final_coordinate_rms": 1.2128186225891113,
+    "worst_frame_coordinate_rms": 3.3995306491851807,
+    "mean_final_geometry_distance": 1.3090779596331532,
+    "mean_worst_geometry_distance": 1.3090779596331532,
+    "self_intersecting_cases": 4,
+    "final_tip_matches": 4,
+    "cases": [
+      {
+        "case": 7,
+        "sampled_frames": 63,
+        "maximum": 0.26316779393052425,
+        "worst_time": 5.0,
+        "final": 0.26316779393052425,
+        "predicted_final_tips": 2,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 15,
+        "sampled_frames": 63,
+        "maximum": 0.31146660933293496,
+        "worst_time": 5.0,
+        "final": 0.31146660933293496,
+        "predicted_final_tips": 3,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 23,
+        "sampled_frames": 63,
+        "maximum": 0.24327338436725418,
+        "worst_time": 5.0,
+        "final": 0.24327338436725418,
+        "predicted_final_tips": 4,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 31,
+        "sampled_frames": 63,
+        "maximum": 0.18684490717063465,
+        "worst_time": 5.0,
+        "final": 0.18684490717063465,
+        "predicted_final_tips": 5,
+        "label_final_tips": 5,
+        "crossing_times": []
+      },
+      {
+        "case": 39,
+        "sampled_frames": 63,
+        "maximum": 0.2539110172424214,
+        "worst_time": 5.0,
+        "final": 0.2539110172424214,
+        "predicted_final_tips": 6,
+        "label_final_tips": 6,
+        "crossing_times": [
+          4.869675159454346,
+          5.0
+        ]
+      },
+      {
+        "case": 47,
+        "sampled_frames": 63,
+        "maximum": 0.28229437419141107,
+        "worst_time": 5.0,
+        "final": 0.28229437419141107,
+        "predicted_final_tips": 7,
+        "label_final_tips": 7,
+        "crossing_times": [
+          4.067944526672363,
+          4.869675159454346,
+          5.0
+        ]
+      },
+      {
+        "case": 55,
+        "sampled_frames": 63,
+        "maximum": 8.43380619357432,
+        "worst_time": 5.0,
+        "final": 8.43380619357432,
+        "predicted_final_tips": 11,
+        "label_final_tips": 8,
+        "crossing_times": [
+          1.1547819375991821,
+          1.382372260093689,
+          1.6548171043395996,
+          1.980956792831421,
+          2.3713736534118652,
+          2.838736057281494,
+          3.3982083797454834,
+          4.067944526672363,
+          4.869675159454346,
+          5.0
+        ]
+      },
+      {
+        "case": 63,
+        "sampled_frames": 63,
+        "maximum": 0.49785939725572553,
+        "worst_time": 5.0,
+        "final": 0.49785939725572553,
+        "predicted_final_tips": 9,
+        "label_final_tips": 8,
+        "crossing_times": [
+          2.3713736534118652,
+          2.838736057281494,
+          3.3982083797454834,
+          4.067944526672363,
+          4.869675159454346,
+          5.0
+        ]
+      }
+    ]
+  },
+  "teacher_forced": {
+    "coordinate_mse": 2.7110048904432915e-05,
+    "final_coordinate_rms": 0.002163443248718977,
+    "worst_frame_coordinate_rms": 0.031955551356077194,
+    "mean_final_geometry_distance": 0.004095056381625691,
+    "mean_worst_geometry_distance": 0.02576128756600602,
+    "self_intersecting_cases": 0,
+    "final_tip_matches": 8,
+    "cases": [
+      {
+        "case": 7,
+        "sampled_frames": 63,
+        "maximum": 0.031277765647276475,
+        "worst_time": 4.869675159454346,
+        "final": 0.004184246231178559,
+        "predicted_final_tips": 4,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 15,
+        "sampled_frames": 63,
+        "maximum": 0.027214635924355517,
+        "worst_time": 4.067944526672363,
+        "final": 0.003341142460619674,
+        "predicted_final_tips": 4,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 23,
+        "sampled_frames": 63,
+        "maximum": 0.018834497140670294,
+        "worst_time": 3.3982083797454834,
+        "final": 0.002125737495096141,
+        "predicted_final_tips": 4,
+        "label_final_tips": 4,
+        "crossing_times": []
+      },
+      {
+        "case": 31,
+        "sampled_frames": 63,
+        "maximum": 0.011014894046321467,
+        "worst_time": 4.869675159454346,
+        "final": 0.0024225584677096687,
+        "predicted_final_tips": 5,
+        "label_final_tips": 5,
+        "crossing_times": []
+      },
+      {
+        "case": 39,
+        "sampled_frames": 63,
+        "maximum": 0.013894276319095553,
+        "worst_time": 4.869675159454346,
+        "final": 0.00324342914475642,
+        "predicted_final_tips": 6,
+        "label_final_tips": 6,
+        "crossing_times": []
+      },
+      {
+        "case": 47,
+        "sampled_frames": 63,
+        "maximum": 0.017440324372572553,
+        "worst_time": 4.869675159454346,
+        "final": 0.0037314736984415792,
+        "predicted_final_tips": 7,
+        "label_final_tips": 7,
+        "crossing_times": []
+      },
+      {
+        "case": 55,
+        "sampled_frames": 63,
+        "maximum": 0.024214749357002224,
+        "worst_time": 4.869675159454346,
+        "final": 0.004045821954965401,
+        "predicted_final_tips": 8,
+        "label_final_tips": 8,
+        "crossing_times": []
+      },
+      {
+        "case": 63,
+        "sampled_frames": 63,
+        "maximum": 0.06219915772075409,
+        "worst_time": 4.869675159454346,
+        "final": 0.009666041600238085,
+        "predicted_final_tips": 8,
+        "label_final_tips": 8,
+        "crossing_times": []
+      }
+    ]
+  },
+  "elapsed": 130.71335730000283,
+  "horizon": 5.0,
+  "steps": 4000,
+  "seed": 20261106,
+  "frames": 63,
+  "cases": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61
+    ],
+    "validation": [
+      6,
+      14,
+      22,
+      30,
+      38,
+      46,
+      54,
+      62
+    ],
+    "test": [
+      7,
+      15,
+      23,
+      31,
+      39,
+      47,
+      55,
+      63
+    ]
+  }
+}

@@ -26,3 +26,15 @@ python -m utils.render
 ```
 
 完整流程可用 `./run.ps1`。模型输出在 `results/supervised/model`，评估含留出初值的几何距离、终点径向峰数和自交检查。旧代码已归档到 `archive/pre_supervised_code.zip`。
+
+## 三档训练对照
+
+对照实验保持数据和 48／8／8 初值划分不变。`nn` 从初值直接查询时刻，`nn_ins` 从当前界面做短窗更新，包含等弧长重采样和表面张力高频阻尼。测试统一从第 0 帧出发，`nn_ins` 另外报告以真实当前帧为输入的单步误差。验证 MSE 使用同一组时间探针。两个模型各做 4000 个优化步。
+
+```powershell
+foreach ($T in 5,20,1000) {
+    python -m src.nn.train --horizon $T --out "results/supervised/comparison/t$T/nn" --steps 4000 --save-predictions
+    python -m src.nn_ins.train --horizon $T --out "results/supervised/comparison/t$T/nn_ins" --steps 4000
+}
+python -m utils.compare
+```
