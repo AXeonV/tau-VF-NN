@@ -1,32 +1,29 @@
-"""Check exact circular motion, differentiable loss, and FNO output shape."""
+"""Check initial conditions, area, reindexing, and supervised gradients."""
 import torch
-from .model import TauFNO
-from .conditions import features,sample_conditions
-from .physics import TauPhysicsLoss
+
+from .data import transform
+from .model import CurveFNO, signed_area
 
 
 def main():
-    torch.set_num_threads(4)
-    device='cuda' if torch.cuda.is_available() else 'cpu'
-    physics=TauPhysicsLoss(48).to(device)
-    p=torch.zeros((1,12),device=device,dtype=torch.float64);p[:,10]=.015;p[:,11]=1.
-    field=torch.zeros((1,1,32,32),device=device,dtype=torch.float64)
-    t=torch.tensor([.5],device=device,dtype=torch.float64)
-    circle,_=physics(field,p,t)
-    assert float(circle)<1e-7
-    p=sample_conditions(1,device)
-    torch.manual_seed(123)
-    field=(torch.randn((1,1,16,16),device=device,dtype=torch.float64)*.001).requires_grad_()
-    direction=torch.randn_like(field);direction/=direction.norm()
-    loss,_=physics(field,p,t);loss.backward();analytic=float((field.grad*direction).sum())
+    torch.manual_seed(15)
+    model = CurveFNO(horizon=1000., width=16, modes=16, depth=2).double()
     with torch.no_grad():
-        plus,_=physics(field+1e-6*direction,p,t);minus,_=physics(field-1e-6*direction,p,t)
-    finite=float((plus-minus)/2e-6)
-    assert abs(analytic-finite)<1e-5*max(1,abs(finite))
-    inputs,_,_=features(p)
-    model=TauFNO().to(device)
-    assert model(inputs).shape==(1,1,32,32)
-    print(f'{device}: circle loss={float(circle):.3e}, directional gradient error={abs(analytic-finite):.3e}; FNO shape OK')
+        model.output[-1].weight.normal_(std=.01)
+    angle = torch.arange(128, dtype=torch.float64)*2*torch.pi/128
+    initial = torch.stack([angle.cos(), angle.sin()])[None]
+    t = initial.new_tensor([700.])
+    prediction = model(initial, t)
+    assert torch.equal(model(initial, t*0), initial)
+    torch.testing.assert_close(signed_area(prediction), signed_area(initial), atol=1e-11, rtol=1e-11)
+    shifted = model(initial.roll(31, dims=-1), t)
+    torch.testing.assert_close(shifted, prediction.roll(31, dims=-1), atol=1e-11, rtol=1e-11)
+    augmented = transform(initial, t/1400, torch.tensor([True]), torch.tensor([23]))
+    torch.testing.assert_close(signed_area(augmented), signed_area(initial), atol=1e-11, rtol=1e-11)
+    (prediction-initial).square().mean().backward()
+    assert all(parameter.grad is not None and parameter.grad.isfinite().all() for parameter in model.parameters())
+    print('Initial state, area, cyclic phase, reflection, and parameter gradients passed')
 
 
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()

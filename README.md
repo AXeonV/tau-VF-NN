@@ -1,54 +1,28 @@
-# τ 场学习与黏性指进
+# 黏性指进界面监督学习
 
-二维 Hele–Shaw 恒流注入，采用 Darcy 定律、外部压力 Laplace 方程和表面张力边界条件。当前目标是让 NN 求解一个长时椭圆案例：初始轴比 3:1、面积 π、面注入率 2π、σ=0.015、T=1000，无额外微扰。
-
-## 结构
+用高精度二维 Hele–Shaw 时间推进生成轨迹，训练条件 Fourier 神经算子 `(z0, t) → z(α,t)`。固定中心恒流注入 `Q=2π`、表面张力 `σ=0.015`、初始面积 `π`，输出覆盖 `0 ≤ t ≤ 1000`。第一版处理始终由一条光滑闭合曲线表示的界面。
 
 ```text
-src/traditional/   边界积分、物理推进初值、全时段传统优化
-src/nn/            NN 表示、可微物理 loss、训练与验算
-utils/             界面状态曲线图、loss 图
-results/           模型、数值结果与两张结果图
+src/traditional/   初始形状、FP64 边界积分、半隐式推进、标签验算
+src/nn/            数据增强、条件 CurveFNO、训练和推理
+utils/             界面图和 loss 图
+results/           仿真标签、模型和结果
+archive/           旧实验与代码快照
 ```
 
-## 单案例 NN
+64 个初始形状来自 8 个主导模态族。每族有 6 条训练、1 条验证和 1 条测试轨迹。初值通过次级模态、振幅和相位变化打破对称性。保存 `t=0`、`t=1000`、均匀长时快照和对数分布的早期快照。
 
-`fixed_model.py` 使用对数时间 Fourier 特征与 4 层、宽度 192 的 MLP，输入时间，输出闭合界面的空间 Fourier 系数（最高 255 阶，共 256 个实系数）。界面可以凹入、分叉和局部回退；本轮保存完整界面历史。保留纯椭圆问题的两条反射对称性。
+生成标签时逐级提高空间分辨率并收紧步长。采用更细一级的界面作为标签，要求抽查时刻上两级曲线的最大双向几何距离不超过等效半径的 0.35%，压力通量相对误差不超过 `5e-5`，保存帧的界面没有检测到自交。`case_*.npz` 保存通过检查的轨迹，`provisional_*.npz` 保存待加密的轨迹，`summary.json` 记录各案例的分辨率和结果。生成程序支持继续运行。
 
-初始形状、注入面积增长和初始物理速度由构造满足。时间导数和空间导数解析计算；全程 FP64。外部压力由可微边界积分求解，训练使用 512–1024 点，长时阶段使用 1024 点，最终以 2048 点验算。
-
-先用物理推进轨迹初始化网络权重，再以运动学残差优化：`sqrt(1+2t)·(v_NN−v_pressure)` 的弧长加权平方均值，附加微小参数化均匀性项。物理优化阶段没有轨迹拟合项。Adam 后接覆盖线性时间与对数时间的 L-BFGS，另取独立时刻验算。
-
-压力后端接口为 `BoundaryPressure(z, metric, normal, curvature, sigma) → 法向速度`，可替换为其他可微 GPU 算子。
+网络沿等弧长周期坐标处理 `(x,y)`，把查询时间编码到每层，预测剔除整体膨胀的界面变形。训练在线对初值和标签同步旋转、反射和循环重编号。划分以独立初值为单位。
 
 ```sh
-python -m src.nn.prepare_fixed --out results/nn/ellipse_long_accuracy/initialization.npz
-python -m src.nn.fixed_case --initialization results/nn/ellipse_long_accuracy/initialization.npz --out results/nn/ellipse_long_accuracy --hard-initial-velocity
-python -m src.nn.refine_fixed --checkpoint results/nn/ellipse_long_accuracy/model.pt --out results/nn/ellipse_long_accuracy --steps 500 --time-points 768 --log-points 512 --quadrature midpoint --early-nodes 512 --early-until 200
-python -m src.nn.refine_fixed --checkpoint results/nn/ellipse_long_accuracy/model.pt --out results/nn/ellipse_long_accuracy --steps 300 --lr 1 --time-points 768 --log-points 512 --quadrature midpoint --early-nodes 512 --early-until 200 --append-history
-python -m src.nn.audit_fixed --case results/nn/ellipse_long_accuracy
-python -m utils.render --case results/nn/ellipse_long_accuracy
-python -m src.nn.fixed_checks
-```
-
-`model.pt` 用于连续时间推理；`optimized.npz` 保存界面快照；`accuracy.json` 保存独立物理残差、压力加密与几何检查。展示仅生成界面状态曲线 `distribution.png` 和 `loss.png`。
-
-## 多初值算子试验
-
-`model.py / train.py / predict.py` 保留早期 PINO：初始场与 σ → 网格 τ。该试验使用 32² 网格、T=1 和单调星形等时线适配器；长时案例使用上面的闭合界面网络。
-
-```sh
-python -m src.nn.train --steps 1000
-python -m utils.render_nn --case results/nn/pino_pilot
-```
-
-## 传统方案
-
-```sh
-python -m src.traditional.evolution
-python -m src.traditional.optimize --case results/ellipse_long
 python -m src.traditional.checks
-python -m utils.render --case results/ellipse_long
+python -m src.nn.checks
+python -m src.traditional.generate
+python -m src.nn.train
+python -m src.nn.predict
+python -m utils.render
 ```
 
-依赖见 `requirements.txt`。
+完整流程可用 `./run.ps1`。模型输出在 `results/supervised/model`，评估含留出初值的几何距离、终点径向峰数和自交检查。旧代码已归档到 `archive/pre_supervised_code.zip`。

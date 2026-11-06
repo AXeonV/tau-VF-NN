@@ -1,0 +1,107 @@
+{
+  "T": 20.0,
+  "aspect": 2.4,
+  "perturb": 0.004,
+  "sigma": 0.015,
+  "modes": 64,
+  "coarse_modes": 32,
+  "nodes": 384,
+  "audit_nodes": 768,
+  "temporal_basis": 48,
+  "max_iterations": 650,
+  "independent_times": 256,
+  "direct_rtol": 1e-08,
+  "coarse_rtol": 0.0001,
+  "results": {
+    "direct_integration": {
+      "seconds": 0.3000211000035051,
+      "rhs_evaluations": 982,
+      "init_seconds": 0.0,
+      "total_seconds": 0.3000211000035051,
+      "independent_velocity_rms": 0.061171359763273946,
+      "worst_time_velocity_rms": 0.23649459364868558,
+      "final_curve_relative_difference": 0.0,
+      "min_normalized_map_derivative": 0.6186007119542324,
+      "max_tail_coefficient": 0.0005395818519379994,
+      "rms_using_projected_rhs": 0.061171359992254364
+    },
+    "coarse_integration": {
+      "seconds": 0.04746029997477308,
+      "rhs_evaluations": 188,
+      "init_seconds": 0.0,
+      "total_seconds": 0.04746029997477308,
+      "independent_velocity_rms": 0.07852710729222619,
+      "worst_time_velocity_rms": 0.20713572307024644,
+      "final_curve_relative_difference": 0.010732863358329875,
+      "min_normalized_map_derivative": 0.6185994275053538,
+      "max_tail_coefficient": 0.0
+    },
+    "collocation_expanding_initial_shape": {
+      "seconds": 8.82317420002073,
+      "loss_evaluations": 670,
+      "initial_loss": 0.00023634343706894275,
+      "final_loss": 2.7945054655008903e-05,
+      "init_seconds": 0.0,
+      "total_seconds": 8.82317420002073,
+      "independent_velocity_rms": 0.013962059997217759,
+      "worst_time_velocity_rms": 0.026452814152357302,
+      "final_curve_relative_difference": 0.20871551993971635,
+      "min_normalized_map_derivative": 0.6185916332271776,
+      "max_tail_coefficient": 1.4636779473654616e-05
+    },
+    "collocation_coarse_integration_start": {
+      "seconds": 6.719530200003646,
+      "loss_evaluations": 687,
+      "initial_loss": 0.010896329212821496,
+      "final_loss": 3.5253390495276003e-06,
+      "init_seconds": 0.04746029997477308,
+      "total_seconds": 6.766990499978419,
+      "independent_velocity_rms": 0.006598681094719748,
+      "worst_time_velocity_rms": 0.01328616690796759,
+      "final_curve_relative_difference": 0.029909636404341258,
+      "min_normalized_map_derivative": 0.6186025258949633,
+      "max_tail_coefficient": 6.734374844140053e-06
+    },
+    "collocation_horizon_continuation": {
+      "seconds": 7.117788300005486,
+      "loss_evaluations": 691,
+      "stages": [
+        {
+          "T": 1.0,
+          "seconds": 1.4718966000073124,
+          "loss_evaluations": 141,
+          "initial_loss": 0.0016438542465840441,
+          "final_loss": 0.0006784154021237066
+        },
+        {
+          "T": 5.0,
+          "seconds": 1.4020762000000104,
+          "loss_evaluations": 137,
+          "initial_loss": 0.0012615565674689092,
+          "final_loss": 0.000173433182839073
+        },
+        {
+          "T": 10.0,
+          "seconds": 1.4561526000034064,
+          "loss_evaluations": 139,
+          "initial_loss": 0.0013693376354818707,
+          "final_loss": 8.301707268741935e-05
+        },
+        {
+          "T": 20.0,
+          "seconds": 2.787662899994757,
+          "loss_evaluations": 274,
+          "initial_loss": 0.0016855251294744416,
+          "final_loss": 3.478386396783643e-05
+        }
+      ],
+      "init_seconds": 0.0,
+      "total_seconds": 7.117788300005486,
+      "independent_velocity_rms": 0.016773553920243853,
+      "worst_time_velocity_rms": 0.031442863175767284,
+      "final_curve_relative_difference": 0.2196471624688852,
+      "min_normalized_map_derivative": 0.6186012405200875,
+      "max_tail_coefficient": 1.2387517201574188e-05
+    }
+  }
+}

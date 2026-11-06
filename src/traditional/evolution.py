@@ -1,107 +1,138 @@
-"""Generate long-time initial guesses with arclength boundary tracking.
-
-Surface-tension stiffness is handled by an implicit Fourier |D|^3 term.
-Area and the two reflection symmetries of the initial ellipse are retained.
-"""
-from pathlib import Path
-import json
-import time
+"""FP64 arclength boundary tracking for supervised Hele-Shaw trajectories."""
 import numpy as np
-from scipy.interpolate import CubicSpline,PchipInterpolator
-from scipy.fft import fft,ifft,fftfreq
+from scipy.fft import fft, fftfreq, ifft
+from scipy.interpolate import CubicSpline
 from scipy.signal import resample
-from .pressure import BoundaryPressure,derivative
+
+from .pressure import BoundaryPressure, CudaBoundaryPressure, derivative
 
 
-def area(z):return np.pi*np.mean((z.conj()*derivative(z)).imag)
+def area(z):
+    return np.pi*np.mean((z.conj()*derivative(z)).imag)
 
 
-def symmetric(z):
-    n=len(z);reverse=(-np.arange(n))%n
-    z=(z+z[reverse].conj())/2
-    return (z-np.roll(z,n//2))/2
+def redistribute(z, *history):
+    n = len(z)
+    count = 8*n
+    angle = np.linspace(0, 2*np.pi, count+1)
+    dense = resample(z, count)
+    metric = abs(derivative(dense))
+    k = fftfreq(count, d=1/count)
+    speed_hat = fft(metric)
+    speed_hat[1:] /= 1j*k[1:]
+    speed_hat[0] = 0.
+    periodic_integral = ifft(speed_hat).real
+    length = metric.mean()*2*np.pi
+    arc = metric.mean()*angle+np.r_[periodic_integral, periodic_integral[0]]-periodic_integral[0]
+    if np.min(np.diff(arc)) <= 0:
+        raise RuntimeError('Cannot reparameterize a degenerate interface')
+    inverse = CubicSpline(arc, angle, bc_type='not-a-knot')
+    query = inverse(np.arange(n)*length/n)
+    curves = []
+    for state in (z, *history):
+        dense_state = dense if state is z else resample(state, count)
+        spline = CubicSpline(angle, np.r_[dense_state, dense_state[0]], bc_type='periodic')
+        curves.append(spline(query))
+    return curves
 
 
-def redistribute(z,*history):
-    n=len(z);alpha=np.arange(n)*2*np.pi/n
-    old=np.r_[alpha,2*np.pi]
-    spline=CubicSpline(old,np.r_[z,z[0]],bc_type='periodic')
-    dense=np.linspace(0,2*np.pi,8*n+1)
-    speed=abs(spline(dense,1))
-    ds=(speed[:-1]+speed[1:])/2*np.diff(dense)
-    cumulative=np.r_[0,np.cumsum(ds)]
-    query=PchipInterpolator(cumulative,dense)(np.arange(n)*cumulative[-1]/n)
-    values=[]
-    for value in (z,)+history:
-        interp=CubicSpline(old,np.r_[value,value[0]],bc_type='periodic')
-        values.append(symmetric(interp(query)))
-    return values
+def evolve(initial, times, *, sigma=.015, cfl=.22, step_fraction=.012,
+           max_step=2., device='cuda', progress=None, refinements=None,
+           output_nodes=None, pressure_cache=None):
+    """Advance an oriented simple closed curve, with exact prescribed output times."""
+    times = np.asarray(times, dtype=np.float64)
+    if len(times) < 2 or times[0] != 0 or np.any(np.diff(times) <= 0):
+        raise ValueError('Expected increasing output times starting at zero')
+    initial = np.asarray(initial, dtype=np.complex128)
+    n = len(initial)
+    output_nodes = output_nodes or n
+    refinements = refinements or {}
+    if any(end not in times[1:-1] for end in refinements):
+        raise ValueError('Refinement times must be interior output times')
+    pressure_cache = {} if pressure_cache is None else pressure_cache
+    pressure_class = CudaBoundaryPressure if device == 'cuda' else BoundaryPressure
 
-
-def evolve(T=1000.,n=1024,sigma=.015,aspect=3.,dtmax=.15,out='results/ellipse_long',save_every=2.,restart=None):
-    out=Path(out);out.mkdir(parents=True,exist_ok=True)
-    alpha=np.arange(n)*2*np.pi/n
-    z=np.sqrt(aspect)*np.cos(alpha)+1j/np.sqrt(aspect)*np.sin(alpha)
-    z=redistribute(z)[0];z*=np.sqrt(np.pi/area(z))
-    physics=BoundaryPressure(n,sigma)
-    k=fftfreq(n,1/n)
-    filt=np.exp(-24*(abs(k)/(n/2))**20)
-    t=0.;previous=None;fprev=None;dtprev=None
-    times=[t];curves=[z.copy()];speeds=[];steps=0
-    if restart:
-        saved=np.load(restart)
-        times=list(saved['times']);curves=[redistribute(resample(c,n))[0] for c in saved['z']]
-        z=curves[-1].copy();t=float(times[-1])
-    next_save=min(t+save_every,T)
-    started=time.time()
-    while t<T-1e-10:
-        f,vn,curvature,metric=physics.velocity(z,True)
-        dt=min(dtmax,.22*(2*np.pi*metric.min()/n)/max(abs(f).max(),1e-8),T-t,next_save-t)
-        if dt<1e-7:raise RuntimeError(f'Interface underresolved at t={t:g}')
-        stiff=2*sigma*abs(k)**3/metric.mean()**3
-        zh=fft(z);fh=fft(f)
-        if previous is None:
-            new=ifft((zh+dt*(fh+stiff*zh))/(1+dt*stiff))
+    def backend(nodes):
+        key = (device, nodes, sigma)
+        if key not in pressure_cache:
+            pressure_cache[key] = pressure_class(nodes, sigma)
+        solver = pressure_cache[key]
+        if device == 'cuda':
+            solver.reset()
         else:
-            ratio=dt/dtprev
-            a0=(1+2*ratio)/(1+ratio)
-            prevh=fft(previous)
-            rhs=(1+ratio)*zh-ratio**2/(1+ratio)*prevh
-            rhs+=dt*((1+ratio)*fh-ratio*fft(fprev)+stiff*((1+ratio)*zh-ratio*prevh))
-            new=ifft(rhs/(a0+dt*stiff))
-        new=symmetric(ifft(fft(new)*filt))
-        new*=np.sqrt(np.pi*(1+2*(t+dt))/area(new))
-        previous,fprev=z,f
-        z=new;t+=dt;dtprev=dt;steps+=1
-        if steps%10==0:
-            z,previous,fprev=redistribute(z,previous,fprev)
-            z*=np.sqrt(np.pi*(1+2*t)/area(z))
-        if t>=next_save-1e-9 or t>=T-1e-9:
-            times.append(t);curves.append(z.copy());speeds.append(float(vn.min()))
-            next_save=min(next_save+save_every,T)
-        if steps%100==0:print(f'initialization t={t:.3f}/{T:g} steps={steps} elapsed={time.time()-started:.1f}s',flush=True)
-        if steps%500==0:
-            np.savez_compressed(out/'initialization.npz',times=times,z=curves,theta=alpha)
-        if not np.isfinite(z).all():raise RuntimeError('Non-finite interface')
-    settings=dict(T=T,n=n,sigma=sigma,aspect=aspect,dtmax=dtmax,steps=steps,seconds=time.time()-started)
-    np.savez_compressed(out/'initialization.npz',times=times,z=curves,theta=alpha)
-    (out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
-    print(json.dumps(settings,indent=2),flush=True)
-    return np.array(times),np.array(curves)
+            solver.guess = None
+        return solver
 
+    def spectrum(nodes):
+        k = abs(fftfreq(nodes, d=1/nodes))
+        return k, np.exp(-24*(k/(nodes/2))**24)
 
-def main():
-    import argparse
-    p=argparse.ArgumentParser()
-    p.add_argument('--T',type=float,default=1000.)
-    p.add_argument('--n',type=int,default=1024)
-    p.add_argument('--sigma',type=float,default=.015)
-    p.add_argument('--aspect',type=float,default=3.)
-    p.add_argument('--dt',type=float,default=.15)
-    p.add_argument('--out',default='results/ellipse_long')
-    p.add_argument('--save-every',type=float,default=2.)
-    p.add_argument('--restart')
-    a=p.parse_args();evolve(a.T,a.n,a.sigma,a.aspect,a.dt,a.out,a.save_every,a.restart)
-
-
-if __name__=='__main__':main()
+    z = redistribute(initial)[0]
+    a0 = area(z)
+    if a0 <= 0:
+        raise ValueError('Expected counterclockwise initial interface')
+    z *= np.sqrt(np.pi/a0)
+    pressure = backend(n)
+    k, spectrum_filter = spectrum(n)
+    output = np.empty((len(times), output_nodes), dtype=np.complex128)
+    output[0] = resample(z, output_nodes)
+    t = 0.
+    previous = previous_velocity = previous_step = None
+    steps = fallbacks = 0
+    max_flux_error = max_area_correction = max_metric_variation = 0.
+    for index, end in enumerate(times[1:], 1):
+        while end-t > 1e-10:
+            velocity, vn, _, metric = pressure.velocity(z, True)
+            if not np.isfinite(velocity).all() or metric.min() <= 0:
+                raise RuntimeError(f'Degenerate velocity or geometry at t={t:.6g}')
+            max_flux_error = max(max_flux_error, abs(np.mean(vn*metric)-1.))
+            variation = float(np.max(abs(metric/metric.mean()-1)))
+            max_metric_variation = max(max_metric_variation, variation)
+            dt = min(max_step, step_fraction*(1+t), cfl*(2*np.pi/n)*metric.min()/max(abs(velocity).max(), 1e-12), end-t)
+            if previous_step is not None:
+                dt = min(dt, 1.4*previous_step)
+            if dt < 1e-10:
+                raise RuntimeError(f'Time step underflow at t={t:.6g}')
+            stiff = 2*sigma*(k/metric.mean())**3
+            zh, vh = fft(z), fft(velocity)
+            if previous is None:
+                new_hat = (zh+dt*(vh+stiff*zh))/(1+dt*stiff)
+            else:
+                ratio = dt/previous_step
+                old_hat = fft(previous)
+                rhs = (1+ratio)*zh-ratio**2/(1+ratio)*old_hat
+                rhs += dt*((1+ratio)*vh-ratio*fft(previous_velocity)
+                           + stiff*((1+ratio)*zh-ratio*old_hat))
+                new_hat = rhs/((1+2*ratio)/(1+ratio)+dt*stiff)
+            new = ifft(new_hat*spectrum_filter)
+            t += dt
+            target_area = np.pi*(1+2*t)
+            raw_area = area(new)
+            if not np.isfinite(raw_area) or raw_area <= 0:
+                raise RuntimeError(f'Nonpositive signed area at t={t:.6g}')
+            max_area_correction = max(max_area_correction, abs(raw_area/target_area-1))
+            new *= np.sqrt(target_area/raw_area)
+            previous, previous_velocity, previous_step = z, velocity, dt
+            z = new
+            steps += 1
+            if variation > .025:
+                z, previous, previous_velocity = redistribute(z, previous, previous_velocity)
+                z *= np.sqrt(target_area/area(z))
+        if end in refinements:
+            fallbacks += getattr(pressure, 'fallbacks', 0)
+            n = refinements[end]
+            states = [resample(value, n) for value in (z, previous, previous_velocity)]
+            z, previous, previous_velocity = redistribute(*states)
+            z *= np.sqrt(np.pi*(1+2*t)/area(z))
+            previous *= np.sqrt(np.pi*(1+2*(t-previous_step))/area(previous))
+            pressure = backend(n)
+            k, spectrum_filter = spectrum(n)
+        output[index] = resample(redistribute(z)[0], output_nodes)
+        output[index] *= np.sqrt(np.pi*(1+2*end)/area(output[index]))
+        if progress is not None:
+            progress(index, end, steps)
+    fallbacks += getattr(pressure, 'fallbacks', 0)
+    return output, dict(steps=steps, dense_pressure_solves=fallbacks,
+                        max_flux_relative_error=float(max_flux_error),
+                        max_area_relative_correction=float(max_area_correction),
+                        max_metric_variation=max_metric_variation)

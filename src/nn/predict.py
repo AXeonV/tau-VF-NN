@@ -1,40 +1,43 @@
-"""Predict an arrival field from an initial condition without optimization."""
-from pathlib import Path
+"""Query a supervised model at requested times without rolling out predictions."""
 import argparse
+from pathlib import Path
+
 import numpy as np
 import torch
-from .model import TauFNO
-from .conditions import features,radius
+
+from .data import Trajectories
+from .model import CurveFNO
 
 
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--checkpoint',default='results/nn/pino_pilot/model.pt')
-    parser.add_argument('--aspect',type=float,default=1.4)
-    parser.add_argument('--rotation',type=float,default=.2)
-    parser.add_argument('--sigma',type=float,default=.015)
-    parser.add_argument('--cos',type=float,nargs=4,default=[0.]*4)
-    parser.add_argument('--sin',type=float,nargs=4,default=[0.]*4)
-    parser.add_argument('--out',default='results/nn/prediction.npz')
-    parser.add_argument('--device',default='auto')
-    args=parser.parse_args()
-    if args.aspect<=0 or args.sigma<=0:parser.error('aspect and sigma must be positive')
-    device=args.device if args.device!='auto' else ('cuda' if torch.cuda.is_available() else 'cpu')
-    checkpoint=torch.load(args.checkpoint,map_location=device,weights_only=True)
-    cfg=checkpoint['config'];model=TauFNO(cfg['width'],cfg['modes'],cfg['depth']).to(device)
-    model.load_state_dict(checkpoint['state_dict']);model.eval()
-    p=torch.zeros((1,12),device=device,dtype=torch.float64)
-    p[0,0]=np.log(args.aspect);p[0,1]=args.rotation
-    p[0,2:6]=p.new_tensor(args.cos);p[0,6:10]=p.new_tensor(args.sin)
-    p[0,10]=args.sigma;p[0,11]=1.
-    angle=torch.arange(256,device=device,dtype=torch.float64)*2*torch.pi/256
-    p[0,11]=radius(p,angle[None]).square().mean().sqrt()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data', type=Path, default=Path('results/supervised/trajectories'))
+    parser.add_argument('--model', type=Path, default=Path('results/supervised/model/model.pt'))
+    parser.add_argument('--case', type=int)
+    parser.add_argument('--device', choices=['cpu', 'cuda'], default='cuda')
+    args = parser.parse_args()
+    checkpoint = torch.load(args.model, map_location=args.device, weights_only=True)
+    bank = Trajectories(args.data, checkpoint['nodes'], args.device)
+    if args.case is None:
+        index = int(bank.splits['test'][0])
+    else:
+        index = bank.ids.index(args.case)
+    model = CurveFNO(**checkpoint['config']).to(args.device)
+    model.load_state_dict(checkpoint['model'])
+    model.eval()
+    times = bank.times
     with torch.no_grad():
-        inputs,base,axis=features(p,cfg['grid'])
-        tau=base*torch.exp(model(inputs)[:,0].double())
-    out=Path(args.out);out.parent.mkdir(parents=True,exist_ok=True)
-    np.savez_compressed(out,tau=tau[0].cpu().numpy(),x=axis.cpu().numpy(),y=axis.cpu().numpy(),condition=p.cpu().numpy(),T=cfg['T'])
-    print(f'Saved {out} using {device}; no physics solve or optimization during prediction.')
+        estimates = torch.cat([model(bank.curves[index, 0].expand(len(batch), -1, -1), batch)
+                               for batch in times.split(8)])
+    label = bank.curves[index]
+    radius = torch.sqrt(1+2*times)[:, None]
+    z = torch.complex(estimates[:, 0], estimates[:, 1])*radius
+    target = torch.complex(label[:, 0], label[:, 1])*radius
+    output = args.model.parent/'prediction.npz'
+    np.savez_compressed(output, times=times.cpu().numpy(), z=z.cpu().numpy(),
+                        target=target.cpu().numpy(), case=bank.ids[index])
+    print(f'Saved case {bank.ids[index]:02} predictions to {output}')
 
 
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()

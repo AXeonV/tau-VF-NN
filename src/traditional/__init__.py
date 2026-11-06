@@ -1,1 +1,1 @@
-"""Traditional initialization and per-case interface optimization."""
+"""Time integration and verification of interface labels."""

@@ -1,99 +1,136 @@
-"""Physics-only conditional FNO training. No saved trajectory is loaded."""
-from pathlib import Path
+"""Supervised fitting and held-out geometry measurements for CurveFNO."""
 import argparse
 import json
-import time
+from pathlib import Path
+from time import perf_counter
+
 import numpy as np
 import torch
-from .model import TauFNO
-from .conditions import sample_conditions,features
-from .physics import TauPhysicsLoss
+
+from .data import Trajectories, augment
+from .model import CurveFNO, signed_area
+from ..traditional.generate import atomic_json, describe_geometry, curve_difference
 
 
-def train(args):
-    device=torch.device(args.device if args.device!='auto' else ('cuda' if torch.cuda.is_available() else 'cpu'))
-    torch.set_num_threads(4);torch.manual_seed(args.seed)
-    generator=torch.Generator(device=device).manual_seed(args.seed)
-    validation_generator=torch.Generator(device=device).manual_seed(args.seed+10000)
-    holdout=sample_conditions(16,device,validation_generator)
-    holdout_times=torch.linspace(.08,args.T-.02,len(holdout),device=device,dtype=torch.float64)
-    model=TauFNO(args.width,args.modes,args.depth).to(device)
-    physics=TauPhysicsLoss(args.angles).to(device)
-    independent=TauPhysicsLoss(96,h=.005).to(device)
-    optimizer=torch.optim.AdamW(model.parameters(),lr=args.lr,weight_decay=1e-6)
-    scheduler=torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,args.steps,eta_min=args.lr*.05)
-    out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-    config=vars(args).copy();config.update(device=str(device),torch=str(torch.__version__),gpu=torch.cuda.get_device_name(0) if device.type=='cuda' else None,
-        training='physics only; online initial shapes; no paired evolution labels',
-        input='initial signed radial distance, soft air mask, x, y, log sigma',
-        output='tau(x,y)=max((r^2-r0(theta)^2)/2,0)*exp(FNO correction)',
-        adapter='monotone star-shaped level sets; angular Fourier cutoff 8',parameters=sum(p.numel() for p in model.parameters()))
-    (out/'config.json').write_text(json.dumps(config,indent=2),encoding='utf-8')
-    def validate(backend):
-        with torch.no_grad():
-            inputs,_,_=features(holdout,args.grid)
-            value,parts=backend(model(inputs),holdout,holdout_times)
-        return float(value),{k:float(v) for k,v in parts.items()}
-    initial,_=validate(physics)
-    validation=[[0,initial]];history=[];started=time.time();best=initial
-    best_state={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}
-    for step in range(1,args.steps+1):
-        model.train();p=sample_conditions(args.batch,device,generator)
-        horizon=args.T*(.25+.75*min(1.,step/(args.steps*.4)))
-        t=.02+(horizon-.04)*torch.rand(args.batch,device=device,generator=generator,dtype=torch.float64)
-        inputs,_,_=features(p,args.grid)
-        optimizer.zero_grad(set_to_none=True)
-        loss,parts=physics(model(inputs),p,t)
-        if not torch.isfinite(loss):raise RuntimeError(f'Non-finite loss at step {step}')
-        loss.backward();norm=torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
-        if not torch.isfinite(norm):raise RuntimeError(f'Non-finite gradient at step {step}')
-        optimizer.step();scheduler.step()
-        history.append([step,float(loss.detach()),*(float(parts[k].detach()) for k in ('kinetic','retreat','area','level')),horizon])
-        if step%50==0 or step==args.steps:
-            model.eval();value,_=validate(physics);validation.append([step,value])
-            if value<best:
-                best=value;best_state={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}
-            print(f'step={step} train={float(loss):.5e} heldout={value:.5e} best={best:.5e} seconds={time.time()-started:.1f}',flush=True)
-            torch.save({'state_dict':best_state,'config':config,'best_validation_loss':best},out/'model.pt')
-            np.save(out/'history.npy',np.array(history));np.save(out/'validation.npy',np.array(validation))
-    model.load_state_dict(best_state);model.eval()
-    independent_loss,independent_parts=validate(independent)
-    test_generator=torch.Generator(device=device).manual_seed(args.seed+20000)
-    test=sample_conditions(32,device,test_generator)
-    test_t=torch.linspace(.05,args.T-.02,len(test),device=device,dtype=torch.float64)
-    with torch.no_grad():
-        test_inputs,_,_=features(test,args.grid)
-        test_field=model(test_inputs)
-        test_loss,_=independent(test_field,test,test_t)
-        test_initial_loss,_=independent(torch.zeros_like(test_field),test,test_t)
-    with torch.no_grad():
-        sample=holdout[0:1];inputs,base,axis=features(sample,args.grid)
-        correction=model(inputs)
-        tau=base*torch.exp(correction[:,0].double())
-        times=torch.linspace(.02,args.T-.02,101,device=device,dtype=torch.float64)
-        fields=correction.expand(len(times),-1,-1,-1);conditions=sample.expand(len(times),-1)
-        r,_=independent.level_sets(fields,conditions,times)
-        z=r[:,1]*torch.exp(1j*independent.angle)
-    np.savez_compressed(out/'prediction.npz',tau=tau[0].cpu().numpy(),correction=correction[0,0].cpu().numpy(),x=axis.cpu().numpy(),y=axis.cpu().numpy(),times=times.cpu().numpy(),z=z.cpu().numpy(),condition=sample.cpu().numpy())
-    report=dict(initial_heldout_loss=initial,best_heldout_loss=best,independent_loss=independent_loss,independent_parts=independent_parts,test_loss=float(test_loss),test_initial_loss=float(test_initial_loss),seconds=time.time()-started,steps=args.steps,initial_conditions_used=args.batch*args.steps,training_labels=0,device=str(device))
-    (out/'metrics.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps(report,indent=2),flush=True)
+def frame_indices(bank):
+    horizon = bank.times[-1]
+    probes = horizon*bank.times.new_tensor([.005, .02, .10, .30, .60, 1.])
+    return (bank.times[:, None]-probes).abs().argmin(dim=0).unique()
+
+
+@torch.no_grad()
+def evaluate(model, bank, split, batch, *, geometry=False):
+    model.eval()
+    frames = (torch.arange(len(bank.times), device=bank.times.device)
+              if geometry else frame_indices(bank))
+    rows = bank.splits[split].repeat_interleave(len(frames))
+    cols = frames.repeat(len(bank.splits[split]))
+    losses = []
+    if geometry:
+        forecasts = []
+    for group in torch.arange(len(rows), device=rows.device).split(batch):
+        initial = bank.curves[rows[group], 0]
+        target = bank.curves[rows[group], cols[group]]
+        prediction = model(initial, bank.times[cols[group]])
+        losses.append((prediction-target).square().mean(dim=(1, 2)))
+        if geometry:
+            forecasts.append(prediction.cpu().numpy())
+    error = torch.cat(losses).reshape(-1, len(frames))
+    result = dict(coordinate_mse=float(error.mean()),
+                  final_coordinate_rms=float(error[:, -1].mean().sqrt()),
+                  worst_frame_coordinate_rms=float(error.max().sqrt()))
+    if geometry:
+        predicted = np.concatenate(forecasts)
+        target = bank.curves[rows, cols].cpu().numpy()
+        times = bank.times[frames].cpu().numpy().astype(float)
+        radii = np.sqrt(1+2*times)
+        shape = (-1, len(frames), predicted.shape[-1])
+        output = (predicted[:, 0]+1j*predicted[:, 1]).reshape(shape)*radii[None, :, None]
+        labels = (target[:, 0]+1j*target[:, 1]).reshape(shape)*radii[None, :, None]
+        result['cases'] = []
+        for case_index, z, label in zip(bank.splits[split].tolist(), output, labels):
+            contour = describe_geometry(z, times)
+            truth = describe_geometry(label, times)
+            result['cases'].append(dict(case=bank.ids[case_index],
+                                        **curve_difference(z, label, times, stride=1),
+                                        predicted_final_tips=contour['tips'][-1],
+                                        label_final_tips=truth['tips'][-1],
+                                        crossing_times=contour['crossing_times']))
+        result['mean_final_geometry_distance'] = float(np.mean([case['final'] for case in result['cases']]))
+        result['self_intersecting_cases'] = sum(bool(case['crossing_times']) for case in result['cases'])
+    return result
 
 
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--steps',type=int,default=1000)
-    parser.add_argument('--batch',type=int,default=8)
-    parser.add_argument('--grid',type=int,default=32)
-    parser.add_argument('--angles',type=int,default=48)
-    parser.add_argument('--T',type=float,default=1.)
-    parser.add_argument('--width',type=int,default=24)
-    parser.add_argument('--modes',type=int,default=8)
-    parser.add_argument('--depth',type=int,default=4)
-    parser.add_argument('--lr',type=float,default=3e-4)
-    parser.add_argument('--seed',type=int,default=42)
-    parser.add_argument('--device',default='auto')
-    parser.add_argument('--out',default='results/nn/pino_pilot')
-    args=parser.parse_args();train(args)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--data', type=Path, default=Path('results/supervised/trajectories'))
+    parser.add_argument('--out', type=Path, default=Path('results/supervised/model'))
+    parser.add_argument('--expected-cases', type=int, default=64)
+    parser.add_argument('--steps', type=int, default=6000)
+    parser.add_argument('--batch', type=int, default=8)
+    parser.add_argument('--nodes', type=int, default=1024)
+    parser.add_argument('--width', type=int, default=64)
+    parser.add_argument('--depth', type=int, default=6)
+    parser.add_argument('--modes', type=int, default=128)
+    parser.add_argument('--device', choices=['cpu', 'cuda'], default='cuda')
+    parser.add_argument('--seed', type=int, default=20261106)
+    parser.add_argument('--report-every', type=int, default=250)
+    args = parser.parse_args()
+    if min(args.steps, args.batch, args.report_every, args.width, args.depth, args.modes) < 1 or args.nodes < 64:
+        parser.error('Expected positive training sizes and at least 64 nodes')
+    torch.manual_seed(args.seed)
+    torch.set_num_threads(4)
+    args.out.mkdir(parents=True, exist_ok=True)
+    bank = Trajectories(args.data, args.nodes, args.device)
+    if len(bank.ids) != args.expected_cases or any(len(split) == 0 for split in bank.splits.values()):
+        raise ValueError('Training requires the configured accepted trajectories and all three splits')
+    config = dict(horizon=float(bank.times[-1]), width=args.width, modes=args.modes, depth=args.depth)
+    model = CurveFNO(**config).to(args.device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=.001, weight_decay=1e-5)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, args.steps, eta_min=5e-5)
+    train_rows = bank.splits['train']
+    late = torch.nonzero(bank.times >= .30*bank.times[-1]).flatten()
+    history = []
+    best = float('inf')
+    started = perf_counter()
+    print('split counts', {key: len(value) for key, value in bank.splits.items()}, flush=True)
+    for step in range(1, args.steps+1):
+        model.train()
+        rows = train_rows[torch.randint(len(train_rows), (args.batch,), device=args.device)]
+        cols = torch.randint(len(bank.times), (args.batch,), device=args.device)
+        late_count = max(1, args.batch//2)
+        cols[:late_count] = late[torch.randint(len(late), (late_count,), device=args.device)]
+        initial, target = augment(bank.curves[rows, 0], bank.curves[rows, cols])
+        prediction = model(initial, bank.times[cols])
+        residual = prediction-target
+        tangent_error = (torch.roll(residual, -1, dims=-1)-residual)*(args.nodes/(2*np.pi))
+        area_error = signed_area(prediction)-signed_area(initial)
+        loss = residual.square().mean()+.005*tangent_error.square().mean()+.02*area_error.square().mean()
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
+        optimizer.step()
+        scheduler.step()
+        if step % args.report_every == 0 or step in (1, args.steps):
+            validation = evaluate(model, bank, 'validation', args.batch)
+            history.append([step, float(loss.detach()), validation['coordinate_mse']])
+            np.save(args.out/'history.npy', np.asarray(history))
+            if validation['coordinate_mse'] < best:
+                best = validation['coordinate_mse']
+                temporary = args.out/'model.tmp'
+                torch.save(dict(model=model.state_dict(), config=config, nodes=args.nodes,
+                                step=step, training_ids=[bank.ids[i] for i in train_rows.tolist()]), temporary)
+                temporary.replace(args.out/'model.pt')
+            print(f'step={step} training={history[-1][1]:.5e} '
+                  f'validation={validation["coordinate_mse"]:.5e} elapsed={perf_counter()-started:.1f}s', flush=True)
+    checkpoint = torch.load(args.out/'model.pt', map_location=args.device, weights_only=True)
+    model.load_state_dict(checkpoint['model'])
+    test = evaluate(model, bank, 'test', args.batch, geometry=True)
+    atomic_json(args.out/'metrics.json', dict(best_step=checkpoint['step'],
+                validation_mse=best, test=test, elapsed=perf_counter()-started,
+                cases={name: [bank.ids[i] for i in ids.tolist()] for name, ids in bank.splits.items()}))
+    print('held-out', json.dumps({key: value for key, value in test.items() if key != 'cases'}), flush=True)
 
 
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()

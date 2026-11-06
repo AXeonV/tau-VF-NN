@@ -1,1 +1,1 @@
-"""Conditional arrival-field neural operators and physics-only training."""
+"""Supervised conditional models for interface histories."""

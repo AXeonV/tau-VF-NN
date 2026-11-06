@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 archive/
 .gpu_packages/
+/results/supervised/**/*.npz
+/results/supervised/**/*.pt
+/results/supervised/**/*.tmp
