@@ -14,7 +14,7 @@ def closed(curve):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--case', type=Path, default=Path('results/supervised/model'))
+    parser.add_argument('--case', type=Path, default=Path('results/supervised/models/nn_direct'))
     folder = parser.parse_args().case
     with np.load(folder/'prediction.npz') as predictions:
         times = predictions['times']
@@ -33,7 +33,7 @@ def main():
     fig, ax = plt.subplots(figsize=(8, 4.6), layout='constrained')
     ax.semilogy(history[:, 0], history[:, 1], label='Training loss', color='#347d9c', alpha=.75)
     ax.semilogy(history[:, 0], history[:, 2], label='Validation coordinate MSE', color='#bc5d37')
-    ax.set(xlabel='Training step', ylabel='Loss', title='Supervised CurveFNO')
+    ax.set(xlabel='Training step', ylabel='Loss', title=folder.name)
     ax.grid(alpha=.2)
     ax.legend(frameon=False)
     fig.savefig(folder/'loss.png', dpi=170)

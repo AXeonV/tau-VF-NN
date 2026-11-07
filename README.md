@@ -1,79 +1,42 @@
-# 黏性指进界面监督学习
+# 黏性指进界面预测
 
-用高精度二维 Hele–Shaw 时间推进生成轨迹，训练条件 Fourier 神经算子 `(z0, t) → z(α,t)`。固定中心恒流注入 `Q=2π`、表面张力 `σ=0.015`、初始面积 `π`，输出覆盖 `0 ≤ t ≤ 1000`。第一版处理始终由一条光滑闭合曲线表示的界面。
+用二维径向 Hele–Shaw 仿真监督空气注入油时的界面演化。中心注入流量为 (Q=2pi)，表面张力为 (sigma=0.015)，初始面积为 (pi)。界面用周期等弧长坐标表示，神经网络预测除去整体膨胀后的形变。数值推进用于离线生成标签，滚动推理从初形开始，只反馈模型自己的界面。
 
-```text
-src/traditional/   初始形状、FP64 边界积分、半隐式推进、标签验算
-src/nn/            数据增强、条件 CurveFNO、训练和推理
-src/nn_ins/        短窗界面更新对照
-src/nn_world/      同时刻局部修正、截断检查和数值回退
-utils/             界面图和 loss 图
-results/           仿真标签、模型和结果
-archive/           旧实验与代码快照
-```
+## 三种模型
 
-64 个初始形状来自 8 个主导模态族。每族有 6 条训练、1 条验证和 1 条测试轨迹。初值通过次级模态、振幅和相位变化打破对称性。保存 `t=0`、`t=1000`、均匀长时快照和对数分布的早期快照。
+| 模型 | 架构与意图 |
+|---|---|
+| `nn_direct` | 时间条件 Fourier 算子。输入初形和查询时刻，一次输出该时刻的界面，用于衡量从初形直接预测分叉的能力。 |
+| `nn_block` | Fourier 主干读取初形、当前界面和近期法向运动，联合预测四个时刻。推理只在块末反馈，用于衡量降低反馈频率的作用。 |
+| `nn_geometry` | 共享 Fourier 主干，每次推进一帧。几何分支读取两种尺度的曲率、尖端凸度、近期法向运动和窄缝两侧的空间近邻，输出法向位移增量，并与主干联合训练。 |
 
-生成标签时逐级提高空间分辨率并收紧步长。采用更细一级的界面作为标签，要求抽查时刻上两级曲线的最大双向几何距离不超过等效半径的 0.35%，压力通量相对误差不超过 `5e-5`，保存帧的界面没有检测到自交。`case_*.npz` 保存通过检查的轨迹，`provisional_*.npz` 保存待加密的轨迹，`summary.json` 记录各案例的分辨率和结果。生成程序支持继续运行。
+两个滚动模型使用 Self Forcing。训练时从仿真界面起步，展开模型自己的预测，再对后续输出施加真实轨迹监督。`src.nn_geometry.train` 的 `--no-geometry` 开关用于逐帧 Fourier 消融。三个模型目录只放各自的架构和训练入口。Fourier 层、滚动训练、数据加载和指标共用 `src` 下的模块。`utils/render.py` 绘制损失和界面。
 
-网络沿等弧长周期坐标处理 `(x,y)`，把查询时间编码到每层，预测剔除整体膨胀的界面变形。训练在线对初值和标签同步旋转、反射和循环重编号。划分以独立初值为单位。
+## 数据
 
-```sh
-python -m src.traditional.checks
-python -m src.nn.checks
-python -m src.traditional.generate
-python -m src.nn.train
-python -m src.nn.predict
-python -m utils.render
-```
-
-完整流程可用 `./run.ps1`。模型输出在 `results/supervised/model`，评估含留出初值的几何距离、终点径向峰数和自交检查。旧代码已归档到 `archive/pre_supervised_code.zip`。
-
-## 三档训练对照
-
-对照实验保持数据和 48／8／8 初值划分不变。`nn` 从初值直接查询时刻，`nn_ins` 从当前界面做短窗更新，包含等弧长重采样和表面张力高频阻尼。测试统一从第 0 帧出发，`nn_ins` 另外报告以真实当前帧为输入的单步误差。验证 MSE 使用同一组时间探针。两个模型各做 4000 个优化步。
-
-```powershell
-foreach ($T in 5,20,1000) {
-    python -m src.nn.train --horizon $T --out "results/supervised/comparison/t$T/nn" --steps 4000 --save-predictions
-    python -m src.nn_ins.train --horizon $T --out "results/supervised/comparison/t$T/nn_ins" --steps 4000
-}
-python -m utils.compare
-```
-
-## T=20 界面修正实验
-
-固定已有的 T=20 CurveFNO 和初值划分。先比较逐点修正、沿弧长卷积、空间邻近但弧长分离的界面段、分频带监督和 JEPA 未来几何特征。再固定修正器结构，对比训练输入来自原 FNO、加噪界面或交叉拟合的 FNO。两次训练种子共用相同的数据和粗预测。
+- `results/supervised/trajectories` 保存原 64 条 (T=1000) 轨迹，初值划分为 48／8／8。
+- `results/supervised/trajectories_t100_dense` 保存 96 条 (T=100) 轨迹，每条 177 帧。保留原验证和测试初值。在原时间表上，给 (0<t<10) 增补间隔 0.25 的快照，给 (10le tle40) 增补间隔 0.5 的快照。八个模态族各新增四个训练初形，划分为 80／8／8。
+- 加密旧初形时，与原标签在共有时刻验算。新增初形用两档空间分辨率和步长验算。接受条件为最大双向轮廓差不超过 (0.35\%R)、通量相对误差不超过 `5e-5`，且保存界面无自交。
 
 ```sh
-python -m src.nn_world.proposals
-python -m src.nn_world.train --stage structure
-python -m src.nn_world.train --stage repair
-python -m src.nn_world.train --stage unroll
-python -m src.nn_world.audit
-python -m src.nn_world.verify
-python -m utils.render_world
+python -m src.traditional.expand
 ```
 
-复跑第二个修正器种子时，对三个训练阶段加上 `--seed 20261107 --cache results/supervised/world_t20 --out results/supervised/world_t20/seed2`。结果在 `results/supervised/world_t20`。截断阈值只用验证轨迹选定。密集核验帧用于测量首次超限时刻，触发回退后由初始界面重新推进。
+生成程序跳过已经验收的轨迹。数据目录中的 `summary.json` 记录进度和逐例验算结果。
 
-## T=100 长时预测对照
+## 训练与推理
 
-沿用 48／8／8 初值划分。结构对照共用一个 Fourier 主干，依次增加任意时间对、跨时刻耦合、初值和近期运动。微调从同一个历史模型出发，对比真实历史、混合历史、截断梯度、自生成三块或六块、变噪声、尖端加权和路径一致性。独立数值推进用于测量初值敏感性，并提供重锚定界面。
+训练入口默认使用加密数据。原数据可通过 `--data results/supervised/trajectories` 指定。`nn_direct` 可用 `--horizon 100` 裁剪原长时标签，两个滚动模型的当前训练跨度为 (T=100)。
 
 ```sh
-python -m src.nn.train --horizon 100 --steps 4000 --out results/supervised/rollout_t100/curvefno --save-predictions
-python -m src.nn_rollout.experiment --stage structure
-python -m src.nn_rollout.experiment --stage finetune
-python -m src.nn_rollout.refine
-python -m src.nn_rollout.sensitivity
-python -m src.nn_rollout.anchors --stage prepare
-python -m src.nn_rollout.anchors --stage compare
-python -m src.nn_rollout.anchors --stage cost
-python -m src.nn_rollout.evaluate_events
-python -m utils.render_rollout
+python -m src.nn_direct.train --save-predictions
+python -m src.nn_block.train --warm results/supervised/models/rollout_warm.pt
+python -m src.nn_geometry.train --warm results/supervised/models/rollout_warm.pt
 ```
 
-产物在 `results/supervised/rollout_t100`。`summary.json` 分别记录直接查询、自由滚动和每段使用仿真状态。持续新尖端统计要求径向峰延续到后一帧，并按时间和方位匹配，母尖端明确的分裂单独计数。
+已训练的三个 (T=100) 检查点保存在 `results/supervised/models`。新训练默认写入 `results/supervised/runs`。用 `--model` 指定其他检查点。下面的命令用原保存时间表重跑已有模型。
 
-第二个种子复验了五种结构和三种微调。结构阶段使用 `--only direct pairs block anchor history`，微调阶段使用 `--only teacher self pushforward`。两个阶段均加上 `--seed 20261107 --out results/supervised/rollout_t100/seed2`。
+```sh
+python -m src.predict nn_geometry --case 7 --data results/supervised/trajectories
+python -m utils.render --case results/supervised/models/nn_geometry
+```

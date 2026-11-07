@@ -7,6 +7,9 @@ from scipy.signal import resample
 import torch
 
 
+DEFAULT_DATA = Path('results/supervised/trajectories_t100_dense')
+
+
 class Trajectories:
     def __init__(self, folder, nodes, device, horizon=None):
         folder = Path(folder)
@@ -36,6 +39,10 @@ class Trajectories:
                 curves.append(np.stack([z.real, z.imag], axis=1).astype(np.float32))
         if not curves:
             raise ValueError(f'No accepted trajectories in {folder}')
+        if len(set(self.ids)) != len(self.ids):
+            raise ValueError(f'Duplicate initial conditions in {folder}')
+        if 'new_per_family' in self.config and len(curves) != 64+8*self.config['new_per_family']:
+            raise ValueError(f'The expanded dataset is incomplete in {folder}')
         self.curves = torch.from_numpy(np.stack(curves)).to(device)
         self.splits = {name: torch.tensor(indices, device=device, dtype=torch.long)
                        for name, indices in self.splits.items()}

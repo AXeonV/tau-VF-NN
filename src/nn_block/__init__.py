@@ -1,0 +1,1 @@
+"""Four-frame Fourier rollout. """

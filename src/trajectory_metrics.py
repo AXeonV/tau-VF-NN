@@ -31,7 +31,7 @@ def _distance_to_curve(source, curve):
     return distances.min(axis=1)
 
 
-def curve_difference(first, second, times, *, stride=3):
+def curve_difference(first, second, times, *, stride=3, threshold=None):
     count = 2*max(first.shape[-1], second.shape[-1])
     indices = np.unique(np.r_[np.arange(0, len(times), stride), len(times)-1])
     maxima = []
@@ -41,8 +41,11 @@ def curve_difference(first, second, times, *, stride=3):
         difference = max(_distance_to_curve(x, y).max(), _distance_to_curve(y, x).max())
         maxima.append(float(difference/np.sqrt(1+2*times[index])))
     worst = int(np.argmax(maxima))
-    return dict(sampled_frames=len(indices), maximum=maxima[worst],
-                worst_time=float(times[indices[worst]]), final=maxima[-1])
+    result = dict(sampled_frames=len(indices), maximum=maxima[worst],
+                  worst_time=float(times[indices[worst]]), final=maxima[-1])
+    if threshold is not None:
+        result['first_exceed'] = next((float(times[i]) for i, value in zip(indices, maxima) if value > threshold), None)
+    return result
 
 
 def has_crossing(z):
@@ -87,6 +90,8 @@ def probe_frames(times):
 
 def report_predictions(bank, split, predictions, *, export=None):
     """Compare normalized [case, time, xy, node] predictions at every saved time."""
+    from .interface_events import match_births, tip_births
+
     rows = bank.splits[split].tolist()
     target = bank.curves[rows].cpu().numpy()
     times = bank.times.cpu().numpy().astype(float)
@@ -100,9 +105,15 @@ def report_predictions(bank, split, predictions, *, export=None):
     for row, z, label in zip(rows, curves, labels):
         geometry = describe_geometry(z, times)
         label_geometry = describe_geometry(label, times)
-        cases.append(dict(case=bank.ids[row], **curve_difference(z, label, times, stride=1),
+        difference = curve_difference(z, label, times, stride=1, threshold=.10)
+        bad = [t for t in [difference.pop('first_exceed'), *geometry['crossing_times']] if t is not None]
+        expected = tip_births(label/radius[0], times)
+        found = tip_births(z/radius[0], times)
+        matched = match_births(found, expected)
+        cases.append(dict(case=bank.ids[row], **difference, first_breach=min(bad, default=None),
                           predicted_final_tips=geometry['tips'][-1], label_final_tips=label_geometry['tips'][-1],
-                          crossing_times=geometry['crossing_times']))
+                          crossing_times=geometry['crossing_times'], tip_births_matched=len(matched),
+                          tip_births_predicted=len(found), tip_births_label=len(expected)))
     if export is not None:
         np.savez_compressed(export, times=times, z=curves, target=labels,
                             ids=np.array([bank.ids[row] for row in rows]))
@@ -113,4 +124,8 @@ def report_predictions(bank, split, predictions, *, export=None):
                 mean_worst_geometry_distance=float(np.mean([item['maximum'] for item in cases])),
                 self_intersecting_cases=sum(bool(item['crossing_times']) for item in cases),
                 final_tip_matches=sum(item['predicted_final_tips'] == item['label_final_tips'] for item in cases),
+                first_breach_median=float(np.median([item['first_breach'] if item['first_breach'] is not None
+                                                    else times[-1] for item in cases])),
+                tip_births_matched=sum(item['tip_births_matched'] for item in cases),
+                tip_births_label=sum(item['tip_births_label'] for item in cases),
                 cases=cases)
