@@ -1,0 +1,90 @@
+Case 096
+  n=1024 steps=864 difference=None elapsed=10.1s
+  n=1536 steps=1519 difference=0.0030375535722371484 elapsed=22.7s
+Case 096 accepted in 63.4s
+Case 072
+  n=1024 steps=851 difference=None elapsed=7.2s
+  n=1536 steps=1543 difference=0.001258557910789452 elapsed=15.3s
+Case 072 accepted in 22.9s
+Case 108
+  n=1024 steps=875 difference=None elapsed=9.0s
+  n=1536 steps=1441 difference=0.004100153852936761 elapsed=18.9s
+  n=2048 steps=2202 difference=0.0009772307826748149 elapsed=46.5s
+Case 108 accepted in 91.6s
+Case 084
+  n=1536 steps=976 difference=None elapsed=8.5s
+  n=2048 steps=1321 difference=8.725528967869111e-05 elapsed=19.6s
+Case 084 accepted in 28.5s
+Case 120
+  n=1536 steps=1455 difference=None elapsed=19.0s
+  n=2048 steps=2197 difference=0.0016071854341913553 elapsed=42.7s
+Case 120 accepted in 83.4s
+Case 065
+  n=1024 steps=817 difference=None elapsed=11.5s
+  n=1536 steps=1460 difference=0.004574773667310215 elapsed=21.2s
+  n=2048 steps=2123 difference=0.0011963601636861413 elapsed=33.2s
+Case 065 accepted in 66.2s
+Case 101
+  n=1024 steps=944 difference=None elapsed=12.3s
+  n=1536 steps=1539 difference=0.003739427218002516 elapsed=20.4s
+  n=2048 steps=2263 difference=0.0009758307304568215 elapsed=31.8s
+Case 101 accepted in 94.8s
+Case 077
+  n=1024 steps=796 difference=None elapsed=8.5s
+  n=1536 steps=1381 difference=0.003329552136550391 elapsed=19.1s
+Case 077 accepted in 28.0s
+Case 113
+  n=1024 steps=736 difference=None elapsed=6.1s
+  n=1536 steps=1173 difference=0.002416686506835932 elapsed=14.1s
+Case 113 accepted in 47.5s
+Case 089
+  n=1536 steps=1394 difference=None elapsed=15.2s
+  n=2048 steps=2146 difference=0.0006731127983392061 elapsed=41.8s
+Case 089 accepted in 57.4s
+Case 125
+  n=1536 steps=1635 difference=None elapsed=37.3s
+  n=2048 steps=2478 difference=0.0011680989999346295 elapsed=67.8s
+Case 125 accepted in 157.5s
+Case 070
+  n=1024 steps=756 difference=None elapsed=10.7s
+  n=1536 steps=1300 difference=None elapsed=22.9s
+  n=2048 steps=1945 difference=0.0008690993654174568 elapsed=49.2s
+Case 070 accepted in 83.2s
+Case 106
+  n=1024 steps=973 difference=None elapsed=11.0s
+  n=1536 steps=1800 difference=0.0047049571533687145 elapsed=26.6s
+  n=2048 steps=2704 difference=0.0011246509703016052 elapsed=46.2s
+Case 106 accepted in 122.8s
+Case 082
+  n=1024 steps=818 difference=None elapsed=9.1s
+  n=1536 steps=1294 difference=0.0024747054399880688 elapsed=14.8s
+Case 082 accepted in 24.3s
+Case 118
+  n=1536 steps=1200 difference=None elapsed=17.7s
+  n=2048 steps=1797 difference=0.0010385661952926472 elapsed=44.1s
+Case 118 accepted in 93.1s
+Case 094
+  n=1536 steps=1708 difference=None elapsed=29.8s
+  n=2048 steps=2499 difference=0.0007495235945791505 elapsed=53.5s
+Case 094 accepted in 83.6s
+Case 099
+  n=1024 steps=926 difference=None elapsed=17.5s
+  n=1536 steps=1654 difference=0.013479572122703546 elapsed=27.3s
+  n=2048 steps=2503 difference=0.003127962908331761 elapsed=61.1s
+Case 099 accepted in 163.2s
+Case 075
+  n=1024 steps=841 difference=None elapsed=5.8s
+  n=1536 steps=1337 difference=0.0023933077540111577 elapsed=13.2s
+Case 075 accepted in 19.3s
+Case 111
+  n=1024 steps=748 difference=None elapsed=9.6s
+  n=1536 steps=1252 difference=0.0032046182646174332 elapsed=20.5s
+Case 111 accepted in 49.8s
+Case 087
+  n=1536 steps=1114 difference=None elapsed=12.3s
+  n=2048 steps=1644 difference=0.0006046691218855427 elapsed=26.1s
+Case 087 accepted in 38.8s
+Case 123
+  n=1536 steps=1428 difference=None elapsed=24.6s
+  n=2048 steps=2264 difference=0.0003003100692214602 elapsed=50.4s
+Case 123 accepted in 113.4s

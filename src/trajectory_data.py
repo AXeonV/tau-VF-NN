@@ -7,7 +7,7 @@ from scipy.signal import resample
 import torch
 
 
-DEFAULT_DATA = Path('results/supervised/trajectories_t100_dense')
+DEFAULT_DATA = Path('data/supervised/trajectories_t100_dense_128')
 
 
 class Trajectories:
@@ -41,7 +41,10 @@ class Trajectories:
             raise ValueError(f'No accepted trajectories in {folder}')
         if len(set(self.ids)) != len(self.ids):
             raise ValueError(f'Duplicate initial conditions in {folder}')
-        if 'new_per_family' in self.config and len(curves) != 64+8*self.config['new_per_family']:
+        expected = self.config.get('expected_cases')
+        if 'new_per_family' in self.config and expected is None:
+            expected = 64+8*self.config['new_per_family']
+        if expected is not None and len(curves) != expected:
             raise ValueError(f'The expanded dataset is incomplete in {folder}')
         self.curves = torch.from_numpy(np.stack(curves)).to(device)
         self.splits = {name: torch.tensor(indices, device=device, dtype=torch.long)
@@ -57,6 +60,16 @@ def transform(curve, angle, mirror, shift):
     y = y*direction[:, None]
     c, s = angle.cos()[:, None], angle.sin()[:, None]
     return torch.stack([c*x-s*y, s*x+c*y], dim=1)
+
+
+def symmetry_view(trajectory, rotation_degrees, reflected=False, shift=0):
+    """Apply the same rigid view and arclength reindexing to every frame."""
+    frames = len(trajectory)
+    device = trajectory.device
+    angle = trajectory.new_full((frames,), rotation_degrees*torch.pi/180)
+    mirror = torch.full((frames,), reflected, dtype=torch.bool, device=device)
+    phase = torch.full((frames,), shift, dtype=torch.long, device=device)
+    return transform(trajectory, angle, mirror, phase)
 
 
 def augment(initial, *targets):

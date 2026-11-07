@@ -1,0 +1,1018 @@
+{
+  "128x8400_20261107": {
+    "step": 7800,
+    "resets": [
+      {
+        "start": 5.0,
+        "next_step": 0.25,
+        "persistence_mse": 2.191435305576306e-05,
+        "one_step_skill": 0.5617687435313574,
+        "self_crossing_cases": 0,
+        "probes": [
+          {
+            "time": 5.25,
+            "reset_mse": 9.603554474324483e-06,
+            "native_mse": 0.010263142714393325,
+            "geometry_distance": 0.0065520422422492685
+          },
+          {
+            "time": 10.0,
+            "reset_mse": 0.0018468475263944129,
+            "native_mse": 0.01630603191733826,
+            "geometry_distance": 0.0730662937777061
+          },
+          {
+            "time": 15.0,
+            "reset_mse": 0.002666331438376801,
+            "native_mse": 0.019719600866665132,
+            "geometry_distance": 0.10844943334041426
+          },
+          {
+            "time": 25.0,
+            "reset_mse": 0.004804477757716086,
+            "native_mse": 0.02412237614771584,
+            "geometry_distance": 0.13995664499535282
+          },
+          {
+            "time": 100.0,
+            "reset_mse": 0.017235400155186653,
+            "native_mse": 0.03608372557209805,
+            "geometry_distance": 0.20335485429075326
+          }
+        ],
+        "cases": [
+          {
+            "case": 7,
+            "persistence_mse": 3.1479590688832104e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 1.3423632481135428e-05,
+                "native_mse": 0.013824647292494774,
+                "geometry_distance": 0.005008973488823638
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.003251314628869295,
+                "native_mse": 0.03688327595591545,
+                "geometry_distance": 0.13689726418659176
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.007228618487715721,
+                "native_mse": 0.053567446768283844,
+                "geometry_distance": 0.2668204659014892
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.01214088499546051,
+                "native_mse": 0.06492099165916443,
+                "geometry_distance": 0.27669147338420286
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.04831523820757866,
+                "native_mse": 0.06133487820625305,
+                "geometry_distance": 0.2818114746152981
+              }
+            ]
+          },
+          {
+            "case": 15,
+            "persistence_mse": 2.2228718080441467e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 7.013236427155789e-06,
+                "native_mse": 0.009093742817640305,
+                "geometry_distance": 0.005256005060733023
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.0013025985099375248,
+                "native_mse": 0.012475814670324326,
+                "geometry_distance": 0.07233369499974261
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0029677811544388533,
+                "native_mse": 0.013139056041836739,
+                "geometry_distance": 0.13622091627185137
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.005113168153911829,
+                "native_mse": 0.014745094813406467,
+                "geometry_distance": 0.17681333932281545
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.011211264878511429,
+                "native_mse": 0.025662582367658615,
+                "geometry_distance": 0.20840602029711885
+              }
+            ]
+          },
+          {
+            "case": 23,
+            "persistence_mse": 9.82019082584884e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 3.6227484088158235e-06,
+                "native_mse": 0.00492567103356123,
+                "geometry_distance": 0.004639778295529727
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.000646047992631793,
+                "native_mse": 0.006429634988307953,
+                "geometry_distance": 0.07678670833058227
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0018866282189264894,
+                "native_mse": 0.010774793103337288,
+                "geometry_distance": 0.14784973330342535
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.006924998946487904,
+                "native_mse": 0.025419367477297783,
+                "geometry_distance": 0.25524961838579246
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.03212057054042816,
+                "native_mse": 0.05526148900389671,
+                "geometry_distance": 0.23882497469631142
+              }
+            ]
+          },
+          {
+            "case": 31,
+            "persistence_mse": 7.7643107943004e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 3.72723252439755e-06,
+                "native_mse": 0.0033472832292318344,
+                "geometry_distance": 0.004654921458113187
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.0003481926687527448,
+                "native_mse": 0.003478491213172674,
+                "geometry_distance": 0.056368524637438334
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0008484562858939171,
+                "native_mse": 0.004457912873476744,
+                "geometry_distance": 0.0847083013776234
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.002362305298447609,
+                "native_mse": 0.00954319816082716,
+                "geometry_distance": 0.11532746056085787
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.008022869005799294,
+                "native_mse": 0.014624550007283688,
+                "geometry_distance": 0.19542147578855573
+              }
+            ]
+          },
+          {
+            "case": 39,
+            "persistence_mse": 7.238584657898173e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 2.913624484790489e-06,
+                "native_mse": 0.0018269186839461327,
+                "geometry_distance": 0.005023545498713414
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.00023629917996004224,
+                "native_mse": 0.0015771342441439629,
+                "geometry_distance": 0.040823962722312805
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0003470123920124024,
+                "native_mse": 0.001268065650947392,
+                "geometry_distance": 0.04586001188939107
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.0006690461304970086,
+                "native_mse": 0.001560651115141809,
+                "geometry_distance": 0.06309567595425326
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0026151384226977825,
+                "native_mse": 0.005125909112393856,
+                "geometry_distance": 0.11607733208827692
+              }
+            ]
+          },
+          {
+            "case": 47,
+            "persistence_mse": 6.490429768746253e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 2.9427660592773464e-06,
+                "native_mse": 0.0019420391181483865,
+                "geometry_distance": 0.006366558045393071
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.0002228253142675385,
+                "native_mse": 0.001797349308617413,
+                "geometry_distance": 0.04748449372694763
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0003179312334395945,
+                "native_mse": 0.0014081420376896858,
+                "geometry_distance": 0.05407176636305866
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.0003834479721263051,
+                "native_mse": 0.0008661541505716741,
+                "geometry_distance": 0.05813392589586901
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.002388475928455591,
+                "native_mse": 0.0021069166250526905,
+                "geometry_distance": 0.11946903423159087
+              }
+            ]
+          },
+          {
+            "case": 55,
+            "persistence_mse": 7.395031389023643e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 3.5611669773061294e-06,
+                "native_mse": 0.0069191474467515945,
+                "geometry_distance": 0.005868645078600522
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.0004714340902864933,
+                "native_mse": 0.008696625009179115,
+                "geometry_distance": 0.05811013284160379
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0007591270841658115,
+                "native_mse": 0.009151408448815346,
+                "geometry_distance": 0.06891788402412503
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.0007432152051478624,
+                "native_mse": 0.011514280922710896,
+                "geometry_distance": 0.06704871628427521
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.023563146591186523,
+                "native_mse": 0.07073216885328293,
+                "geometry_distance": 0.3040483052758173
+              }
+            ]
+          },
+          {
+            "case": 63,
+            "persistence_mse": 8.289796824101359e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 5.25,
+                "reset_mse": 3.9624028431717306e-05,
+                "native_mse": 0.040225692093372345,
+                "geometry_distance": 0.015597911012087573
+              },
+              {
+                "time": 10.0,
+                "reset_mse": 0.008296067826449871,
+                "native_mse": 0.05910992994904518,
+                "geometry_distance": 0.09572556877642957
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.006975096650421619,
+                "native_mse": 0.06398998200893402,
+                "geometry_distance": 0.06314638759234996
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.010098755359649658,
+                "native_mse": 0.0644092708826065,
+                "geometry_distance": 0.10729295017475653
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.009646497666835785,
+                "native_mse": 0.05382131040096283,
+                "geometry_distance": 0.16278021733305698
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "start": 10.0,
+        "next_step": 0.5,
+        "persistence_mse": 1.0201582483659877e-05,
+        "one_step_skill": 0.25565751122718794,
+        "self_crossing_cases": 0,
+        "probes": [
+          {
+            "time": 10.5,
+            "reset_mse": 7.593471295308518e-06,
+            "native_mse": 0.016734070784877986,
+            "geometry_distance": 0.0061815620788776855
+          },
+          {
+            "time": 15.0,
+            "reset_mse": 0.0003592361590563087,
+            "native_mse": 0.019719600866665132,
+            "geometry_distance": 0.045834031365121056
+          },
+          {
+            "time": 20.0,
+            "reset_mse": 0.0009722960476210574,
+            "native_mse": 0.022221754596102983,
+            "geometry_distance": 0.07988699942256536
+          },
+          {
+            "time": 30.0,
+            "reset_mse": 0.002598076251160819,
+            "native_mse": 0.025495914684142917,
+            "geometry_distance": 0.11969903752222538
+          },
+          {
+            "time": 100.0,
+            "reset_mse": 0.008949214592576027,
+            "native_mse": 0.03608372557209805,
+            "geometry_distance": 0.19271849180512987
+          }
+        ],
+        "cases": [
+          {
+            "case": 7,
+            "persistence_mse": 2.2953685402171686e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 2.7162639526068233e-05,
+                "native_mse": 0.03908510506153107,
+                "geometry_distance": 0.009604634158258935
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.001047351397573948,
+                "native_mse": 0.053567446768283844,
+                "geometry_distance": 0.10240992862098239
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.002270256634801626,
+                "native_mse": 0.06204689294099808,
+                "geometry_distance": 0.17326300091186375
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.004148358479142189,
+                "native_mse": 0.06424571573734283,
+                "geometry_distance": 0.21922139902875615
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.010073486715555191,
+                "native_mse": 0.06133487820625305,
+                "geometry_distance": 0.3214496103906606
+              }
+            ]
+          },
+          {
+            "case": 15,
+            "persistence_mse": 1.7932205082615837e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 7.701068170717917e-06,
+                "native_mse": 0.01263546384871006,
+                "geometry_distance": 0.0077292221847891284
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.000439779250882566,
+                "native_mse": 0.013139056041836739,
+                "geometry_distance": 0.05489364216469987
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.0010942164808511734,
+                "native_mse": 0.013766957446932793,
+                "geometry_distance": 0.10500044404328501
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0023481743410229683,
+                "native_mse": 0.015988651663064957,
+                "geometry_distance": 0.15259572086171933
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.006202079355716705,
+                "native_mse": 0.025662582367658615,
+                "geometry_distance": 0.2100647525432256
+              }
+            ]
+          },
+          {
+            "case": 23,
+            "persistence_mse": 1.1477344742161222e-05,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 8.764845915720798e-06,
+                "native_mse": 0.0067066955380141735,
+                "geometry_distance": 0.008730141863485884
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.000568508985452354,
+                "native_mse": 0.010774793103337288,
+                "geometry_distance": 0.07262677726414375
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.0019852151162922382,
+                "native_mse": 0.01780180260539055,
+                "geometry_distance": 0.13732024164017526
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.006449389737099409,
+                "native_mse": 0.03161219507455826,
+                "geometry_distance": 0.23601643723472496
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.02309645339846611,
+                "native_mse": 0.05526148900389671,
+                "geometry_distance": 0.22543572303837775
+              }
+            ]
+          },
+          {
+            "case": 31,
+            "persistence_mse": 6.441197911044583e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 3.862033281620825e-06,
+                "native_mse": 0.003507641376927495,
+                "geometry_distance": 0.005258172785075494
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.0002802320523187518,
+                "native_mse": 0.004457912873476744,
+                "geometry_distance": 0.03204703848983055
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.0008316404419019818,
+                "native_mse": 0.0069113438948988914,
+                "geometry_distance": 0.05398651742852017
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0017915251664817333,
+                "native_mse": 0.011374656111001968,
+                "geometry_distance": 0.07178032076621657
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.006294336635619402,
+                "native_mse": 0.014624550007283688,
+                "geometry_distance": 0.18106592209636363
+              }
+            ]
+          },
+          {
+            "case": 39,
+            "persistence_mse": 4.877484116150299e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 1.8261140439790324e-06,
+                "native_mse": 0.0015357276424765587,
+                "geometry_distance": 0.0030772970077534286
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 6.699336518067867e-05,
+                "native_mse": 0.001268065650947392,
+                "geometry_distance": 0.016011295434325713
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.00018294570327270776,
+                "native_mse": 0.001215881435200572,
+                "geometry_distance": 0.02466213812570964
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0005503669381141663,
+                "native_mse": 0.0023897718638181686,
+                "geometry_distance": 0.0562736410988825
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0023992573842406273,
+                "native_mse": 0.005125909112393856,
+                "geometry_distance": 0.10849115282331033
+              }
+            ]
+          },
+          {
+            "case": 47,
+            "persistence_mse": 4.775015440827701e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 1.9012288703379454e-06,
+                "native_mse": 0.0017572992946952581,
+                "geometry_distance": 0.004828826716348148
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 6.410422793123871e-05,
+                "native_mse": 0.0014081420376896858,
+                "geometry_distance": 0.02050250880730293
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.0001469703856855631,
+                "native_mse": 0.0010892904829233885,
+                "geometry_distance": 0.03183177794805892
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0004307449562475085,
+                "native_mse": 0.000761889386922121,
+                "geometry_distance": 0.04653703598747698
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0023235282860696316,
+                "native_mse": 0.0021069166250526905,
+                "geometry_distance": 0.12347989925352645
+              }
+            ]
+          },
+          {
+            "case": 55,
+            "persistence_mse": 5.325611709849909e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 4.03104559154599e-06,
+                "native_mse": 0.008768772706389427,
+                "geometry_distance": 0.0048233422319297345
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.00014161896251607686,
+                "native_mse": 0.009151408448815346,
+                "geometry_distance": 0.031444780005955936
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.00024244002997875214,
+                "native_mse": 0.009788544848561287,
+                "geometry_distance": 0.04401767643869983
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0004961040685884655,
+                "native_mse": 0.014895849861204624,
+                "geometry_distance": 0.061478933876957936
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.016785793006420135,
+                "native_mse": 0.07073216885328293,
+                "geometry_distance": 0.1882981593893096
+              }
+            ]
+          },
+          {
+            "case": 63,
+            "persistence_mse": 7.830115464457776e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 10.5,
+                "reset_mse": 5.498794962477405e-06,
+                "native_mse": 0.059875860810279846,
+                "geometry_distance": 0.005400859683380729
+              },
+              {
+                "time": 15.0,
+                "reset_mse": 0.00026530103059485555,
+                "native_mse": 0.06398998200893402,
+                "geometry_distance": 0.03673628013372731
+              },
+              {
+                "time": 20.0,
+                "reset_mse": 0.0010246835881844163,
+                "native_mse": 0.0651533231139183,
+                "geometry_distance": 0.0690141988442103
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.004569946322590113,
+                "native_mse": 0.06269858777523041,
+                "geometry_distance": 0.11368881132306853
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0044187819585204124,
+                "native_mse": 0.05382131040096283,
+                "geometry_distance": 0.183462714906265
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "start": 20.0,
+        "next_step": 0.5,
+        "persistence_mse": 4.889584531042601e-06,
+        "one_step_skill": 0.4701167530792504,
+        "self_crossing_cases": 0,
+        "probes": [
+          {
+            "time": 20.5,
+            "reset_mse": 2.5909089274023245e-06,
+            "native_mse": 0.022441927416366525,
+            "geometry_distance": 0.0042588458074938485
+          },
+          {
+            "time": 25.0,
+            "reset_mse": 0.00018591787284094607,
+            "native_mse": 0.02412237614771584,
+            "geometry_distance": 0.035259021141610704
+          },
+          {
+            "time": 30.0,
+            "reset_mse": 0.000570929927562247,
+            "native_mse": 0.025495914684142917,
+            "geometry_distance": 0.05854932808804235
+          },
+          {
+            "time": 40.0,
+            "reset_mse": 0.0015729293299955316,
+            "native_mse": 0.027421036691521294,
+            "geometry_distance": 0.08486412146572644
+          },
+          {
+            "time": 100.0,
+            "reset_mse": 0.006204152596183121,
+            "native_mse": 0.03608372557209805,
+            "geometry_distance": 0.15549394320421314
+          }
+        ],
+        "cases": [
+          {
+            "case": 7,
+            "persistence_mse": 9.944241355697159e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 3.883548288285965e-06,
+                "native_mse": 0.06257213652133942,
+                "geometry_distance": 0.005022750214266179
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.00025931798154488206,
+                "native_mse": 0.06492099165916443,
+                "geometry_distance": 0.050466262372734154
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0006994140567258,
+                "native_mse": 0.06424571573734283,
+                "geometry_distance": 0.07649856847467817
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.0017128881299868226,
+                "native_mse": 0.059468988329172134,
+                "geometry_distance": 0.08810034454402142
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.005403005983680487,
+                "native_mse": 0.06133487820625305,
+                "geometry_distance": 0.11387252504395019
+              }
+            ]
+          },
+          {
+            "case": 15,
+            "persistence_mse": 5.659539056068752e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 3.2576797366346e-06,
+                "native_mse": 0.013852117583155632,
+                "geometry_distance": 0.006662456036542108
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.00028437457513064146,
+                "native_mse": 0.014745094813406467,
+                "geometry_distance": 0.048011039807663705
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0008776291506364942,
+                "native_mse": 0.015988651663064957,
+                "geometry_distance": 0.07126541307176819
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.002505318261682987,
+                "native_mse": 0.01899796724319458,
+                "geometry_distance": 0.07661032555443126
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.007705687545239925,
+                "native_mse": 0.025662582367658615,
+                "geometry_distance": 0.2009605896262231
+              }
+            ]
+          },
+          {
+            "case": 23,
+            "persistence_mse": 9.969377970264759e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 6.573844984814059e-06,
+                "native_mse": 0.018577896058559418,
+                "geometry_distance": 0.007407918998821224
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.0003936371358577162,
+                "native_mse": 0.025419367477297783,
+                "geometry_distance": 0.062014622212907634
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0011307907989248633,
+                "native_mse": 0.03161219507455826,
+                "geometry_distance": 0.11094855754078121
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.002458202186971903,
+                "native_mse": 0.037970591336488724,
+                "geometry_distance": 0.1819762133563115
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.009771840646862984,
+                "native_mse": 0.05526148900389671,
+                "geometry_distance": 0.22505550621370746
+              }
+            ]
+          },
+          {
+            "case": 31,
+            "persistence_mse": 5.2096556828473695e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 2.0498237063293345e-06,
+                "native_mse": 0.007191915065050125,
+                "geometry_distance": 0.003249526282603726
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.00013726562610827386,
+                "native_mse": 0.00954319816082716,
+                "geometry_distance": 0.026389974908483983
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.000338567653670907,
+                "native_mse": 0.011374656111001968,
+                "geometry_distance": 0.0491317954879446
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.0007442816277034581,
+                "native_mse": 0.012899084016680717,
+                "geometry_distance": 0.0852509400920019
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.004258900880813599,
+                "native_mse": 0.014624550007283688,
+                "geometry_distance": 0.1646461117378698
+              }
+            ]
+          },
+          {
+            "case": 39,
+            "persistence_mse": 2.946059794339817e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 7.902337415544025e-07,
+                "native_mse": 0.0012293036561459303,
+                "geometry_distance": 0.002047769798954254
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 5.535718082683161e-05,
+                "native_mse": 0.001560651115141809,
+                "geometry_distance": 0.02242428236033481
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.000202905444893986,
+                "native_mse": 0.0023897718638181686,
+                "geometry_distance": 0.0444053012774253
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.000658929580822587,
+                "native_mse": 0.0046392097137868404,
+                "geometry_distance": 0.08207363038979082
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0022044084034860134,
+                "native_mse": 0.005125909112393856,
+                "geometry_distance": 0.09845495735887165
+              }
+            ]
+          },
+          {
+            "case": 47,
+            "persistence_mse": 9.004191952044494e-07,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 5.736806087952573e-07,
+                "native_mse": 0.0010624265996739268,
+                "geometry_distance": 0.002054632124361716
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 3.7452366086654365e-05,
+                "native_mse": 0.0008661541505716741,
+                "geometry_distance": 0.015599500809764811
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.00013053060683887452,
+                "native_mse": 0.000761889386922121,
+                "geometry_distance": 0.024527622394225845
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.0004973799223080277,
+                "native_mse": 0.0010274873347952962,
+                "geometry_distance": 0.03724945884739104
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.0016355803236365318,
+                "native_mse": 0.0021069166250526905,
+                "geometry_distance": 0.10857540287122344
+              }
+            ]
+          },
+          {
+            "case": 55,
+            "persistence_mse": 1.2160783171566436e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 1.0860271686397027e-06,
+                "native_mse": 0.009902991354465485,
+                "geometry_distance": 0.003332879883642357
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 7.009564433246851e-05,
+                "native_mse": 0.011514280922710896,
+                "geometry_distance": 0.019422988618438126
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0002602270687930286,
+                "native_mse": 0.014895849861204624,
+                "geometry_distance": 0.031976324803621434
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.0012506521306931973,
+                "native_mse": 0.026044458150863647,
+                "geometry_distance": 0.047406456337793085
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.01399265043437481,
+                "native_mse": 0.07073216885328293,
+                "geometry_distance": 0.17716526537406796
+              }
+            ]
+          },
+          {
+            "case": 63,
+            "persistence_mse": 3.2713048767618602e-06,
+            "first_self_crossing": null,
+            "probes": [
+              {
+                "time": 20.5,
+                "reset_mse": 2.5124331841652747e-06,
+                "native_mse": 0.06514663249254227,
+                "geometry_distance": 0.004292833120759219
+              },
+              {
+                "time": 25.0,
+                "reset_mse": 0.0002498424728401005,
+                "native_mse": 0.0644092708826065,
+                "geometry_distance": 0.037743498042558395
+              },
+              {
+                "time": 30.0,
+                "reset_mse": 0.0009273746400140226,
+                "native_mse": 0.06269858777523041,
+                "geometry_distance": 0.05964104165389404
+              },
+              {
+                "time": 40.0,
+                "reset_mse": 0.00275578279979527,
+                "native_mse": 0.058320507407188416,
+                "geometry_distance": 0.08024560260407053
+              },
+              {
+                "time": 100.0,
+                "reset_mse": 0.004661146551370621,
+                "native_mse": 0.05382131040096283,
+                "geometry_distance": 0.15522118740779156
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

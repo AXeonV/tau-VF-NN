@@ -111,12 +111,13 @@ def block_loss(model, bank, grid, step, batch=8):
 
 
 @torch.no_grad()
-def forecast(model, bank, rows, frames):
+def forecast(model, bank, rows, frames, *, previous_frame=None):
     times = bank.times
     initial = bank.curves[rows, 0]
-    state = previous = initial
-    before = frames[0]
-    output = [initial[:, None]]
+    before = frames[0] if previous_frame is None else previous_frame
+    state = bank.curves[rows, frames[0]]
+    previous = bank.curves[rows, before]
+    output = [state[:, None]]
     width = model.window_size
     for start, query in zip(frames[::width], frames[1:].split(width)):
         predicted = model(initial, state, previous, times[before].expand(len(rows)),

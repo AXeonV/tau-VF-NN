@@ -1,0 +1,27 @@
+split counts {'train': 48, 'validation': 8, 'test': 8}
+step=1 training=4.43352e-02 validation=2.97776e-02 elapsed=1.3s
+step=250 training=2.27895e-02 validation=1.67356e-02 elapsed=6.7s
+step=500 training=2.53325e-02 validation=1.33129e-02 elapsed=11.8s
+step=750 training=8.80389e-03 validation=1.39706e-02 elapsed=17.1s
+step=1000 training=1.59085e-02 validation=1.23862e-02 elapsed=22.5s
+step=1250 training=5.43733e-03 validation=1.26221e-02 elapsed=27.9s
+step=1500 training=1.36821e-02 validation=1.29126e-02 elapsed=33.2s
+step=1750 training=1.00249e-02 validation=1.33399e-02 elapsed=38.8s
+step=2000 training=6.33516e-03 validation=1.36670e-02 elapsed=44.3s
+step=2250 training=7.24044e-03 validation=1.33564e-02 elapsed=49.5s
+step=2500 training=7.23152e-03 validation=1.30185e-02 elapsed=55.0s
+step=2750 training=5.35375e-03 validation=1.30097e-02 elapsed=60.5s
+step=3000 training=6.54215e-03 validation=1.28706e-02 elapsed=65.8s
+step=3250 training=2.45877e-03 validation=1.34614e-02 elapsed=71.2s
+step=3500 training=2.42971e-03 validation=1.33888e-02 elapsed=76.8s
+step=3750 training=1.88690e-03 validation=1.29695e-02 elapsed=82.3s
+step=4000 training=2.73753e-03 validation=1.33052e-02 elapsed=87.5s
+step=4250 training=1.50543e-03 validation=1.31072e-02 elapsed=92.9s
+step=4500 training=2.76183e-03 validation=1.32297e-02 elapsed=98.1s
+step=4750 training=1.51534e-03 validation=1.32290e-02 elapsed=103.6s
+step=5000 training=7.99170e-03 validation=1.30728e-02 elapsed=109.2s
+step=5250 training=1.75198e-03 validation=1.31460e-02 elapsed=114.5s
+step=5500 training=5.54722e-03 validation=1.32490e-02 elapsed=119.6s
+step=5750 training=2.39288e-03 validation=1.31430e-02 elapsed=125.2s
+step=6000 training=2.52364e-03 validation=1.30778e-02 elapsed=130.6s
+held-out {"coordinate_mse": 0.0047841547057032585, "final_coordinate_rms": 0.15276996791362762, "worst_frame_coordinate_rms": 0.20824667811393738, "mean_final_geometry_distance": 0.31301044306930703, "mean_worst_geometry_distance": 0.3213249662902168, "self_intersecting_cases": 6, "final_tip_matches": 4, "first_breach_median": 2.838736057281494, "tip_births_matched": 17, "tip_births_label": 58}

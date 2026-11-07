@@ -66,7 +66,7 @@ def main():
     from .evolution import evolve
 
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--out', type=Path, default=Path('results/supervised/trajectories'))
+    parser.add_argument('--out', type=Path, default=Path('data/supervised/trajectories'))
     parser.add_argument('--T', type=float, default=1000.)
     parser.add_argument('--first', type=int, default=0)
     parser.add_argument('--count', type=int)

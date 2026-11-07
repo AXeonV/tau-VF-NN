@@ -5,3 +5,7 @@ archive/
 /results/supervised/**/*.npz
 /results/supervised/**/*.pt
 /results/supervised/**/*.tmp
+/data/supervised/**/*.npz
+/data/supervised/**/*.tmp
+/data/img/*.png
+/data/img/*.tmp

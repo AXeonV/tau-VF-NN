@@ -33,11 +33,12 @@ def initial_from_terms(terms, nodes=1024):
     return radius*np.exp(1j*alpha)
 
 
-def solve(initial, times, sigma, tolerance, cache, known=None):
+def solve(initial, times, sigma, tolerance, cache, known=None, *, levels=None):
     previous = None
     checks = []
-    levels = ((1024, .17, .006), (1536, .15, .0045)) if known else (
-        (768, .19, .008), (1024, .17, .006), (1536, .15, .0045))
+    if levels is None:
+        levels = ((1024, .17, .006), (1536, .15, .0045)) if known else (
+            (768, .19, .008), (1024, .17, .006), (1536, .15, .0045))
     for nodes, cfl, fraction in levels:
         try:
             curves, info = evolve(resample(initial, nodes), times, sigma=sigma, cfl=cfl,
@@ -76,8 +77,8 @@ def summary(out, expected, rejected):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', type=Path, default=Path('results/supervised/trajectories'))
-    parser.add_argument('--out', type=Path, default=Path('results/supervised/trajectories_t100_dense'))
+    parser.add_argument('--source', type=Path, default=Path('data/supervised/trajectories'))
+    parser.add_argument('--out', type=Path, default=Path('data/supervised/trajectories_t100_dense'))
     parser.add_argument('--new-per-family', type=int, default=4)
     args = parser.parse_args()
     if args.new_per_family < 1:

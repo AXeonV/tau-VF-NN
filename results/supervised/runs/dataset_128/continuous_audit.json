@@ -1,0 +1,36 @@
+{
+  "96": {
+    "nodes": 1536,
+    "difference": {
+      "sampled_frames": 265,
+      "maximum": 0.005162534956605827,
+      "worst_time": 635.0,
+      "final": 0.0045475996399894705
+    },
+    "final_tips": 15,
+    "expected_final_tips": 15,
+    "simple": true,
+    "steps": 6267,
+    "dense_pressure_solves": 170,
+    "max_flux_relative_error": 1.3121804531834869e-08,
+    "max_area_relative_correction": 4.2299707403437026e-08,
+    "max_metric_variation": 0.025215891370310883
+  },
+  "120": {
+    "nodes": 2048,
+    "difference": {
+      "sampled_frames": 265,
+      "maximum": 0.005364962459554196,
+      "worst_time": 1000.0,
+      "final": 0.005364962459554196
+    },
+    "final_tips": 20,
+    "expected_final_tips": 19,
+    "simple": true,
+    "steps": 7088,
+    "dense_pressure_solves": 211,
+    "max_flux_relative_error": 3.271108495184194e-09,
+    "max_area_relative_correction": 1.6779444689252188e-07,
+    "max_metric_variation": 0.04027477123975354
+  }
+}

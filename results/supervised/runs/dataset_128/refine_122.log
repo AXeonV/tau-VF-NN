@@ -1,0 +1,4 @@
+Case 122
+  n=1536 steps=1478 difference=None elapsed=12.5s
+  n=2048 steps=2165 difference=0.0010409542824727203 elapsed=28.9s
+Case 122 accepted in 368.5s
