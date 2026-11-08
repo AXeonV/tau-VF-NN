@@ -47,4 +47,4 @@ python -m src.predict nn_direct --data data/supervised/trajectories_t1000_128 --
 
 默认直接模型采用带指尖监督的 128 初形检查点，同目录的 `baseline.pt` 保留原直接模型。几何模型默认使用长滚动课程检查点，`finetuned.pt` 保留此前界面对比所用的坐标微调权重。
 
-实验记录见 [对照结果与分析](docs/experiments.md)。
+架构、训练和诊断的逐项结果与分析见 [实验记录](docs/experiments.md)。
