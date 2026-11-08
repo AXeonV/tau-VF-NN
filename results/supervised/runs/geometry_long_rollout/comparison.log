@@ -1,0 +1,16 @@
+20261106 rollout8 best 3600 val 0.007412 profile %R [24.18, 24.31, 23.5, 24.81, 22.98, 21.8] crosses {15: 7.25, 63: 0.6731703877449036} births 17 of 58
+ reset 5.0 skill % 49.9 geometry %R [0.64, 6.9, 10.11, 15.39, 22.51] crosses 1
+ reset 10.0 skill % 22.7 geometry %R [0.57, 4.21, 7.87, 13.67, 21.1] crosses 1
+ reset 20.0 skill % 36.0 geometry %R [0.41, 3.55, 6.43, 10.55, 18.14] crosses 0
+20261106 rollout16 best 8400 val 0.006063 profile %R [17.79, 21.56, 21.96, 22.79, 23.52, 23.07] crosses {55: 60.0, 63: 2.3713736534118652} births 23 of 58
+ reset 5.0 skill % 63.9 geometry %R [0.68, 7.09, 10.66, 13.91, 19.54] crosses 1
+ reset 10.0 skill % 28.8 geometry %R [0.53, 3.82, 6.67, 9.83, 17.19] crosses 0
+ reset 20.0 skill % 64.0 geometry %R [0.36, 2.82, 5.1, 8.74, 16.39] crosses 0
+20261107 rollout8 best 7800 val 0.008741 profile %R [17.57, 21.65, 23.74, 24.74, 22.89, 21.76] crosses {7: 15.5, 23: 18.0, 55: 37.5} births 19 of 58
+ reset 5.0 skill % 56.2 geometry %R [0.66, 7.31, 10.84, 14.0, 20.34] crosses 0
+ reset 10.0 skill % 25.6 geometry %R [0.62, 4.58, 7.99, 11.97, 19.27] crosses 0
+ reset 20.0 skill % 47.0 geometry %R [0.43, 3.53, 5.85, 8.49, 15.55] crosses 0
+20261107 rollout16 best 7800 val 0.0068 profile %R [16.66, 21.21, 21.96, 20.95, 20.0, 21.3] crosses {7: 21.0, 63: 8.5} births 18 of 58
+ reset 5.0 skill % 62.9 geometry %R [0.68, 6.85, 11.21, 14.99, 19.88] crosses 0
+ reset 10.0 skill % 29.1 geometry %R [0.56, 4.4, 7.28, 10.82, 17.24] crosses 0
+ reset 20.0 skill % 63.6 geometry %R [0.38, 3.03, 5.23, 8.58, 15.51] crosses 0

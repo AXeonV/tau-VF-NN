@@ -1,0 +1,1230 @@
+{
+  "cases": [
+    {
+      "case": 6,
+      "events": 9,
+      "runs": {
+        "rollout16_20261106": 8,
+        "rollout16_20261107": 8
+      }
+    },
+    {
+      "case": 14,
+      "events": 12,
+      "runs": {
+        "rollout16_20261106": 10,
+        "rollout16_20261107": 10
+      }
+    },
+    {
+      "case": 22,
+      "events": 9,
+      "runs": {
+        "rollout16_20261106": 7,
+        "rollout16_20261107": 8
+      }
+    },
+    {
+      "case": 30,
+      "events": 5,
+      "runs": {
+        "rollout16_20261106": 5,
+        "rollout16_20261107": 5
+      }
+    },
+    {
+      "case": 38,
+      "events": 6,
+      "runs": {
+        "rollout16_20261106": 6,
+        "rollout16_20261107": 6
+      }
+    },
+    {
+      "case": 46,
+      "events": 6,
+      "runs": {
+        "rollout16_20261106": 5,
+        "rollout16_20261107": 5
+      }
+    },
+    {
+      "case": 54,
+      "events": 4,
+      "runs": {
+        "rollout16_20261106": 4,
+        "rollout16_20261107": 4
+      }
+    },
+    {
+      "case": 62,
+      "events": 7,
+      "runs": {
+        "rollout16_20261106": 4,
+        "rollout16_20261107": 5
+      }
+    }
+  ],
+  "events": [
+    {
+      "case": 6,
+      "time": 0.9646615982055664,
+      "angle": 0.49999403953552246,
+      "near_previous_tip": false,
+      "dt": 0.15881943702697754,
+      "persistence_mse": 3.807383109233342e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 8.048283234529663e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 9.204652087646537e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 0.9646615982055664,
+      "angle": 2.588106870651245,
+      "near_previous_tip": false,
+      "dt": 0.15881943702697754,
+      "persistence_mse": 3.617024049162865e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 5.97794087298098e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 8.265573342214338e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 2.75,
+      "angle": -2.1964385509490967,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 4.0859908040147275e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.72800209838897e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.9813774997601286e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 3.3982083797454834,
+      "angle": -1.0320345163345337,
+      "near_previous_tip": false,
+      "dt": 0.1482083797454834,
+      "persistence_mse": 1.1836183148261625e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.568378022260731e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 6.297615072980989e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 14.0,
+      "angle": -2.6962993144989014,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 8.180204895325005e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.0511643015197478e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 3.5070563171757385e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 14.0,
+      "angle": -0.542454719543457,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 8.408281428273767e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 6.860377197881462e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 9.489425792708062e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 60.0,
+      "angle": 1.0410773754119873,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.0002636984863784164,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0004986823187209666,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0007387176156044006,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 70.0,
+      "angle": 2.0612080097198486,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 9.313405462307855e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0003676108317449689,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0004490853752940893,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 95.0,
+      "angle": -0.8746828436851501,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.0004751114174723625,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00016108553973026574,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0001352647814201191,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": 1.589929461479187,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 0.00010096297773998231,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.1175493455084506e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 9.392224455950782e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": -2.6011929512023926,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 0.0001016350943245925,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.392751750652678e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.7713638701243326e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": -0.5021332502365112,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 0.00010030062549049035,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 6.371130893967347e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.0001340342569165e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": 0.6641421318054199,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 6.026708888384746e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 7.541755621787161e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 8.007086762518156e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": 2.767437696456909,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 5.122186394146411e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.206005203537643e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 3.1336785468738526e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": -1.4258029460906982,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 5.494157903740415e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.5233904327469645e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.2280087250692304e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": 1.1646696329116821,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00012364305439405143,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00014839490177109838,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00014328178076539189,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": -3.0146617889404297,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00011251395335420966,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 9.454923565499485e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00014313287101686,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": -0.9249960780143738,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00012419832637533545,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00015335336502175778,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00012425078602973372,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": 0.34605228900909424,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00018716041813604534,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00047232472570613027,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0004319074796512723,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": 2.4496843814849854,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00019296279060654342,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0002878147060982883,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0003851250512525439,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": -1.7437238693237305,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00019927139510400593,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.000299700943287462,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.000311967363813892,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 5.25,
+      "angle": -2.842836618423462,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 1.090951536752982e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 6.722459602315212e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.653770131175406e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 6.5,
+      "angle": -1.2395479679107666,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 8.79328217706643e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 9.58907367021311e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 3.4130205222027143e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 7.75,
+      "angle": 0.30988645553588867,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 4.433559297467582e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 7.356510991485266e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.6253684407274704e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 8.25,
+      "angle": 1.2282791137695312,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 3.594384452298982e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.3575012164656073e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.5592815998388687e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 60.0,
+      "angle": 1.7638555765151978,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00022951564460527152,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 7.732280209893361e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 4.2345451220171526e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 60.0,
+      "angle": -2.1150546073913574,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00010557446512393653,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 4.946818808093667e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 8.639894076623023e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 85.0,
+      "angle": -0.23496821522712708,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 6.655115430476144e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.7007732822094113e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.373665509163402e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 90.0,
+      "angle": 0.25799649953842163,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 5.75162484892644e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.9568102288758382e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 3.452328746789135e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 90.0,
+      "angle": 2.5993897914886475,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 4.4016167521476746e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.471282252576202e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.5525023374939337e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 7.5,
+      "angle": 1.0004273653030396,
+      "near_previous_tip": false,
+      "dt": 0.25,
+      "persistence_mse": 4.1131474972644355e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.087888558184204e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.744008149122237e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 8.5,
+      "angle": -2.7783010005950928,
+      "near_previous_tip": false,
+      "dt": 0.14637470245361328,
+      "persistence_mse": 1.854098513831559e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 9.16142425921862e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 6.457287895500485e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 12.0,
+      "angle": -1.4894717931747437,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 7.007130989222787e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 4.047742095281137e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.307382252794923e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 12.5,
+      "angle": 0.22293122112751007,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 1.5906416592770256e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.280399828829104e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 8.33073409012286e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 15.5,
+      "angle": 2.2986600399017334,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 1.556176539452281e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 5.271977897791658e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.236416200204985e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 11.0,
+      "angle": 2.9403648376464844,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 7.403131348837633e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.903964625351364e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.741949629125884e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 11.0,
+      "angle": -0.20122770965099335,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 7.403131348837633e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.634961108720745e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.8485973214410478e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 18.0,
+      "angle": 2.263624906539917,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 9.203216905007139e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 4.61840159005078e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 8.01283135842823e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 18.0,
+      "angle": -0.8779677152633667,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 9.203216905007139e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.458210073858936e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.847900297339947e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 38.5,
+      "angle": 0.8864254951477051,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 2.9976811219967203e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 8.299551268464711e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 7.085673701112682e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 38.5,
+      "angle": -2.255167245864868,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 2.9976811219967203e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.100595111187431e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.6212351283684256e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 15.5,
+      "angle": -0.7950804829597473,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 8.460649951302912e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.3811768440064043e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.4736714319951716e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 17.5,
+      "angle": 2.506296396255493,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 3.7954198432998965e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 8.828462227938871e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.164113084290875e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 18.0,
+      "angle": -0.16747786104679108,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 1.1640610864560585e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.2145508157555014e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 4.151399934926303e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 26.0,
+      "angle": -2.7813937664031982,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 3.663764800876379e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.2690178411721718e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.3186385103836074e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 45.0,
+      "angle": 1.9480524063110352,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.0014316252199932933,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0003341065894346684,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0004012973513454199,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 70.0,
+      "angle": 0.7902032136917114,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00011253272532485425,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0004498900379985571,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0004176314687356353,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 27.0,
+      "angle": -2.2435500621795654,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 2.3614466044818982e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 1.8876069134421414e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 2.5070764877455076e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 29.0,
+      "angle": 1.4639334678649902,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 2.1393850602180464e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.6635552785592154e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.7551462860865286e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 31.5,
+      "angle": -1.7031428813934326,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 3.4740705814328976e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 5.953731943009188e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 5.943980340816779e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 32.0,
+      "angle": 0.9127264618873596,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 2.5383883439644706e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 3.1784697966941167e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "rollout16_20261107": {
+          "local_mse": 1.618791202417924e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 37.0,
+      "angle": -1.4528350830078125,
+      "near_previous_tip": false,
+      "dt": 0.5,
+      "persistence_mse": 1.0725597121563624e-06,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 2.67298378275882e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 3.972857939515961e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 45.0,
+      "angle": 3.0555577278137207,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00027628804673440754,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0005709765828214586,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0006027702474966645,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": 1.2804170846939087,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.0006308177253231406,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00015823774447198957,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0001846536761149764,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": 2.5282492637634277,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00033763761166483164,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0004535989719443023,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00044835495646111667,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": -1.9579271078109741,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 9.062672324944288e-05,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.0001831617410061881,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00012561467883642763,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 60.0,
+      "angle": 0.8118512630462646,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.00039216605364345014,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.000260684551903978,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.00035294221015647054,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 75.0,
+      "angle": 0.01630609855055809,
+      "near_previous_tip": false,
+      "dt": 5.0,
+      "persistence_mse": 0.0004209947946947068,
+      "runs": {
+        "rollout16_20261106": {
+          "local_mse": 0.00022801443992648274,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "rollout16_20261107": {
+          "local_mse": 0.0002625949855428189,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    }
+  ]
+}

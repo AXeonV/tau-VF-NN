@@ -57,7 +57,7 @@ class InterfaceGeometry(nn.Module):
         nn.init.zeros_(self.output[-1].weight)
         nn.init.zeros_(self.output[-1].bias)
 
-    def forward(self, state, speed, features):
+    def forward(self, state, speed, features, *, lift_addition=None):
         filtered = smooth(state, 64.)
         tangent, normal = frame(filtered)
         spacing = max(1, state.shape[-1]//256)
@@ -72,6 +72,8 @@ class InterfaceGeometry(nn.Module):
         tangent_gap = (direction*tangent).sum(1, keepdim=True).abs()*weight
         coarse_shape = descriptors(state)[:, 2:]
         geometry = self.lift(torch.cat([curvature, coarse_shape, speed, weight, normal_gap, tangent_gap], dim=1))
+        if lift_addition is not None:
+            geometry = geometry+lift_addition
         for layer in self.local:
             geometry = geometry+.5*F.gelu(layer(geometry))
         geometry = geometry.transpose(1, 2)[:, None].expand(-1, features.shape[1], -1, -1)

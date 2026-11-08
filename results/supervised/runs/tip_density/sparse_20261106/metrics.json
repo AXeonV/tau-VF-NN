@@ -1,0 +1,783 @@
+{
+  "seed": 20261106,
+  "steps": 1600,
+  "labels": "sparse",
+  "windows": 42,
+  "test_windows": 14,
+  "local": {
+    "truth_0.5": {
+      "mean_distance": 0.002648636676271313,
+      "final_distance": 0.0025800974939816763,
+      "matched": 12,
+      "events": 12,
+      "self_crossing_windows": 0,
+      "timing_mae": 0.4166666666666667,
+      "angle_mae": 0.0018458151543891664,
+      "cases": [
+        {
+          "window": "case_007_t080.npz",
+          "matches": [
+            [
+              0.5,
+              0.0007922860036112533
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.001697268313728273,
+          "final_distance": 0.001657778862863779,
+          "self_crossing": false
+        },
+        {
+          "window": "case_007_t050.npz",
+          "matches": [
+            [
+              0.0,
+              0.0011865934734531791
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.002021865447750315,
+          "final_distance": 0.002176788169890642,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t050.npz",
+          "matches": [
+            [
+              0.5,
+              0.013645567931775737
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.0026049703592434525,
+          "final_distance": 0.002465705154463649,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t090.npz",
+          "matches": [
+            [
+              1.0,
+              0.0016730238728921432
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.0016838229552377016,
+          "final_distance": 0.0016385052585974336,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t075.npz",
+          "matches": [
+            [
+              0.5,
+              0.0010158317422401808
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.001876374159473926,
+          "final_distance": 0.0018541606841608882,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t080.npz",
+          "matches": [
+            [
+              0.5,
+              0.0005929648559973577
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.003993867442477495,
+          "final_distance": 0.0035463247913867235,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t050.npz",
+          "matches": [
+            [
+              0.0,
+              0.00037407154905477746
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.004346204199828207,
+          "final_distance": 0.004511319566518068,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t085.npz",
+          "matches": [],
+          "events": 0,
+          "predicted_events": 1,
+          "mean_distance": 0.0035367162781767547,
+          "final_distance": 0.0031327956821769476,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t060.npz",
+          "matches": [],
+          "events": 0,
+          "predicted_events": 1,
+          "mean_distance": 0.0018536468443926424,
+          "final_distance": 0.001661447691731155,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t065.npz",
+          "matches": [
+            [
+              0.0,
+              0.001055334944885189
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.0017072216200176627,
+          "final_distance": 0.0017500853864476085,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t065.npz",
+          "matches": [
+            [
+              0.5,
+              0.0001694253525205136
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.0027604601113125683,
+          "final_distance": 0.0027504833415150642,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t050.npz",
+          "matches": [
+            [
+              0.5,
+              0.00032867205726994086
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.002670605212915689,
+          "final_distance": 0.0027387794107198715,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t075.npz",
+          "matches": [
+            [
+              0.5,
+              0.0001541635149710785
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.002630481752566993,
+          "final_distance": 0.002503578085452318,
+          "self_crossing": false
+        },
+        {
+          "window": "case_063_t050.npz",
+          "matches": [
+            [
+              0.5,
+              0.0011618465539986467
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.0036974087706767023,
+          "final_distance": 0.0037336128298193216,
+          "self_crossing": false
+        }
+      ]
+    },
+    "truth_5": {
+      "mean_distance": 0.024284029885062147,
+      "final_distance": 0.023700907294239317,
+      "matched": 3,
+      "events": 12,
+      "self_crossing_windows": 0,
+      "timing_mae": 1.8333333333333333,
+      "angle_mae": 0.013680773336217644,
+      "cases": [
+        {
+          "window": "case_007_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.01729841479100287,
+          "final_distance": 0.015542787499725819,
+          "self_crossing": false
+        },
+        {
+          "window": "case_007_t050.npz",
+          "matches": [
+            [
+              1.0,
+              0.011940105855960502
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.018910895567387342,
+          "final_distance": 0.020117809996008873,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.023684230539947747,
+          "final_distance": 0.023400822654366493,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t090.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.016966139245778323,
+          "final_distance": 0.016093384474515915,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.018057466112077238,
+          "final_distance": 0.018136344850063324,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.038807661086320874,
+          "final_distance": 0.035175126045942307,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.037263224832713604,
+          "final_distance": 0.0380411222577095,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t085.npz",
+          "matches": [],
+          "events": 0,
+          "predicted_events": 2,
+          "mean_distance": 0.03495036484673619,
+          "final_distance": 0.031037459149956703,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t060.npz",
+          "matches": [],
+          "events": 0,
+          "predicted_events": 0,
+          "mean_distance": 0.018059226218611002,
+          "final_distance": 0.015751102939248085,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t065.npz",
+          "matches": [
+            [
+              2.0,
+              0.023468111891906673
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.015779775893315674,
+          "final_distance": 0.014542744494974613,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t065.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.02358392793685198,
+          "final_distance": 0.024226834997534752,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.021481586061418055,
+          "final_distance": 0.023590916767716408,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.024248798564076423,
+          "final_distance": 0.023750903084874153,
+          "self_crossing": false
+        },
+        {
+          "window": "case_063_t050.npz",
+          "matches": [
+            [
+              2.5,
+              0.005634102260785757
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.03088470669463277,
+          "final_distance": 0.032405342906713486,
+          "self_crossing": false
+        }
+      ]
+    },
+    "free_0.5": {
+      "mean_distance": 0.026358761171078573,
+      "final_distance": 0.048070888434137614,
+      "matched": 4,
+      "events": 14,
+      "self_crossing_windows": 0,
+      "timing_mae": 0.75,
+      "angle_mae": 0.007003665261115899,
+      "cases": [
+        {
+          "window": "case_007_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.018202192266471684,
+          "final_distance": 0.03300493210554123,
+          "self_crossing": false
+        },
+        {
+          "window": "case_007_t050.npz",
+          "matches": [
+            [
+              0.0,
+              0.002493008077640191
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.01892795439925976,
+          "final_distance": 0.03586913272738457,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.025026070070452988,
+          "final_distance": 0.04595111683011055,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t090.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.018417231616331263,
+          "final_distance": 0.03430940955877304,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.021046536334324628,
+          "final_distance": 0.03981625661253929,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.040228738193400206,
+          "final_distance": 0.07250744104385376,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.04312422294169664,
+          "final_distance": 0.07893874496221542,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t085.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.03596504759043455,
+          "final_distance": 0.06489311903715134,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t060.npz",
+          "matches": [
+            [
+              0.0,
+              0.0008101553668653505
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.020791682496201246,
+          "final_distance": 0.03580765053629875,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t065.npz",
+          "matches": [
+            [
+              1.5,
+              0.023214672942321712
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.016902291472069918,
+          "final_distance": 0.029079526662826538,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t065.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.025533061497844754,
+          "final_distance": 0.046829476952552795,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.02513646406587213,
+          "final_distance": 0.047137439250946045,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.02604234681930393,
+          "final_distance": 0.04797225445508957,
+          "self_crossing": false
+        },
+        {
+          "window": "case_063_t050.npz",
+          "matches": [
+            [
+              1.5,
+              0.0014968246576363418
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.03367881663143635,
+          "final_distance": 0.06087593734264374,
+          "self_crossing": false
+        }
+      ]
+    },
+    "free_5": {
+      "mean_distance": 0.0355423319685672,
+      "final_distance": 0.046249929283346446,
+      "matched": 1,
+      "events": 14,
+      "self_crossing_windows": 0,
+      "timing_mae": 1.0,
+      "angle_mae": 0.008035211904949713,
+      "cases": [
+        {
+          "window": "case_007_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.018974449019879103,
+          "final_distance": 0.024810751900076866,
+          "self_crossing": false
+        },
+        {
+          "window": "case_007_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 2,
+          "mean_distance": 0.023179061710834503,
+          "final_distance": 0.03049805760383606,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.03472077380865812,
+          "final_distance": 0.04582809656858444,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t090.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.026545166037976742,
+          "final_distance": 0.034918226301670074,
+          "self_crossing": false
+        },
+        {
+          "window": "case_015_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.0230416813865304,
+          "final_distance": 0.030681395903229713,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t080.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.06351565942168236,
+          "final_distance": 0.08025091141462326,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.060968855395913124,
+          "final_distance": 0.0817401260137558,
+          "self_crossing": false
+        },
+        {
+          "window": "case_023_t085.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.05737450160086155,
+          "final_distance": 0.07204286009073257,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t060.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.021666273940354586,
+          "final_distance": 0.03003377467393875,
+          "self_crossing": false
+        },
+        {
+          "window": "case_047_t065.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.02094760723412037,
+          "final_distance": 0.028553806245326996,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t065.npz",
+          "matches": [
+            [
+              1.0,
+              0.008035211904949713
+            ]
+          ],
+          "events": 1,
+          "predicted_events": 1,
+          "mean_distance": 0.03877741564065218,
+          "final_distance": 0.04966955631971359,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.031248859129846096,
+          "final_distance": 0.039606641978025436,
+          "self_crossing": false
+        },
+        {
+          "window": "case_055_t075.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.035255721770226955,
+          "final_distance": 0.045479245483875275,
+          "self_crossing": false
+        },
+        {
+          "window": "case_063_t050.npz",
+          "matches": [],
+          "events": 1,
+          "predicted_events": 0,
+          "mean_distance": 0.04137662146240473,
+          "final_distance": 0.05338555946946144,
+          "self_crossing": false
+        }
+      ]
+    }
+  },
+  "native": {
+    "coordinate_mse": 0.006425251252949238,
+    "final_coordinate_rms": 0.15980160236358643,
+    "worst_frame_coordinate_rms": 0.25840315222740173,
+    "mean_final_geometry_distance": 0.2131450809642386,
+    "mean_worst_geometry_distance": 0.28118161940618436,
+    "self_intersecting_cases": 0,
+    "final_tip_matches": 5,
+    "first_breach_median": 2.25,
+    "tip_births_matched": 24,
+    "tip_births_label": 58,
+    "cases": [
+      {
+        "case": 7,
+        "sampled_frames": 177,
+        "maximum": 0.40740272036581054,
+        "worst_time": 13.5,
+        "final": 0.23356249948243907,
+        "first_breach": 2.25,
+        "predicted_final_tips": 12,
+        "label_final_tips": 12,
+        "crossing_times": [],
+        "tip_births_matched": 5,
+        "tip_births_predicted": 12,
+        "tip_births_label": 10
+      },
+      {
+        "case": 15,
+        "sampled_frames": 177,
+        "maximum": 0.35724006831109806,
+        "worst_time": 18.5,
+        "final": 0.23911071210084167,
+        "first_breach": 1.1547819375991821,
+        "predicted_final_tips": 10,
+        "label_final_tips": 12,
+        "crossing_times": [],
+        "tip_births_matched": 3,
+        "tip_births_predicted": 7,
+        "tip_births_label": 9
+      },
+      {
+        "case": 23,
+        "sampled_frames": 177,
+        "maximum": 0.3538901474992773,
+        "worst_time": 14.5,
+        "final": 0.2442282700655772,
+        "first_breach": 1.6548171043395996,
+        "predicted_final_tips": 12,
+        "label_final_tips": 14,
+        "crossing_times": [],
+        "tip_births_matched": 3,
+        "tip_births_predicted": 8,
+        "tip_births_label": 10
+      },
+      {
+        "case": 31,
+        "sampled_frames": 177,
+        "maximum": 0.20753035319145163,
+        "worst_time": 100.0,
+        "final": 0.20753035319145163,
+        "first_breach": 3.3982083797454834,
+        "predicted_final_tips": 10,
+        "label_final_tips": 10,
+        "crossing_times": [],
+        "tip_births_matched": 3,
+        "tip_births_predicted": 6,
+        "tip_births_label": 5
+      },
+      {
+        "case": 39,
+        "sampled_frames": 177,
+        "maximum": 0.17510377447906583,
+        "worst_time": 55.0,
+        "final": 0.14853456855457603,
+        "first_breach": 3.0,
+        "predicted_final_tips": 12,
+        "label_final_tips": 12,
+        "crossing_times": [],
+        "tip_births_matched": 4,
+        "tip_births_predicted": 6,
+        "tip_births_label": 6
+      },
+      {
+        "case": 47,
+        "sampled_frames": 177,
+        "maximum": 0.12361393105902344,
+        "worst_time": 7.25,
+        "final": 0.10371678404568828,
+        "first_breach": 3.75,
+        "predicted_final_tips": 14,
+        "label_final_tips": 14,
+        "crossing_times": [],
+        "tip_births_matched": 3,
+        "tip_births_predicted": 7,
+        "tip_births_label": 7
+      },
+      {
+        "case": 55,
+        "sampled_frames": 177,
+        "maximum": 0.29531143229392304,
+        "worst_time": 100.0,
+        "final": 0.29531143229392304,
+        "first_breach": 2.25,
+        "predicted_final_tips": 13,
+        "label_final_tips": 14,
+        "crossing_times": [],
+        "tip_births_matched": 1,
+        "tip_births_predicted": 5,
+        "tip_births_label": 6
+      },
+      {
+        "case": 63,
+        "sampled_frames": 177,
+        "maximum": 0.3293605280498252,
+        "worst_time": 2.25,
+        "final": 0.23316602797941186,
+        "first_breach": 0.46975886821746826,
+        "predicted_final_tips": 12,
+        "label_final_tips": 12,
+        "crossing_times": [],
+        "tip_births_matched": 2,
+        "tip_births_predicted": 6,
+        "tip_births_label": 5
+      }
+    ]
+  }
+}

@@ -35,13 +35,17 @@ def supervised_loss(prediction, target):
     return loss
 
 
-def single_loss(model, bank, grid, step, batch=8):
+def single_loss(model, bank, grid, step, batch=8, *, long_rollout=False, initial_starts=False):
     """Use contiguous, strictly increasing query sequences on either saved time grid."""
     times = bank.times
     device = times.device
     warmup = 400
     length = 1 if step <= warmup else 2 if step <= 650 else 4 if step <= 950 else 8
-    # Both variants see the same time-grid mixture. The full grid includes near-coincident early labels.
+    checkpoints = (length,)
+    if long_rollout and step > 1400 and step % 4 != 2:
+        length = 12 if step <= 2200 else 16
+        checkpoints = (length//3, 2*length//3, length)
+    # The full grid includes near-coincident early labels.
     full_grid = step % 4 == 0
     frames = torch.arange(len(times), device=device) if full_grid else grid
     rows = bank.splits['train']
@@ -50,6 +54,8 @@ def single_loss(model, bank, grid, step, batch=8):
     late = min(int(torch.searchsorted(times[frames], times.new_tensor(10.))), len(frames)-length-1)
     start[:batch//2] = torch.randint(late, len(frames)-length, (batch//2,), device=device)
     start[-2:] = torch.randint(min(3, len(frames)-length), (2,), device=device)
+    if initial_starts and step > 1400:
+        start[-(batch//2):] = 0
     sequence = frames[start[:, None]+torch.arange(length+1, device=device)]
     start_index = sequence[:, 0]
     # Match the recent history at deployment, which comes from the preceding output frame.
@@ -59,17 +65,25 @@ def single_loss(model, bank, grid, step, batch=8):
         *bank.curves[row[:, None], sequence[:, 1:]].unbind(1))
     first, history, prior = state, previous, before
     loss = []
+    tracked_frames = {i for end in checkpoints for i in range(max(0, end-2), end)}
+    # Keep feeding predictions across checkpoints and truncate only their gradient history.
+    detach_after = checkpoints[:-1]
     for i, label in enumerate(labels):
         current, future = sequence[:, i], sequence[:, i+1:i+2]
-        tracked = i >= length-2
+        tracked = i in tracked_frames
         with torch.set_grad_enabled(tracked):
             prediction = model(initial, state, previous, times[before], times[current], times[future])
             if tracked:
                 loss.append(supervised_loss(prediction, label[:, None]))
         previous, state, before = state, prediction[:, 0], current
+        if i+1 in detach_after:
+            previous, state = previous.detach(), state.detach()
     if length > 1:
         clean = model(initial, first, history, times[prior], times[start_index], times[sequence[:, 1:2]])
-        loss.append(supervised_loss(clean, labels[0][:, None]))
+        clean_loss = supervised_loss(clean, labels[0][:, None])
+        if len(checkpoints) > 1:
+            return (2*torch.stack(loss).mean()+clean_loss)/3
+        loss.append(clean_loss)
     return torch.stack(loss).mean()
 
 

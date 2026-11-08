@@ -1,5 +1,6 @@
 """Common supervised warm-up and Self Forcing training for the two rollout models."""
 import argparse
+from functools import partial
 from pathlib import Path
 from time import perf_counter
 
@@ -41,10 +42,19 @@ def main(architecture, model_type, loss_fn):
     parser.add_argument('--device', choices=['cuda', 'cpu'], default='cuda')
     if architecture == 'nn_geometry':
         parser.add_argument('--no-geometry', action='store_true', help='Pure Fourier one-frame ablation')
+        parser.add_argument('--long-rollout', action='store_true', help='Curriculum up to 16 supervised rollout frames')
+        parser.add_argument('--initial-starts', action='store_true',
+                            help='Start half of each training batch at t=0 after step 1400')
     args = parser.parse_args()
     if min(args.steps, args.batch, args.report_every) < 1 or args.batch < 2:
         parser.error('Expected positive steps and a batch of at least two')
     args.architecture = architecture
+    long_rollout = getattr(args, 'long_rollout', False)
+    initial_starts = getattr(args, 'initial_starts', False)
+    if initial_starts and not long_rollout:
+        parser.error('--initial-starts requires --long-rollout')
+    if long_rollout:
+        loss_fn = partial(loss_fn, long_rollout=True, initial_starts=initial_starts)
     args.out.mkdir(parents=True, exist_ok=True)
     torch.set_num_threads(4)
     torch.manual_seed(args.seed)
@@ -91,5 +101,7 @@ def main(architecture, model_type, loss_fn):
     predicted = forecast(model.eval(), bank, bank.splits['test'], frames).cpu().numpy()
     test = report_predictions(bank, 'test', predicted, export=args.out/'test_predictions.npz')
     atomic_json(args.out/'metrics.json', dict(architecture=architecture, steps=args.steps,
-                best_step=checkpoint['step'], seed=args.seed, validation_mse=best, test=test,
+                best_step=checkpoint['step'], seed=args.seed, long_rollout=long_rollout,
+                initial_starts=initial_starts,
+                validation_mse=best, test=test,
                 cases={name: [bank.ids[i] for i in rows.tolist()] for name, rows in bank.splits.items()}))

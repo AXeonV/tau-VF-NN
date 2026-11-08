@@ -1,0 +1,10 @@
+2026-11-07T23:07:02 start control_20261106
+2026-11-07T23:10:05 exit control_20261106 code=0
+2026-11-07T23:10:05 start velocity_20261106
+2026-11-07T23:13:07 exit velocity_20261106 code=0
+2026-11-07T23:13:07 start control_20261107
+2026-11-07T23:16:09 exit control_20261107 code=0
+2026-11-07T23:16:09 start velocity_20261107
+2026-11-07T23:19:12 exit velocity_20261107 code=0
+2026-11-07T23:19:12 start evaluation
+2026-11-07T23:20:25 exit evaluation code=0

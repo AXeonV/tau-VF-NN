@@ -1,0 +1,49 @@
+{
+  "half_step_shape_weighted": {
+    "20261106": {
+      "geometry_control": {
+        "physics_channels_effect": 0.0,
+        "complete_head_effect": 2.583856894489145e-05,
+        "total_predicted_motion": 0.0030266286339610815
+      },
+      "neighbors": {
+        "physics_channels_effect": 5.541669300631232e-06,
+        "complete_head_effect": 2.5174496840918437e-05,
+        "total_predicted_motion": 0.0030261807842180133
+      },
+      "history": {
+        "physics_channels_effect": 2.9968982744321693e-06,
+        "complete_head_effect": 2.069700758511317e-05,
+        "total_predicted_motion": 0.00302602086837093
+      },
+      "combined": {
+        "physics_channels_effect": 5.3452056363312295e-06,
+        "complete_head_effect": 1.9024217029558106e-05,
+        "total_predicted_motion": 0.0030256865235666433
+      }
+    },
+    "20261107": {
+      "geometry_control": {
+        "physics_channels_effect": 0.0,
+        "complete_head_effect": 4.7725412817574885e-05,
+        "total_predicted_motion": 0.0029414914121540883
+      },
+      "neighbors": {
+        "physics_channels_effect": 1.8798250342418516e-05,
+        "complete_head_effect": 5.6867743599771835e-05,
+        "total_predicted_motion": 0.002939290270054092
+      },
+      "history": {
+        "physics_channels_effect": 1.4055208339414094e-05,
+        "complete_head_effect": 6.185242030672573e-05,
+        "total_predicted_motion": 0.0029417993500828743
+      },
+      "combined": {
+        "physics_channels_effect": 2.4323497200384736e-05,
+        "complete_head_effect": 7.093180950808649e-05,
+        "total_predicted_motion": 0.0029389497940428555
+      }
+    }
+  },
+  "measurement": "mean of per-curve maximum point displacement when zeroing inputs or head"
+}

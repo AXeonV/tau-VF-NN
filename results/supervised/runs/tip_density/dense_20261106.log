@@ -1,0 +1,10 @@
+dense seed=20261106 step=1 loss=0.00048514
+dense seed=20261106 step=200 loss=0.001944
+dense seed=20261106 step=400 loss=0.0018964
+dense seed=20261106 step=600 loss=0.001911
+dense seed=20261106 step=800 loss=0.0018777
+dense seed=20261106 step=1000 loss=0.001871
+dense seed=20261106 step=1200 loss=0.0016834
+dense seed=20261106 step=1400 loss=0.0017681
+dense seed=20261106 step=1600 loss=0.00168
+Completed evaluation

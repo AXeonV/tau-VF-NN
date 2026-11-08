@@ -1,0 +1,10 @@
+sparse seed=20261106 step=1 loss=0.00048514
+sparse seed=20261106 step=200 loss=0.0020279
+sparse seed=20261106 step=400 loss=0.001984
+sparse seed=20261106 step=600 loss=0.0019836
+sparse seed=20261106 step=800 loss=0.0019527
+sparse seed=20261106 step=1000 loss=0.0019402
+sparse seed=20261106 step=1200 loss=0.0017492
+sparse seed=20261106 step=1400 loss=0.0018296
+sparse seed=20261106 step=1600 loss=0.0017526
+Completed evaluation

@@ -7,6 +7,7 @@ import torch
 
 from .nn_block.model import BlockFNO
 from .nn_direct.model import CurveFNO
+from .nn_geometry import checkpoint_model
 from .nn_geometry.model import GeometryFNO
 from .rollout import evaluation_grid, forecast
 from .trajectory_data import DEFAULT_DATA, Trajectories
@@ -29,7 +30,9 @@ def main():
     path = args.model or Path('results/supervised/models')/args.architecture/'model.pt'
     checkpoint = torch.load(path, map_location=args.device, weights_only=True)
     config = checkpoint['config']
-    model = MODELS[args.architecture](**config).to(args.device).eval()
+    kind = (checkpoint_model(checkpoint.get('architecture', 'nn_geometry'))
+            if args.architecture == 'nn_geometry' else MODELS[args.architecture])
+    model = kind(**config).to(args.device).eval()
     model.load_state_dict(checkpoint['model'])
     bank = Trajectories(args.data, checkpoint.get('nodes', 1024), args.device, model.horizon)
     index = int(bank.splits['test'][0]) if args.case is None else bank.ids.index(args.case)

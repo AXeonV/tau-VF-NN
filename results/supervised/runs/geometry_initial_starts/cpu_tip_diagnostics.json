@@ -1,0 +1,1172 @@
+{
+  "cases": [
+    {
+      "case": 6,
+      "events": 9,
+      "runs": {
+        "cpu_baseline16": 8,
+        "cpu_initial16": 8
+      }
+    },
+    {
+      "case": 14,
+      "events": 12,
+      "runs": {
+        "cpu_baseline16": 12,
+        "cpu_initial16": 11
+      }
+    },
+    {
+      "case": 22,
+      "events": 9,
+      "runs": {
+        "cpu_baseline16": 9,
+        "cpu_initial16": 8
+      }
+    },
+    {
+      "case": 30,
+      "events": 5,
+      "runs": {
+        "cpu_baseline16": 5,
+        "cpu_initial16": 5
+      }
+    },
+    {
+      "case": 38,
+      "events": 6,
+      "runs": {
+        "cpu_baseline16": 6,
+        "cpu_initial16": 6
+      }
+    },
+    {
+      "case": 46,
+      "events": 6,
+      "runs": {
+        "cpu_baseline16": 6,
+        "cpu_initial16": 6
+      }
+    },
+    {
+      "case": 54,
+      "events": 4,
+      "runs": {
+        "cpu_baseline16": 4,
+        "cpu_initial16": 4
+      }
+    },
+    {
+      "case": 62,
+      "events": 7,
+      "runs": {
+        "cpu_baseline16": 6,
+        "cpu_initial16": 7
+      }
+    }
+  ],
+  "events": [
+    {
+      "case": 6,
+      "time": 0.9646615982055664,
+      "angle": 0.49999403953552246,
+      "dt": 0.15881943702697754,
+      "persistence_mse": 3.807383109233342e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 7.918984010757413e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.1151782018714584e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 0.9646615982055664,
+      "angle": 2.588106870651245,
+      "dt": 0.15881943702697754,
+      "persistence_mse": 3.617024049162865e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.8944932662634528e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.2221534007039736e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 2.75,
+      "angle": -2.1964385509490967,
+      "dt": 0.25,
+      "persistence_mse": 4.0859908040147275e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.3949470485385973e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.8178510799771175e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 3.3982083797454834,
+      "angle": -1.0320345163345337,
+      "dt": 0.1482083797454834,
+      "persistence_mse": 1.1836183148261625e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.8707308956654742e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 5.140526809555013e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 14.0,
+      "angle": -2.6962993144989014,
+      "dt": 0.5,
+      "persistence_mse": 8.180204895325005e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 6.50520232738927e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 7.728931814199314e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 14.0,
+      "angle": -0.542454719543457,
+      "dt": 0.5,
+      "persistence_mse": 8.408281428273767e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 6.595564627787098e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 6.593529542442411e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 60.0,
+      "angle": 1.0410773754119873,
+      "dt": 5.0,
+      "persistence_mse": 0.0002636984863784164,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00044680325663648546,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0004286474722903222,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 70.0,
+      "angle": 2.0612080097198486,
+      "dt": 5.0,
+      "persistence_mse": 9.313405462307855e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00023313502606470138,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00021066880435682833,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 6,
+      "time": 95.0,
+      "angle": -0.8746828436851501,
+      "dt": 5.0,
+      "persistence_mse": 0.0004751114174723625,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00021792958432342857,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00023491273168474436,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": 1.589929461479187,
+      "dt": 0.25,
+      "persistence_mse": 0.00010096297773998231,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 3.006700353580527e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.0690509447595105e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": -2.6011929512023926,
+      "dt": 0.25,
+      "persistence_mse": 0.0001016350943245925,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 3.8155860238475725e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 2.9344735594349913e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 2.25,
+      "angle": -0.5021332502365112,
+      "dt": 0.25,
+      "persistence_mse": 0.00010030062549049035,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.811735430441331e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.596689202822745e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": 0.6641421318054199,
+      "dt": 0.5,
+      "persistence_mse": 6.026708888384746e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 5.404870080383262e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 6.0742313507944345e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": 2.767437696456909,
+      "dt": 0.5,
+      "persistence_mse": 5.122186394146411e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 5.275365765555762e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 4.093783445568988e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 28.0,
+      "angle": -1.4258029460906982,
+      "dt": 0.5,
+      "persistence_mse": 5.494157903740415e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 3.3729647839209065e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 3.842338173853932e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": 1.1646696329116821,
+      "dt": 5.0,
+      "persistence_mse": 0.00012364305439405143,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0001133665136876516,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00013557808415498585,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": -3.0146617889404297,
+      "dt": 5.0,
+      "persistence_mse": 0.00011251395335420966,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00014140123676043004,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00010553437459748238,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 60.0,
+      "angle": -0.9249960780143738,
+      "dt": 5.0,
+      "persistence_mse": 0.00012419832637533545,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.388327453052625e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00010714248492149636,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": 0.34605228900909424,
+      "dt": 5.0,
+      "persistence_mse": 0.00018716041813604534,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00025180861121043563,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00024758471408858895,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": 2.4496843814849854,
+      "dt": 5.0,
+      "persistence_mse": 0.00019296279060654342,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0001603012642590329,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0001576124195707962,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 14,
+      "time": 75.0,
+      "angle": -1.7437238693237305,
+      "dt": 5.0,
+      "persistence_mse": 0.00019927139510400593,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0002997599949594587,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0002609900548122823,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 5.25,
+      "angle": -2.842836618423462,
+      "dt": 0.25,
+      "persistence_mse": 1.090951536752982e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 6.681506420136429e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 8.638628059998155e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 6.5,
+      "angle": -1.2395479679107666,
+      "dt": 0.25,
+      "persistence_mse": 8.79328217706643e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.4392807063122746e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.0883600175002357e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 7.75,
+      "angle": 0.30988645553588867,
+      "dt": 0.25,
+      "persistence_mse": 4.433559297467582e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.079532219402608e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.9629474081739318e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 8.25,
+      "angle": 1.2282791137695312,
+      "dt": 0.25,
+      "persistence_mse": 3.594384452298982e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 7.56951294533792e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.4298220776254311e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 60.0,
+      "angle": 1.7638555765151978,
+      "dt": 5.0,
+      "persistence_mse": 0.00022951564460527152,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 4.79282571177464e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 5.0331978854956105e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 60.0,
+      "angle": -2.1150546073913574,
+      "dt": 5.0,
+      "persistence_mse": 0.00010557446512393653,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.209919517161325e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 7.229440961964428e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 85.0,
+      "angle": -0.23496821522712708,
+      "dt": 5.0,
+      "persistence_mse": 6.655115430476144e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 4.061136860400438e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 3.335388464620337e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 90.0,
+      "angle": 0.25799649953842163,
+      "dt": 5.0,
+      "persistence_mse": 5.75162484892644e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.0307605154812336e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 1.8134074707631953e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 22,
+      "time": 90.0,
+      "angle": 2.5993897914886475,
+      "dt": 5.0,
+      "persistence_mse": 4.4016167521476746e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 5.958615292911418e-05,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 4.888017429038882e-05,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 7.5,
+      "angle": 1.0004273653030396,
+      "dt": 0.25,
+      "persistence_mse": 4.1131474972644355e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.8746463865682017e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.8163475488108816e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 8.5,
+      "angle": -2.7783010005950928,
+      "dt": 0.14637470245361328,
+      "persistence_mse": 1.854098513831559e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.890562751024845e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.4295310393208638e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 12.0,
+      "angle": -1.4894717931747437,
+      "dt": 0.5,
+      "persistence_mse": 7.007130989222787e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.613354450266343e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.3419365814115736e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 12.5,
+      "angle": 0.22293122112751007,
+      "dt": 0.5,
+      "persistence_mse": 1.5906416592770256e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 9.366462109028362e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 5.595633865596028e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 30,
+      "time": 15.5,
+      "angle": 2.2986600399017334,
+      "dt": 0.5,
+      "persistence_mse": 1.556176539452281e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 6.858353117422666e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 5.663420779455919e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 11.0,
+      "angle": 2.9403648376464844,
+      "dt": 0.5,
+      "persistence_mse": 7.403131348837633e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 7.457862466253573e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.149208219430875e-05,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 11.0,
+      "angle": -0.20122770965099335,
+      "dt": 0.5,
+      "persistence_mse": 7.403131348837633e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.9610691854031757e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 5.092430455988506e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 18.0,
+      "angle": 2.263624906539917,
+      "dt": 0.5,
+      "persistence_mse": 9.203216905007139e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.9208373487344943e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 2.610122464830056e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 18.0,
+      "angle": -0.8779677152633667,
+      "dt": 0.5,
+      "persistence_mse": 9.203216905007139e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.579891088316799e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.018572897417471e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 38.5,
+      "angle": 0.8864254951477051,
+      "dt": 0.5,
+      "persistence_mse": 2.9976811219967203e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.820992338252836e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 1.5386424365715357e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 38,
+      "time": 38.5,
+      "angle": -2.255167245864868,
+      "dt": 0.5,
+      "persistence_mse": 2.9976811219967203e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.016052803810453e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.3575097455031937e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 15.5,
+      "angle": -0.7950804829597473,
+      "dt": 0.5,
+      "persistence_mse": 8.460649951302912e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 3.714892500283895e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.4880490602517966e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 17.5,
+      "angle": 2.506296396255493,
+      "dt": 0.5,
+      "persistence_mse": 3.7954198432998965e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 7.82894517215027e-07,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 1.6286284107991378e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 18.0,
+      "angle": -0.16747786104679108,
+      "dt": 0.5,
+      "persistence_mse": 1.1640610864560585e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 4.604462901625084e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 5.678464731317945e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 26.0,
+      "angle": -2.7813937664031982,
+      "dt": 0.5,
+      "persistence_mse": 3.663764800876379e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.919171492976602e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 3.285780394435278e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 45.0,
+      "angle": 1.9480524063110352,
+      "dt": 5.0,
+      "persistence_mse": 0.0014316252199932933,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0007589860470034182,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0007599383243359625,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 46,
+      "time": 70.0,
+      "angle": 0.7902032136917114,
+      "dt": 5.0,
+      "persistence_mse": 0.00011253272532485425,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00021557373111136258,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00018991107936017215,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 27.0,
+      "angle": -2.2435500621795654,
+      "dt": 0.5,
+      "persistence_mse": 2.3614466044818982e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.313890263394569e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 1.8555986116552958e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 29.0,
+      "angle": 1.4639334678649902,
+      "dt": 0.5,
+      "persistence_mse": 2.1393850602180464e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 1.1288555015198654e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 1.1192870488230255e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 31.5,
+      "angle": -1.7031428813934326,
+      "dt": 0.5,
+      "persistence_mse": 3.4740705814328976e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 5.23503877047915e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 3.408642442082055e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 54,
+      "time": 32.0,
+      "angle": 0.9127264618873596,
+      "dt": 0.5,
+      "persistence_mse": 2.5383883439644706e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 2.8503118301159702e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 2.4326889160875e-06,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 37.0,
+      "angle": -1.4528350830078125,
+      "dt": 0.5,
+      "persistence_mse": 1.0725597121563624e-06,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 3.1238071187544847e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 3.976355401391629e-06,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 45.0,
+      "angle": 3.0555577278137207,
+      "dt": 5.0,
+      "persistence_mse": 0.00027628804673440754,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0002741481876000762,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00030406974838115275,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": 1.2804170846939087,
+      "dt": 5.0,
+      "persistence_mse": 0.0006308177253231406,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0001712546218186617,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.00021526013733819127,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": 2.5282492637634277,
+      "dt": 5.0,
+      "persistence_mse": 0.00033763761166483164,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0005754110752604902,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0005691511323675513,
+          "beats_persistence": false,
+          "has_tip_at_birth": true
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 55.0,
+      "angle": -1.9579271078109741,
+      "dt": 5.0,
+      "persistence_mse": 9.062672324944288e-05,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 6.321806722553447e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": true
+        },
+        "cpu_initial16": {
+          "local_mse": 6.692487659165636e-05,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 60.0,
+      "angle": 0.8118512630462646,
+      "dt": 5.0,
+      "persistence_mse": 0.00039216605364345014,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.00045458253589458764,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0005347559927031398,
+          "beats_persistence": false,
+          "has_tip_at_birth": false
+        }
+      }
+    },
+    {
+      "case": 62,
+      "time": 75.0,
+      "angle": 0.01630609855055809,
+      "dt": 5.0,
+      "persistence_mse": 0.0004209947946947068,
+      "runs": {
+        "cpu_baseline16": {
+          "local_mse": 0.0002929861657321453,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        },
+        "cpu_initial16": {
+          "local_mse": 0.0002594919060356915,
+          "beats_persistence": true,
+          "has_tip_at_birth": false
+        }
+      }
+    }
+  ]
+}

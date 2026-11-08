@@ -1,0 +1,8 @@
+control seed=20261107 step=1 loss=0.000186903
+control seed=20261107 step=200 loss=0.00181292 local_position=8.08247e-05 diagnostic_speed_mse=0.0188895
+control seed=20261107 step=400 loss=0.00188823 local_position=8.60408e-05 diagnostic_speed_mse=0.0203987
+control seed=20261107 step=600 loss=0.00198191 local_position=7.83689e-05 diagnostic_speed_mse=0.0191828
+control seed=20261107 step=800 loss=0.00176479 local_position=7.51701e-05 diagnostic_speed_mse=0.0185955
+control seed=20261107 step=1000 loss=0.00182385 local_position=7.87013e-05 diagnostic_speed_mse=0.0185497
+control seed=20261107 step=1200 loss=0.00180764 local_position=7.7731e-05 diagnostic_speed_mse=0.0184414
+Finished control seed=20261107 with 252 annotated samples

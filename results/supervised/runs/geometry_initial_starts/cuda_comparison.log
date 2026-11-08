@@ -1,0 +1,18 @@
+20261106 rollout16 best 8400 validation 0.006063 profile %R [17.79, 21.56, 21.96, 22.79, 23.52, 23.07] first crossings {'55': 60.0, '63': 2.3713736534118652} births 23 / 58
+ reset 5.0 next step skill 63.86 distances [0.68, 7.09, 10.66, 13.91, 19.54]
+ reset 10.0 next step skill 28.79 distances [0.53, 3.82, 6.67, 9.83, 17.19]
+ reset 20.0 next step skill 64.04 distances [0.36, 2.82, 5.1, 8.74, 16.39]
+20261106 initial16 best 6900 validation 0.007434 profile %R [17.29, 20.56, 21.63, 19.38, 19.82, 21.59] first crossings {} births 24 / 58
+ reset 5.0 next step skill 39.05 distances [0.92, 9.31, 12.34, 14.19, 20.11]
+ reset 10.0 next step skill 2.65 distances [0.64, 4.33, 7.15, 10.99, 19.07]
+ reset 20.0 next step skill 57.85 distances [0.38, 3.05, 5.38, 9.07, 17.6]
+20261107 rollout16 best 7800 validation 0.0068 profile %R [16.66, 21.21, 21.96, 20.95, 20.0, 21.3] first crossings {'7': 21.0, '63': 8.5} births 18 / 58
+ reset 5.0 next step skill 62.92 distances [0.68, 6.85, 11.21, 14.99, 19.88]
+ reset 10.0 next step skill 29.13 distances [0.56, 4.4, 7.28, 10.82, 17.24]
+ reset 20.0 next step skill 63.57 distances [0.38, 3.03, 5.23, 8.58, 15.51]
+20261107 initial16 best 7200 validation 0.007359 profile %R [14.97, 21.61, 23.58, 20.92, 20.1, 21.45] first crossings {63: 5.0} births 23 / 58
+ reset 5.0 next step skill 44.26 distances [0.89, 8.84, 12.59, 15.94, 19.75]
+ reset 10.0 next step skill 5.88 distances [0.63, 5.04, 8.39, 12.22, 19.13]
+ reset 20.0 next step skill 58.44 distances [0.38, 3.28, 5.66, 9.33, 17.94]
+rollout16 validation birth timing {'before20': {'total': 25, 'both_miss_tip': 0, 'both_lose_persistence': 0}, '20to50': {'total': 13, 'both_miss_tip': 7, 'both_lose_persistence': 4}, '50plus': {'total': 20, 'both_miss_tip': 18, 'both_lose_persistence': 10}}
+initial16 validation birth timing {'before20': {'total': 25, 'both_miss_tip': 1, 'both_lose_persistence': 3}, '20to50': {'total': 13, 'both_miss_tip': 8, 'both_lose_persistence': 6}, '50plus': {'total': 20, 'both_miss_tip': 18, 'both_lose_persistence': 9}}

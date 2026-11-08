@@ -1,0 +1,17 @@
+case_128_t095 drift=4 initial=0.005166 physical=0.005807 free_same=0.01203
+case_128_t095 drift=8 initial=0.01036 physical=0.01166 free_same=0.01118
+case_129_t050 drift=4 initial=0.009291 physical=0.009597 free_same=0.02166
+case_129_t050 drift=8 initial=0.01752 physical=0.01793 free_same=0.02084
+case_130_t085 drift=4 initial=0.004521 physical=0.004873 free_same=0.01088
+case_130_t085 drift=8 initial=0.009189 physical=0.009448 free_same=0.011
+case_131_t065 drift=4 initial=0.005348 physical=0.006392 free_same=0.01281
+case_131_t065 drift=8 initial=0.01027 physical=0.01216 free_same=0.0129
+case_131_t075 drift=4 initial=0.006403 physical=0.007458 free_same=0.01474
+case_131_t075 drift=8 initial=0.01226 physical=0.01434 free_same=0.01357
+case_133_t050 drift=4 initial=0.01094 physical=0.01164 free_same=0.02439
+case_133_t050 drift=8 initial=0.02084 physical=0.02291 free_same=0.02177
+case_133_t085 drift=4 initial=0.00814 physical=0.00835 free_same=0.01762
+case_133_t085 drift=8 initial=0.01616 physical=0.01655 free_same=0.01699
+case_134_t055 drift=4 initial=0.006731 physical=0.007474 free_same=0.01588
+case_134_t055 drift=8 initial=0.01282 physical=0.01436 free_same=0.01487
+16 certified pairs, 2 exclusions

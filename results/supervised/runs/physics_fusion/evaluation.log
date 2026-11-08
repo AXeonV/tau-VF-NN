@@ -1,0 +1,6 @@
+results\supervised\runs\physics_fusion\fusion_trunk_20261106\model.pt speed_RMSE=0.119369 active_sign=0.7141923291631493 drift_4=0.0116824 T100=0.231581
+results\supervised\runs\physics_fusion\fusion_geometry_20261106\model.pt speed_RMSE=0.119474 active_sign=0.7140804174510978 drift_4=0.0116567 T100=0.23228
+results\supervised\runs\physics_fusion\fusion_joint_20261106\model.pt speed_RMSE=0.119184 active_sign=0.7150183947849241 drift_4=0.0116509 T100=0.232146
+results\supervised\runs\physics_fusion\fusion_trunk_20261107\model.pt speed_RMSE=0.120683 active_sign=0.7208712147450973 drift_4=0.0116443 T100=0.216923
+results\supervised\runs\physics_fusion\fusion_geometry_20261107\model.pt speed_RMSE=0.120633 active_sign=0.7203466871888315 drift_4=0.0116277 T100=0.216556
+results\supervised\runs\physics_fusion\fusion_joint_20261107\model.pt speed_RMSE=0.120373 active_sign=0.7224700098645163 drift_4=0.011612 T100=0.216564

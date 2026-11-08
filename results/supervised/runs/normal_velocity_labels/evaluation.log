@@ -1,0 +1,6 @@
+results\supervised\runs\tip_density\paired_dense_20261106\model.pt speed_RMSE=0.122924 active_sign=0.7163577871100437 drift_4=0.0125039 T100=0.244547
+results\supervised\runs\normal_velocity_labels\control_20261106\model.pt speed_RMSE=0.126344 active_sign=0.6937065112847972 drift_4=0.0124127 T100=0.233277
+results\supervised\runs\normal_velocity_labels\velocity_20261106\model.pt speed_RMSE=0.119664 active_sign=0.7137114413793841 drift_4=0.0116807 T100=0.2322
+results\supervised\runs\tip_density\paired_dense_20261107\model.pt speed_RMSE=0.127735 active_sign=0.7067607862241843 drift_4=0.0127123 T100=0.217834
+results\supervised\runs\normal_velocity_labels\control_20261107\model.pt speed_RMSE=0.127782 active_sign=0.7013117654337728 drift_4=0.0123969 T100=0.217546
+results\supervised\runs\normal_velocity_labels\velocity_20261107\model.pt speed_RMSE=0.12091 active_sign=0.7198606412850386 drift_4=0.0116673 T100=0.216638
