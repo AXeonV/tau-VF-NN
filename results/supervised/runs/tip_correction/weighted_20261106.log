@@ -1,8 +1,0 @@
-drift seed=20261106 step=1 loss=0.00047238
-drift seed=20261106 step=200 loss=0.0032069
-drift seed=20261106 step=400 loss=0.0032068
-drift seed=20261106 step=600 loss=0.0031259
-drift seed=20261106 step=800 loss=0.0031354
-drift seed=20261106 step=1000 loss=0.0029911
-drift seed=20261106 step=1200 loss=0.0028528
-Completed recovery evaluation

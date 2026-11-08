@@ -32,10 +32,6 @@ class RolloutFNO(nn.Module):
         return torch.stack([time/self.horizon, phase, (2*torch.pi*phase).sin(),
                             (2*torch.pi*phase).cos()], dim=-1)
 
-    def _lift_additions(self, state):
-        """Return optional additions to the trunk and interface lift activations."""
-        return None, None
-
     def forward(self, initial, state, previous, before, start, queries):
         gap = (start-before)/(1+2*start)
         tangent = F.normalize(torch.roll(state, -4, -1)-torch.roll(state, 4, -1), dim=1)
@@ -45,10 +41,7 @@ class RolloutFNO(nn.Module):
         if not self.history:
             speed = torch.zeros_like(speed)
         anchor = initial if self.anchor else torch.zeros_like(initial)
-        trunk_addition, geometry_addition = self._lift_additions(state)
         x = self.lift(torch.cat([state, anchor, speed], dim=1))
-        if trunk_addition is not None:
-            x = x+trunk_addition
         modulation = self.start(self.time_features(start)).reshape(len(start), len(self.spectral), 2, -1)
         for index, (spectral, local) in enumerate(zip(self.spectral, self.pointwise)):
             scale, shift = modulation[:, index].unbind(dim=1)
@@ -66,11 +59,7 @@ class RolloutFNO(nn.Module):
         features = features+F.gelu(self.query_mix(context))
         displacement = self.output(features).transpose(2, 3)
         if self.geometry_branch is not None:
-            if geometry_addition is None:
-                geometry = self.geometry_branch(state, speed, features)
-            else:
-                geometry = self.geometry_branch(state, speed, features, lift_addition=geometry_addition)
-            displacement = displacement+geometry
+            displacement = displacement+self.geometry_branch(state, speed, features)
         gate = lead/(.25+lead)
         raw = state[:, None]+gate[:, :, None, None]*displacement
         flat = raw.flatten(0, 1)

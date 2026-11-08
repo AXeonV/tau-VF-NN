@@ -12,6 +12,7 @@ from scipy.signal import resample
 from .evolution import evolve
 from .expand import initial_from_terms, solve
 from .generate import save_case
+from ..trajectory_data import case_paths
 from ..trajectory_metrics import atomic_json, curve_difference, has_crossing, tip_count
 
 
@@ -89,7 +90,7 @@ def prepare(data):
     for source, target, expected in [(original, long, 64), (dense, early, 96)]:
         settings = dict(json_file(source/'configuration.json'), expected_cases=128)
         settings.pop('new_per_family', None)
-        inputs = sorted(source.glob('case_*.npz'))
+        inputs = case_paths(source)
         if len(inputs) != expected:
             raise ValueError(f'Expected {expected} certified paths in {source}')
         config = target/'configuration.json'

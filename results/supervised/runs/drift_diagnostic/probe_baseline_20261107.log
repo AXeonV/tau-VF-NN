@@ -1,6 +1,0 @@
-step=1 loss=0.000186903
-step=200 loss=0.00180235
-step=400 loss=0.0017654
-step=600 loss=0.00178974
-step=800 loss=0.00174091
-Finished baseline seed=20261107: teacher(.5)=0.0015713 free(4)=0.011872 native(100)=0.22066

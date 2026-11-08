@@ -1,5 +1,6 @@
 """Common supervised warm-up and Self Forcing training for the two rollout models."""
 import argparse
+import math
 from functools import partial
 from pathlib import Path
 from time import perf_counter
@@ -16,15 +17,12 @@ def initialize(model_type, args):
     warm = torch.load(args.warm, map_location=args.device, weights_only=True) if args.warm else None
     config = dict(warm['config']) if warm else dict(horizon=100.)
     if args.architecture == 'nn_geometry':
-        config['geometry'] = not args.no_geometry
+        config['geometry'] = True
     elif config.pop('geometry', False):
         raise ValueError('The four-frame model requires Fourier weights without a geometry branch')
     model = model_type(**config).to(args.device)
     if warm:
-        weights = warm['model']
-        if args.architecture == 'nn_geometry' and args.no_geometry:
-            weights = {key: value for key, value in weights.items() if not key.startswith('geometry_branch.')}
-        missing, unexpected = model.load_state_dict(weights, strict=False)
+        missing, unexpected = model.load_state_dict(warm['model'], strict=False)
         if unexpected or any(not key.startswith('geometry_branch.') for key in missing):
             raise ValueError('Warm checkpoint does not match the shared Fourier architecture')
     return model, config
@@ -41,20 +39,24 @@ def main(architecture, model_type, loss_fn):
     parser.add_argument('--seed', type=int, default=20261106)
     parser.add_argument('--device', choices=['cuda', 'cpu'], default='cuda')
     if architecture == 'nn_geometry':
-        parser.add_argument('--no-geometry', action='store_true', help='Pure Fourier one-frame ablation')
         parser.add_argument('--long-rollout', action='store_true', help='Curriculum up to 16 supervised rollout frames')
         parser.add_argument('--initial-starts', action='store_true',
                             help='Start half of each training batch at t=0 after step 1400')
+        parser.add_argument('--tip-weight', type=float, default=0., help='Weight for tip and valley supervision')
     args = parser.parse_args()
     if min(args.steps, args.batch, args.report_every) < 1 or args.batch < 2:
         parser.error('Expected positive steps and a batch of at least two')
     args.architecture = architecture
     long_rollout = getattr(args, 'long_rollout', False)
     initial_starts = getattr(args, 'initial_starts', False)
+    tip_weight = getattr(args, 'tip_weight', 0.)
     if initial_starts and not long_rollout:
         parser.error('--initial-starts requires --long-rollout')
-    if long_rollout:
-        loss_fn = partial(loss_fn, long_rollout=True, initial_starts=initial_starts)
+    if not math.isfinite(tip_weight) or tip_weight < 0:
+        parser.error('Expected a nonnegative finite tip weight')
+    if architecture == 'nn_geometry':
+        loss_fn = partial(loss_fn, long_rollout=long_rollout, initial_starts=initial_starts,
+                          tip_weight=tip_weight)
     args.out.mkdir(parents=True, exist_ok=True)
     torch.set_num_threads(4)
     torch.manual_seed(args.seed)
@@ -102,6 +104,6 @@ def main(architecture, model_type, loss_fn):
     test = report_predictions(bank, 'test', predicted, export=args.out/'test_predictions.npz')
     atomic_json(args.out/'metrics.json', dict(architecture=architecture, steps=args.steps,
                 best_step=checkpoint['step'], seed=args.seed, long_rollout=long_rollout,
-                initial_starts=initial_starts,
+                initial_starts=initial_starts, tip_weight=tip_weight,
                 validation_mse=best, test=test,
                 cases={name: [bank.ids[i] for i in rows.tolist()] for name, rows in bank.splits.items()}))

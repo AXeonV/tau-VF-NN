@@ -18,7 +18,7 @@ def frame(curve):
     return tangent, normal
 
 
-def descriptors(curve):
+def _coarse_geometry(curve):
     filtered = smooth(curve, 32.)
     tangent, normal = frame(filtered)
     stride = max(1, curve.shape[-1]//128)
@@ -26,7 +26,7 @@ def descriptors(curve):
     arc = (torch.roll(filtered, -stride, -1)-torch.roll(filtered, stride, -1)).norm(dim=1, keepdim=True)
     curvature = (-.2*(turn*normal).sum(dim=1, keepdim=True)/arc.clamp_min(.01)).tanh()
     prominence = (4*(filtered-smooth(filtered, 8.))*normal).sum(dim=1, keepdim=True)
-    return torch.cat([filtered, curvature, prominence], dim=1)
+    return torch.cat([curvature, prominence], dim=1)
 
 
 @torch.no_grad()
@@ -57,7 +57,7 @@ class InterfaceGeometry(nn.Module):
         nn.init.zeros_(self.output[-1].weight)
         nn.init.zeros_(self.output[-1].bias)
 
-    def forward(self, state, speed, features, *, lift_addition=None):
+    def forward(self, state, speed, features):
         filtered = smooth(state, 64.)
         tangent, normal = frame(filtered)
         spacing = max(1, state.shape[-1]//256)
@@ -70,10 +70,8 @@ class InterfaceGeometry(nn.Module):
         direction = vector[:, :2]/distance.clamp_min(.015)
         normal_gap = (direction*normal).sum(1, keepdim=True)*weight
         tangent_gap = (direction*tangent).sum(1, keepdim=True).abs()*weight
-        coarse_shape = descriptors(state)[:, 2:]
+        coarse_shape = _coarse_geometry(state)
         geometry = self.lift(torch.cat([curvature, coarse_shape, speed, weight, normal_gap, tangent_gap], dim=1))
-        if lift_addition is not None:
-            geometry = geometry+lift_addition
         for layer in self.local:
             geometry = geometry+.5*F.gelu(layer(geometry))
         geometry = geometry.transpose(1, 2)[:, None].expand(-1, features.shape[1], -1, -1)

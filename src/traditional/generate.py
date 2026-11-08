@@ -8,6 +8,7 @@ import numpy as np
 from scipy.signal import resample
 
 from .cases import CASE_COUNT, case_description, initial_curve, output_times
+from ..trajectory_data import case_paths
 from ..trajectory_metrics import atomic_json, curve_difference, describe_geometry, has_crossing
 
 
@@ -21,7 +22,7 @@ def save_case(path, times, curves, info):
 def summarize(folder, *, compare_final=False):
     entries = []
     final_curves = []
-    for path in sorted(folder.glob('case_*.npz')):
+    for path in case_paths(folder):
         with np.load(path) as item:
             info = json.loads(str(item['metadata']))
             times = item['times']
@@ -98,12 +99,14 @@ def main():
             raise ValueError(f'Dataset configuration differs in {out}')
     atomic_json(settings, configuration)
     pressure_cache = {}
+    cached = {int(path.stem[5:]): path for path in case_paths(out)}
     for index in range(args.first, args.first+count):
         path = out/f'case_{index:02}.npz'
         provisional = out/f'provisional_{index:02}.npz'
         rejection = out/f'rejected_{index:02}.json'
-        if path.exists():
-            with np.load(path) as existing:
+        saved_path = cached.get(index, path)
+        if saved_path.exists():
+            with np.load(saved_path) as existing:
                 metadata = json.loads(str(existing['metadata']))
                 if metadata['accepted'] and np.array_equal(times, existing['times']):
                     print(f'case {index:02} already accepted', flush=True)

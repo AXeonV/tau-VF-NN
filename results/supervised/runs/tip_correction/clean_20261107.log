@@ -1,8 +1,0 @@
-clean seed=20261107 step=1 loss=0.0001869
-clean seed=20261107 step=200 loss=0.0017941
-clean seed=20261107 step=400 loss=0.0018666
-clean seed=20261107 step=600 loss=0.0019693
-clean seed=20261107 step=800 loss=0.0017488
-clean seed=20261107 step=1000 loss=0.0018106
-clean seed=20261107 step=1200 loss=0.0017949
-Completed recovery evaluation

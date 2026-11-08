@@ -1,6 +1,7 @@
 """Shared time selection, curve losses, and pure neural rollout."""
 import torch
 
+from .tip_loss import tip_geometry_loss
 from .trajectory_data import augment
 
 
@@ -28,14 +29,17 @@ def previous_index(times, first):
     return closest(times, times[first]-.08*(1+times[first]))
 
 
-def supervised_loss(prediction, target):
+def supervised_loss(prediction, target, *, tip_weight=0.):
     residual = prediction-target
     tangent = (torch.roll(residual, -4, -1)-residual)*(residual.shape[-1]/(8*torch.pi))
     loss = residual.square().mean()+.004*tangent.square().mean()
+    if tip_weight:
+        loss = loss+tip_weight*tip_geometry_loss(prediction, target)
     return loss
 
 
-def single_loss(model, bank, grid, step, batch=8, *, long_rollout=False, initial_starts=False):
+def single_loss(model, bank, grid, step, batch=8, *, long_rollout=False, initial_starts=False,
+                tip_weight=0.):
     """Use contiguous, strictly increasing query sequences on either saved time grid."""
     times = bank.times
     device = times.device
@@ -74,13 +78,13 @@ def single_loss(model, bank, grid, step, batch=8, *, long_rollout=False, initial
         with torch.set_grad_enabled(tracked):
             prediction = model(initial, state, previous, times[before], times[current], times[future])
             if tracked:
-                loss.append(supervised_loss(prediction, label[:, None]))
+                loss.append(supervised_loss(prediction, label[:, None], tip_weight=tip_weight))
         previous, state, before = state, prediction[:, 0], current
         if i+1 in detach_after:
             previous, state = previous.detach(), state.detach()
     if length > 1:
         clean = model(initial, first, history, times[prior], times[start_index], times[sequence[:, 1:2]])
-        clean_loss = supervised_loss(clean, labels[0][:, None])
+        clean_loss = supervised_loss(clean, labels[0][:, None], tip_weight=tip_weight)
         if len(checkpoints) > 1:
             return (2*torch.stack(loss).mean()+clean_loss)/3
         loss.append(clean_loss)

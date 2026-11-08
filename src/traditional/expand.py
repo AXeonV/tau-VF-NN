@@ -9,6 +9,7 @@ from scipy.signal import resample
 
 from .evolution import evolve
 from .generate import save_case
+from ..trajectory_data import case_paths
 from ..trajectory_metrics import atomic_json, curve_difference, has_crossing, tip_count
 
 
@@ -64,7 +65,7 @@ def solve(initial, times, sigma, tolerance, cache, known=None, *, levels=None):
 
 def summary(out, expected, rejected):
     cases = []
-    for path in sorted(out.glob('case_*.npz')):
+    for path in case_paths(out):
         with np.load(path) as item:
             info = json.loads(str(item['metadata']))
         level = info['levels'][-1]
@@ -87,7 +88,7 @@ def main():
     saved = np.asarray(config['times'])
     saved = saved[saved <= 100.]
     times = np.unique(np.r_[saved, np.arange(.25, 10., .25), np.arange(10., 40.5, .5)])
-    old_cases = sorted(args.source.glob('case_*.npz'))
+    old_cases = case_paths(args.source)
     if len(old_cases) != 64 or saved[-1] != 100:
         raise ValueError('Expected the original 64 trajectories with a t=100 snapshot')
     output = args.out
@@ -104,6 +105,7 @@ def main():
             ([path, additions[i]] if i < len(additions) else [path])]
     jobs.extend(additions[len(old_cases):])
     rejected, cache = [], {}
+    existing_paths = {int(path.stem[5:]): path for path in case_paths(output)}
     for job in jobs:
         started = perf_counter()
         known = None
@@ -121,12 +123,13 @@ def main():
             initial = initial_from_terms(case['terms'])
         index = case['index']
         path = output/f'case_{index:03}.npz'
-        if path.exists():
-            with np.load(path) as item:
+        saved_path = existing_paths.get(index, path)
+        if saved_path.exists():
+            with np.load(saved_path) as item:
                 metadata = json.loads(str(item['metadata']))
                 if (not metadata['accepted'] or metadata['case'] != case
                         or not np.array_equal(item['times'], times)):
-                    raise ValueError(f'Existing expanded label does not match the requested case: {path}')
+                    raise ValueError(f'Existing expanded label does not match the requested case: {saved_path}')
             continue
         label, checks = solve(initial, times, settings['sigma'], settings['tolerance'], cache, known)
         if label is None:

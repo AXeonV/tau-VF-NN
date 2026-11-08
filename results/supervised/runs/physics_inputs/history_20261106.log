@@ -1,8 +1,0 @@
-velocity seed=20261106 step=1 loss=0.000472385
-velocity seed=20261106 step=200 loss=0.0019143 local_position=7.88566e-05 diagnostic_speed_mse=0.01816
-velocity seed=20261106 step=400 loss=0.00188766 local_position=6.98596e-05 diagnostic_speed_mse=0.0170476
-velocity seed=20261106 step=600 loss=0.00185883 local_position=7.57927e-05 diagnostic_speed_mse=0.0170981
-velocity seed=20261106 step=800 loss=0.00179796 local_position=7.39734e-05 diagnostic_speed_mse=0.0170318
-velocity seed=20261106 step=1000 loss=0.00178853 local_position=7.03528e-05 diagnostic_speed_mse=0.016632
-velocity seed=20261106 step=1200 loss=0.00161182 local_position=7.11756e-05 diagnostic_speed_mse=0.0166512
-Finished history seed=20261106 with 252 annotated samples

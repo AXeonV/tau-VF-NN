@@ -1,46 +1,42 @@
 """Supervised fitting and held-out geometry measurements for CurveFNO."""
 import argparse
 import json
+import math
 from pathlib import Path
 from time import perf_counter
 
 import numpy as np
 import torch
 
+from ..tip_loss import tip_geometry_loss
 from ..trajectory_data import DEFAULT_DATA, Trajectories, augment
 from .model import CurveFNO, signed_area
 from ..trajectory_metrics import atomic_json, probe_frames, report_predictions
-
-
-def frame_indices(bank):
-    return probe_frames(bank.times)
 
 
 @torch.no_grad()
 def evaluate(model, bank, split, batch, *, geometry=False, export=None):
     model.eval()
     frames = (torch.arange(len(bank.times), device=bank.times.device)
-              if geometry else frame_indices(bank))
+              if geometry else probe_frames(bank.times))
     rows = bank.splits[split].repeat_interleave(len(frames))
     cols = frames.repeat(len(bank.splits[split]))
-    losses = []
-    if geometry:
-        forecasts = []
+    batches = []
     for group in torch.arange(len(rows), device=rows.device).split(batch):
         initial = bank.curves[rows[group], 0]
-        target = bank.curves[rows[group], cols[group]]
         prediction = model(initial, bank.times[cols[group]])
-        losses.append((prediction-target).square().mean(dim=(1, 2)))
         if geometry:
-            forecasts.append(prediction.cpu().numpy())
-    error = torch.cat(losses).reshape(-1, len(frames))
-    result = dict(coordinate_mse=float(error.mean()),
-                  final_coordinate_rms=float(error[:, -1].mean().sqrt()),
-                  worst_frame_coordinate_rms=float(error.max().sqrt()))
+            batches.append(prediction.cpu().numpy())
+        else:
+            target = bank.curves[rows[group], cols[group]]
+            batches.append((prediction-target).square().mean(dim=(1, 2)))
     if geometry:
-        predicted = np.concatenate(forecasts).reshape(len(bank.splits[split]), len(frames), 2, -1)
+        predicted = np.concatenate(batches).reshape(len(bank.splits[split]), len(frames), 2, -1)
         return report_predictions(bank, split, predicted, export=export)
-    return result
+    error = torch.cat(batches).reshape(-1, len(frames))
+    return dict(coordinate_mse=float(error.mean()),
+                final_coordinate_rms=float(error[:, -1].mean().sqrt()),
+                worst_frame_coordinate_rms=float(error.max().sqrt()))
 
 
 def main():
@@ -48,6 +44,9 @@ def main():
     parser.add_argument('--data', type=Path, default=DEFAULT_DATA)
     parser.add_argument('--out', type=Path, default=Path('results/supervised/runs/nn_direct'))
     parser.add_argument('--horizon', type=float)
+    parser.add_argument('--warm', type=Path, help='Start from a compatible CurveFNO checkpoint')
+    parser.add_argument('--lr', type=float, default=.001)
+    parser.add_argument('--tip-weight', type=float, default=0., help='Weight for tip and valley supervision')
     parser.add_argument('--save-predictions', action='store_true')
     parser.add_argument('--steps', type=int, default=6000)
     parser.add_argument('--batch', type=int, default=8)
@@ -61,6 +60,10 @@ def main():
     args = parser.parse_args()
     if min(args.steps, args.batch, args.report_every, args.width, args.depth, args.modes) < 1 or args.nodes < 64:
         parser.error('Expected positive training sizes and at least 64 nodes')
+    if not math.isfinite(args.lr) or args.lr <= 0:
+        parser.error('Learning rate must be finite and positive')
+    if not math.isfinite(args.tip_weight) or args.tip_weight < 0:
+        parser.error('Tip weight must be finite and nonnegative')
     torch.manual_seed(args.seed)
     torch.set_num_threads(4)
     args.out.mkdir(parents=True, exist_ok=True)
@@ -68,9 +71,16 @@ def main():
     if any(len(split) == 0 for split in bank.splits.values()):
         raise ValueError('Training requires the configured accepted trajectories and all three splits')
     config = dict(horizon=float(bank.times[-1]), width=args.width, modes=args.modes, depth=args.depth)
+    if args.warm is not None:
+        warm = torch.load(args.warm, map_location=args.device, weights_only=True)
+        if warm['config']['horizon'] != config['horizon'] or warm.get('nodes', args.nodes) != args.nodes:
+            parser.error('Warm checkpoint must match the selected horizon and node count')
+        config = warm['config']
     model = CurveFNO(**config).to(args.device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=.001, weight_decay=1e-5)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, args.steps, eta_min=5e-5)
+    if args.warm is not None:
+        model.load_state_dict(warm['model'])
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-5)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, args.steps, eta_min=.05*args.lr)
     train_rows = bank.splits['train']
     late = torch.nonzero(bank.times >= .30*bank.times[-1]).flatten()
     history = []
@@ -89,6 +99,8 @@ def main():
         tangent_error = (torch.roll(residual, -1, dims=-1)-residual)*(args.nodes/(2*np.pi))
         area_error = signed_area(prediction)-signed_area(initial)
         loss = residual.square().mean()+.005*tangent_error.square().mean()+.02*area_error.square().mean()
+        if args.tip_weight:
+            loss = loss+args.tip_weight*tip_geometry_loss(prediction, target)
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
@@ -113,6 +125,8 @@ def main():
     atomic_json(args.out/'metrics.json', dict(best_step=checkpoint['step'],
                 validation_mse=best, test=test, elapsed=perf_counter()-started,
                 horizon=config['horizon'], steps=args.steps, seed=args.seed, frames=len(bank.times),
+                learning_rate=args.lr, tip_weight=args.tip_weight,
+                warm_checkpoint=str(args.warm) if args.warm else None,
                 cases={name: [bank.ids[i] for i in ids.tolist()] for name, ids in bank.splits.items()}))
     print('held-out', json.dumps({key: value for key, value in test.items() if key != 'cases'}), flush=True)
 

@@ -102,17 +102,20 @@ def report_predictions(bank, split, predictions, *, export=None):
     curves = (predictions[:, :, 0]+1j*predictions[:, :, 1])*radius
     labels = (target[:, :, 0]+1j*target[:, :, 1])*radius
     cases = []
+    event_errors = []
     for row, z, label in zip(rows, curves, labels):
         geometry = describe_geometry(z, times)
-        label_geometry = describe_geometry(label, times)
         difference = curve_difference(z, label, times, stride=1, threshold=.10)
         bad = [t for t in [difference.pop('first_exceed'), *geometry['crossing_times']] if t is not None]
         expected = tip_births(label/radius[0], times)
         found = tip_births(z/radius[0], times)
         matched = match_births(found, expected)
+        event_errors.extend(matched)
         cases.append(dict(case=bank.ids[row], **difference, first_breach=min(bad, default=None),
-                          predicted_final_tips=geometry['tips'][-1], label_final_tips=label_geometry['tips'][-1],
+                          predicted_final_tips=geometry['tips'][-1], label_final_tips=tip_count(label[-1], times[-1]),
                           crossing_times=geometry['crossing_times'], tip_births_matched=len(matched),
+                          tip_birth_time_mae=float(np.mean([dt for dt, _ in matched])) if matched else None,
+                          tip_birth_angle_mae=float(np.mean([da for _, da in matched])) if matched else None,
                           tip_births_predicted=len(found), tip_births_label=len(expected)))
     if export is not None:
         np.savez_compressed(export, times=times, z=curves, target=labels,
@@ -128,4 +131,6 @@ def report_predictions(bank, split, predictions, *, export=None):
                                                     else times[-1] for item in cases])),
                 tip_births_matched=sum(item['tip_births_matched'] for item in cases),
                 tip_births_label=sum(item['tip_births_label'] for item in cases),
+                tip_birth_time_mae=float(np.mean([dt for dt, _ in event_errors])) if event_errors else None,
+                tip_birth_angle_mae=float(np.mean([da for _, da in event_errors])) if event_errors else None,
                 cases=cases)

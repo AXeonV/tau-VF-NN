@@ -8,6 +8,24 @@ import torch
 
 
 DEFAULT_DATA = Path('data/supervised/trajectories_t100_dense_128')
+DATASET_PREFIXES = {
+    'trajectories': ('trajectories_t1000_128', 64),
+    'trajectories_t100_dense': ('trajectories_t100_dense_128', 96),
+}
+
+
+def case_paths(folder):
+    """Reuse promoted cases when a staging dataset has no local copy."""
+    paths = sorted(folder.glob('case_*.npz'))
+    if folder.name not in DATASET_PREFIXES:
+        return paths
+    canonical, count = DATASET_PREFIXES[folder.name]
+    local = {int(path.stem[5:]) for path in paths}
+    for index in range(count):
+        candidate = folder.parent/canonical/f'case_{index:03}.npz'
+        if index not in local and candidate.is_file():
+            paths.append(candidate)
+    return sorted(paths, key=lambda path: int(path.stem[5:]))
 
 
 class Trajectories:
@@ -27,7 +45,7 @@ class Trajectories:
         self.ids = []
         self.splits = {split: [] for split in ('train', 'validation', 'test')}
         curves = []
-        for path in sorted(folder.glob('case_*.npz')):
+        for path in case_paths(folder):
             with np.load(path) as item:
                 metadata = json.loads(str(item['metadata']))
                 if not metadata['accepted'] or not np.array_equal(full_times, item['times']):
@@ -60,16 +78,6 @@ def transform(curve, angle, mirror, shift):
     y = y*direction[:, None]
     c, s = angle.cos()[:, None], angle.sin()[:, None]
     return torch.stack([c*x-s*y, s*x+c*y], dim=1)
-
-
-def symmetry_view(trajectory, rotation_degrees, reflected=False, shift=0):
-    """Apply the same rigid view and arclength reindexing to every frame."""
-    frames = len(trajectory)
-    device = trajectory.device
-    angle = trajectory.new_full((frames,), rotation_degrees*torch.pi/180)
-    mirror = torch.full((frames,), reflected, dtype=torch.bool, device=device)
-    phase = torch.full((frames,), shift, dtype=torch.long, device=device)
-    return transform(trajectory, angle, mirror, phase)
 
 
 def augment(initial, *targets):

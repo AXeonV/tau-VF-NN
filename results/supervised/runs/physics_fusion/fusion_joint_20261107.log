@@ -1,8 +1,0 @@
-velocity seed=20261107 step=1 loss=0.000186903
-velocity seed=20261107 step=200 loss=0.00182206 local_position=8e-05 diagnostic_speed_mse=0.0178623
-velocity seed=20261107 step=400 loss=0.00189631 local_position=8.45051e-05 diagnostic_speed_mse=0.0185659
-velocity seed=20261107 step=600 loss=0.00198498 local_position=7.67216e-05 diagnostic_speed_mse=0.0172662
-velocity seed=20261107 step=800 loss=0.0017655 local_position=7.33636e-05 diagnostic_speed_mse=0.0165348
-velocity seed=20261107 step=1000 loss=0.00182738 local_position=7.68352e-05 diagnostic_speed_mse=0.0163383
-velocity seed=20261107 step=1200 loss=0.00180995 local_position=7.58061e-05 diagnostic_speed_mse=0.0162207
-Finished fusion_joint seed=20261107 with 252 annotated samples

@@ -1,2 +1,0 @@
-results\supervised\runs\physics_inputs\history_replace_20261106\model.pt speed_RMSE=0.124255 active_sign=0.6821017693814182 drift_4=0.0136025 T100=0.227837
-results\supervised\runs\physics_inputs\history_replace_20261107\model.pt speed_RMSE=0.127548 active_sign=0.6953007411096538 drift_4=0.0131544 T100=0.238823

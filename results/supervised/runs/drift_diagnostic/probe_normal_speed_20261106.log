@@ -1,6 +1,0 @@
-step=1 loss=0.000472385
-step=200 loss=0.00187377
-step=400 loss=0.00186759
-step=600 loss=0.00174421
-step=800 loss=0.00180954
-Finished normal_speed seed=20261106: teacher(.5)=0.0016151 free(4)=0.012143 native(100)=0.2251
