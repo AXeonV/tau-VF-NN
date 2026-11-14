@@ -2,6 +2,8 @@
 
 用二维径向 Hele–Shaw 仿真监督空气注入油时的界面演化。中心恒流注入 $Q=2\pi$，表面张力 $\sigma=0.015$，初始面积 $\pi$。网络在等效半径 $R(t)=\sqrt{1+2t}$ 归一化的坐标中预测闭合界面。边界积分与时间推进离线生成监督标签，推理只调用网络。
 
+![interfaces_vs](docs/figures/direct_vs_finetuned_interfaces.png)
+
 ## 核心模型
 
 | 模型 | 预测方式 |
