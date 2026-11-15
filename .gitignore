@@ -8,5 +8,3 @@ archive/
 /results/supervised/**/*.tmp
 /data/supervised/**/*.npz
 /data/supervised/**/*.tmp
-/data/img/*.png
-/data/img/*.tmp
