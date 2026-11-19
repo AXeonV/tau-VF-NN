@@ -1,4 +1,4 @@
-"""Predict a held-out interface with one of the three retained models."""
+"""Predict a held-out interface with a trained interface model."""
 import argparse
 from pathlib import Path
 
@@ -6,13 +6,31 @@ import numpy as np
 import torch
 
 from .nn_block.model import BlockFNO
+from .nn_boundary.model import BoundaryFNO
 from .nn_direct.model import CurveFNO
 from .nn_geometry.model import GeometryFNO
 from .rollout import evaluation_grid, forecast
 from .trajectory_data import DEFAULT_DATA, Trajectories
 
 
-MODELS = dict(nn_direct=CurveFNO, nn_block=BlockFNO, nn_geometry=GeometryFNO)
+MODELS = dict(nn_direct=CurveFNO, nn_block=BlockFNO, nn_geometry=GeometryFNO, nn_boundary=BoundaryFNO)
+
+
+def load_model(architecture, path, device):
+    checkpoint = torch.load(path, map_location=device, weights_only=True)
+    if checkpoint.get('initial_frame'):
+        raise ValueError(f'{path} requires the retired initial-frame inference mode')
+    tag = checkpoint.get('architecture')
+    if tag == 'baseline' and architecture == 'nn_geometry':
+        tag = 'nn_geometry'
+    if tag is not None and tag != architecture:
+        raise ValueError(f'Checkpoint {path} declares {tag!r}. Select a checkpoint for {architecture}.')
+    config = checkpoint['config']
+    if architecture == 'nn_boundary' and config.get('equivariant') is True and config.get('integral') is False:
+        config = {key: value for key, value in config.items() if key not in ('equivariant', 'integral')}
+    model = MODELS[architecture](**config).to(device).eval()
+    model.load_state_dict(checkpoint['model'])
+    return model, checkpoint.get('nodes', 1024)
 
 
 def main():
@@ -27,15 +45,8 @@ def main():
     args = parser.parse_args()
     torch.set_num_threads(4)
     path = args.model or Path('results/supervised/models')/args.architecture/'model.pt'
-    checkpoint = torch.load(path, map_location=args.device, weights_only=True)
-    tag = checkpoint.get('architecture')
-    if tag == 'baseline' and args.architecture == 'nn_geometry':
-        tag = 'nn_geometry'
-    if tag is not None and tag != args.architecture:
-        parser.error(f'Checkpoint {path} declares {tag!r}. Select a checkpoint for {args.architecture}.')
-    model = MODELS[args.architecture](**checkpoint['config']).to(args.device).eval()
-    model.load_state_dict(checkpoint['model'])
-    bank = Trajectories(args.data, checkpoint.get('nodes', 1024), args.device, model.horizon)
+    model, nodes = load_model(args.architecture, path, args.device)
+    bank = Trajectories(args.data, nodes, args.device, model.horizon)
     index = int(bank.splits['test'][0]) if args.case is None else bank.ids.index(args.case)
     frames = evaluation_grid(bank.times) if args.coarse else torch.arange(len(bank.times), device=args.device)
     times = bank.times[frames]

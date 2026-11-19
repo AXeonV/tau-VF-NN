@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "case": 136,
+      "split": "sealed",
+      "mode": 2,
+      "event": 45.0,
+      "refinement": 1.8539505029668526e-05
+    },
+    {
+      "case": 137,
+      "split": "sealed",
+      "mode": 3,
+      "event": 35.5,
+      "refinement": 1.1020065530931502e-05
+    },
+    {
+      "case": 138,
+      "split": "sealed",
+      "mode": 4,
+      "event": 65.0,
+      "refinement": 1.5759830350753856e-05
+    },
+    {
+      "case": 140,
+      "split": "sealed",
+      "mode": 6,
+      "event": 28.0,
+      "refinement": 2.2922798994373025e-05
+    },
+    {
+      "case": 141,
+      "split": "sealed",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 4.262472294039168e-05
+    },
+    {
+      "case": 142,
+      "split": "sealed",
+      "mode": 8,
+      "event": 45.0,
+      "refinement": 2.6399930547801465e-05
+    },
+    {
+      "case": 143,
+      "split": "sealed",
+      "mode": 9,
+      "event": 50.0,
+      "refinement": 4.501898601031775e-05
+    }
+  ]
+}

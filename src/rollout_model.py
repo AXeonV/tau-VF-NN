@@ -32,6 +32,12 @@ class RolloutFNO(nn.Module):
         return torch.stack([time/self.horizon, phase, (2*torch.pi*phase).sin(),
                             (2*torch.pi*phase).cos()], dim=-1)
 
+    def encode_curve(self, anchor, state, speed, normal):
+        return self.lift(torch.cat([state, anchor, speed], dim=1))
+
+    def decode_update(self, features, state, normal):
+        return self.output(features).transpose(2, 3)
+
     def forward(self, initial, state, previous, before, start, queries):
         gap = (start-before)/(1+2*start)
         tangent = F.normalize(torch.roll(state, -4, -1)-torch.roll(state, 4, -1), dim=1)
@@ -41,7 +47,7 @@ class RolloutFNO(nn.Module):
         if not self.history:
             speed = torch.zeros_like(speed)
         anchor = initial if self.anchor else torch.zeros_like(initial)
-        x = self.lift(torch.cat([state, anchor, speed], dim=1))
+        x = self.encode_curve(anchor, state, speed, normal)
         modulation = self.start(self.time_features(start)).reshape(len(start), len(self.spectral), 2, -1)
         for index, (spectral, local) in enumerate(zip(self.spectral, self.pointwise)):
             scale, shift = modulation[:, index].unbind(dim=1)
@@ -57,7 +63,7 @@ class RolloutFNO(nn.Module):
         else:
             context = features
         features = features+F.gelu(self.query_mix(context))
-        displacement = self.output(features).transpose(2, 3)
+        displacement = self.decode_update(features, state, normal)
         if self.geometry_branch is not None:
             displacement = displacement+self.geometry_branch(state, speed, features)
         gate = lead/(.25+lead)

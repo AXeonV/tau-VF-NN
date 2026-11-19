@@ -31,6 +31,13 @@ def _distance_to_curve(source, curve):
     return distances.min(axis=1)
 
 
+def terminal_distance(prediction, target):
+    p, q = (resample(a[:, 0] + 1j*a[:, 1], 2048, axis=-1) for a in
+            (prediction.detach().cpu().numpy(), target.detach().cpu().numpy()))
+    return [float(max(_distance_to_curve(x, y).max(), _distance_to_curve(y, x).max()))
+            for x, y in zip(p, q)]
+
+
 def curve_difference(first, second, times, *, stride=3, threshold=None):
     count = 2*max(first.shape[-1], second.shape[-1])
     indices = np.unique(np.r_[np.arange(0, len(times), stride), len(times)-1])

@@ -1,0 +1,326 @@
+{
+  "cases": [
+    {
+      "case": 3,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 30.5,
+      "refinement": 1.3457088733396643e-05
+    },
+    {
+      "case": 4,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 36.0,
+      "refinement": 1.0571259477262152e-05
+    },
+    {
+      "case": 5,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 25.0,
+      "refinement": 1.4793607018904577e-05
+    },
+    {
+      "case": 64,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 28.0,
+      "refinement": 1.3726205740218533e-05
+    },
+    {
+      "case": 65,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 34.0,
+      "refinement": 6.378747479378121e-05
+    },
+    {
+      "case": 66,
+      "split": "ordinary",
+      "mode": 2,
+      "event": 45.0,
+      "refinement": 1.8849857969448263e-05
+    },
+    {
+      "case": 11,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 40.0,
+      "refinement": 1.1704866430297081e-05
+    },
+    {
+      "case": 12,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 50.0,
+      "refinement": 1.0504978168928114e-05
+    },
+    {
+      "case": 13,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 60.0,
+      "refinement": 3.479639616654087e-05
+    },
+    {
+      "case": 68,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 20.5,
+      "refinement": 1.0018413805710997e-05
+    },
+    {
+      "case": 69,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 45.0,
+      "refinement": 1.4034556835994428e-05
+    },
+    {
+      "case": 70,
+      "split": "ordinary",
+      "mode": 3,
+      "event": 40.0,
+      "refinement": 1.9838806471196033e-05
+    },
+    {
+      "case": 19,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 75.0,
+      "refinement": 1.0423243115424885e-05
+    },
+    {
+      "case": 20,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 50.0,
+      "refinement": 1.2110587466225501e-05
+    },
+    {
+      "case": 21,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 50.0,
+      "refinement": 1.5873847420350897e-05
+    },
+    {
+      "case": 72,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 50.0,
+      "refinement": 6.789374679764507e-05
+    },
+    {
+      "case": 73,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 23.0,
+      "refinement": 9.650043972785305e-06
+    },
+    {
+      "case": 74,
+      "split": "ordinary",
+      "mode": 4,
+      "event": 55.0,
+      "refinement": 1.226467403619189e-05
+    },
+    {
+      "case": 79,
+      "split": "ordinary",
+      "mode": 5,
+      "event": 65.0,
+      "refinement": 1.9177409202217266e-05
+    },
+    {
+      "case": 108,
+      "split": "ordinary",
+      "mode": 5,
+      "event": 19.5,
+      "refinement": 1.4390612979645837e-05
+    },
+    {
+      "case": 109,
+      "split": "ordinary",
+      "mode": 5,
+      "event": 22.5,
+      "refinement": 1.6547626861623088e-05
+    },
+    {
+      "case": 111,
+      "split": "ordinary",
+      "mode": 5,
+      "event": 75.0,
+      "refinement": 1.9937263701706663e-05
+    },
+    {
+      "case": 35,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 24.5,
+      "refinement": 1.8643799405786332e-05
+    },
+    {
+      "case": 36,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 45.0,
+      "refinement": 1.8251006372977245e-05
+    },
+    {
+      "case": 37,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 23.5,
+      "refinement": 1.8415057751616588e-05
+    },
+    {
+      "case": 80,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 28.0,
+      "refinement": 2.2036537176585627e-05
+    },
+    {
+      "case": 81,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 23.5,
+      "refinement": 1.9130929167864823e-05
+    },
+    {
+      "case": 82,
+      "split": "ordinary",
+      "mode": 6,
+      "event": 45.0,
+      "refinement": 1.3158389373647554e-05
+    },
+    {
+      "case": 43,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 50.0,
+      "refinement": 3.502161058074789e-05
+    },
+    {
+      "case": 44,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 3.103508170742228e-05
+    },
+    {
+      "case": 45,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 4.069303315158903e-05
+    },
+    {
+      "case": 84,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 39.0,
+      "refinement": 2.2516166475754706e-05
+    },
+    {
+      "case": 85,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 1.944079302691905e-05
+    },
+    {
+      "case": 86,
+      "split": "ordinary",
+      "mode": 7,
+      "event": 28.5,
+      "refinement": 3.0613000291574375e-05
+    },
+    {
+      "case": 53,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 60.0,
+      "refinement": 3.77808625447951e-05
+    },
+    {
+      "case": 88,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 45.0,
+      "refinement": 4.5575971792060224e-05
+    },
+    {
+      "case": 89,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 60.0,
+      "refinement": 4.948281188853581e-05
+    },
+    {
+      "case": 90,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 27.0,
+      "refinement": 6.298671328024632e-05
+    },
+    {
+      "case": 91,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 36.5,
+      "refinement": 5.0025965682663164e-05
+    },
+    {
+      "case": 120,
+      "split": "ordinary",
+      "mode": 8,
+      "event": 50.0,
+      "refinement": 5.7551093757798487e-05
+    },
+    {
+      "case": 59,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 55.0,
+      "refinement": 2.5650008578113866e-05
+    },
+    {
+      "case": 60,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 50.0,
+      "refinement": 1.4803633699815836e-05
+    },
+    {
+      "case": 61,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 45.0,
+      "refinement": 1.6661734555885653e-05
+    },
+    {
+      "case": 92,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 26.5,
+      "refinement": 1.5810932249902023e-05
+    },
+    {
+      "case": 93,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 30.5,
+      "refinement": 1.463064682812809e-05
+    },
+    {
+      "case": 94,
+      "split": "ordinary",
+      "mode": 9,
+      "event": 22.5,
+      "refinement": 4.912844657800212e-05
+    }
+  ]
+}

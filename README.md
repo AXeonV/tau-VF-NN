@@ -1,52 +1,40 @@
 # 黏性指进界面预测
 
-用二维径向 Hele–Shaw 仿真监督空气注入油时的界面演化。中心恒流注入 $Q=2\pi$，表面张力 $\sigma=0.015$，初始面积 $\pi$。网络在等效半径 $R(t)=\sqrt{1+2t}$ 归一化的坐标中预测闭合界面。边界积分与时间推进离线生成监督标签，推理只调用网络。
+给定初始闭合界面，预测空气在二维径向 Hele–Shaw 薄隙中注入油后，各时刻的指进形态。中心恒流注入量为 $Q=2\pi$，表面张力为 $\sigma=0.015$，初始面积为 $\pi$。边界积分与时间推进离线生成监督标签，网络在等效半径 $R(t)=\sqrt{1+2t}$ 归一化的坐标中推理。
 
-![interfaces_vs](docs/figures/direct_vs_finetuned_interfaces.png)
+![六个独立初形在 T=100 的数值界面和三种模型预测](docs/figures/direct_vs_finetuned_interfaces.png)
 
-## 核心模型
+图中六例选自 24 个独立初形，覆盖六种初始主导模态。黑线为数值解，三条彩线分别为直接预测、微调几何模型和等变模型。六幅图共用坐标尺度。[选例方法与全样本结果](docs/experiments.md#六种初形的终点界面对比)
 
-| 模型 | 预测方式 |
-|---|---|
-| `nn_direct` | 时间条件 Fourier 算子，给定初形和时刻直接预测界面。 |
-| `nn_block` | 从初形、当前界面和近期法向运动联合预测四帧，在块末反馈。 |
-| `nn_geometry` | 逐帧反馈，联合 Fourier 主干和读取曲率、尖端凸度、法向历史及空间近邻的几何分支。 |
+## 模型
 
-`nn_block` 和 `nn_geometry` 共用滚动训练与 Fourier 主干。`nn_geometry` 可用 `--long-rollout --initial-starts` 启用最长 16 帧的训练课程并增加从初形起步的片段。`nn_direct` 和 `nn_geometry` 可用 `--tip-weight` 加入指尖与凹槽的空间监督。
+| 模型 | 输入与更新 | 用途 |
+|---|---|---|
+| `nn_boundary` | 将初形、当前几何和近期法向运动编码为标量，经实偶 Fourier 核计算，沿外法向、径向和切向合成下一帧位移。 | **新架构主线**。单次前向对旋转、镜像和周期重编号等变。 |
+| `nn_geometry` | 逐帧反馈。Fourier 主干与几何分支联合读取曲率、尖端凸度、法向运动及空间邻近弧段。 | **精度基准**。目录中的 `finetuned.pt` 用于上图，`model.pt` 为成熟的长滚动课程权重。 |
+| `nn_direct` | 以初形和目标时间为输入，一次预测该时刻的坐标。 | 直接预测基准，提供 $T=100$ 和 $T=1000$ 权重。 |
+| `nn_block` | 从初形、当前界面和运动历史联合预测四帧，在块末反馈。 | 比较四帧更新与逐帧更新。 |
 
-## 数据与目录
+在最近 8 个独立初形上，同预算从头训练 2400 步，`nn_boundary` 的 $T=100$ 平均终点轮廓误差为 **21.76%R**，`nn_geometry` 为 **24.46%R**（各两个种子）。充分训练的几何模型为 **19.97%R**。当前等变权重取种子 541、第 1600 步，按验证集完整轨迹的终点轮廓误差选出。[架构消融与自交记录](docs/experiments.md#等变边界算子与全边界积分)
 
-| 路径 | 内容 |
-|---|---|
-| [T=100 轨迹](data/supervised/trajectories_t100_dense_128/summary.json) | 128 个初形，每条 177 帧，训练、验证、测试按初形划分为 112、8、8。 |
-| [T=1000 轨迹](data/supervised/trajectories_t1000_128/summary.json) | 同一批初形，每条 265 帧。 |
-| [独立测试轨迹](data/supervised/drift_diagnostic_fresh/summary.json) | 8 个独立初形，每条轨迹覆盖 $T=0$ 至 $T=100$。 |
-| [界面叠加图](data/img) | 每个长时案例一张图，八个时刻共用物理坐标尺度。 |
-| `results/supervised/models` | 三种模型的 $T=100$ 检查点、共享滚动热启动权重，以及 `nn_direct/t1000`。 |
-| `results/supervised/runs` | 新训练、评估和绘图的输出。 |
+## 数据与运行
 
-训练时对整段轨迹同步应用连续旋转、反射和周期重编号。原 64/96 初形数据路径保留配置和验算摘要，通过同级正式库读取对应子集。数据由 `src.traditional.generate`、`src.traditional.expand` 和 `src.traditional.expand_long` 构建，最后一阶段按 `--stage prepare`、`--stage run`、`--stage report` 执行。
+依赖见 [requirements.txt](requirements.txt)。[T=100 数据](data/supervised/trajectories_t100_dense_128/summary.json) 和 [T=1000 数据](data/supervised/trajectories_t1000_128/summary.json) 共用 128 个初形，分别保存 177、265 帧，按初形划分为训练 112、验证 8、测试 8。训练时对整段轨迹同步旋转、反射并循环重编号。三个独立测试库覆盖 128–151 号初形。[长时轨迹叠图](data/img)
 
-## 运行
+```sh
+python -m src.nn_boundary.train
+python -m src.predict nn_boundary --case 7
+python -m utils.render --case results/supervised/models/nn_boundary
+python -m utils.compare_interfaces
+```
 
-依赖见 [requirements.txt](requirements.txt)。
+正式权重位于 `results/supervised/models/<模型>/model.pt`。新训练写入 `results/supervised/runs/<模型>/`，可用 `src.predict --model` 指定该次权重。推理导出的 `prediction.npz` 包含物理坐标下的预测、数值标签和时刻。其余模型使用各自的训练入口。
 
 ```sh
 python -m src.nn_direct.train
 python -m src.nn_block.train --warm results/supervised/models/rollout_warm.pt
 python -m src.nn_geometry.train --warm results/supervised/models/rollout_warm.pt --long-rollout --initial-starts
-
-python -m src.predict nn_geometry --case 7
-python -m utils.render --case results/supervised/models/nn_geometry
-python -m utils.render_dataset
-```
-
-长时直接预测可指定对应数据和权重。
-
-```sh
 python -m src.predict nn_direct --data data/supervised/trajectories_t1000_128 --model results/supervised/models/nn_direct/t1000/model.pt
 ```
 
-默认直接模型采用带指尖监督的 128 初形检查点，同目录的 `baseline.pt` 保留原直接模型。几何模型默认使用长滚动课程检查点，`finetuned.pt` 保留此前界面对比所用的坐标微调权重。
-
-架构、训练和诊断的逐项结果与分析见 [实验记录](docs/experiments.md)。
+数值求解与标签生成在 `src/traditional`，监督数据在 `data/supervised`，绘图工具在 `utils`。历次架构、训练、损失与稳定性实验按项记录在 [experiments.md](docs/experiments.md)。

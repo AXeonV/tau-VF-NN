@@ -38,9 +38,11 @@ def candidates(index, mode, reference):
                        source='fresh_drift_diagnostic', separation=separation)
 
 
-def generate(source, output):
+def generate(source, output, *, exclude=None):
     config = json.loads((source/'configuration.json').read_text())
     existing = json.loads((source/'summary.json').read_text())['cases']
+    for directory in ([exclude] if isinstance(exclude, Path) else (exclude or [])):
+        existing += json.loads((directory/'summary.json').read_text())['cases']
     times = np.asarray(config['times'])
     if times[0] != 0 or times[-1] != 100:
         raise ValueError('Expected the dense T=100 time grid')
@@ -98,5 +100,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, default=SOURCE)
     parser.add_argument('--out', type=Path, default=OUTPUT)
+    parser.add_argument('--exclude', nargs='+', type=Path, help='Also exclude these prior initial shapes and IDs')
     args = parser.parse_args()
-    generate(args.source, args.out)
+    generate(args.source, args.out, exclude=args.exclude)

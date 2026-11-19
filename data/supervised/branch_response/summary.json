@@ -1,0 +1,228 @@
+{
+  "cases": [
+    {
+      "case": 0,
+      "split": "train",
+      "mode": 2,
+      "event": 50.0,
+      "refinement": 1.1698144002514683e-05
+    },
+    {
+      "case": 1,
+      "split": "train",
+      "mode": 2,
+      "event": 31.0,
+      "refinement": 1.273685406710401e-05
+    },
+    {
+      "case": 2,
+      "split": "train",
+      "mode": 2,
+      "event": 39.5,
+      "refinement": 6.418558187553569e-05
+    },
+    {
+      "case": 8,
+      "split": "train",
+      "mode": 3,
+      "event": 39.0,
+      "refinement": 1.8403036080945208e-05
+    },
+    {
+      "case": 9,
+      "split": "train",
+      "mode": 3,
+      "event": 26.5,
+      "refinement": 2.6977519042544973e-05
+    },
+    {
+      "case": 10,
+      "split": "train",
+      "mode": 3,
+      "event": 38.0,
+      "refinement": 2.7567295828534296e-05
+    },
+    {
+      "case": 16,
+      "split": "train",
+      "mode": 4,
+      "event": 70.0,
+      "refinement": 2.225283558526439e-05
+    },
+    {
+      "case": 17,
+      "split": "train",
+      "mode": 4,
+      "event": 20.0,
+      "refinement": 7.117813967824579e-06
+    },
+    {
+      "case": 18,
+      "split": "train",
+      "mode": 4,
+      "event": 21.5,
+      "refinement": 2.0884344304125224e-05
+    },
+    {
+      "case": 25,
+      "split": "train",
+      "mode": 5,
+      "event": 70.0,
+      "refinement": 1.7522161819962696e-05
+    },
+    {
+      "case": 28,
+      "split": "train",
+      "mode": 5,
+      "event": 18.0,
+      "refinement": 1.5087712261667521e-05
+    },
+    {
+      "case": 29,
+      "split": "train",
+      "mode": 5,
+      "event": 90.0,
+      "refinement": 4.7755446765267365e-05
+    },
+    {
+      "case": 32,
+      "split": "train",
+      "mode": 6,
+      "event": 23.5,
+      "refinement": 1.9673592282658373e-05
+    },
+    {
+      "case": 33,
+      "split": "train",
+      "mode": 6,
+      "event": 31.5,
+      "refinement": 1.5530381328595398e-05
+    },
+    {
+      "case": 34,
+      "split": "train",
+      "mode": 6,
+      "event": 31.5,
+      "refinement": 1.5677263045713723e-05
+    },
+    {
+      "case": 40,
+      "split": "train",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 1.8614013753782423e-05
+    },
+    {
+      "case": 41,
+      "split": "train",
+      "mode": 7,
+      "event": 45.0,
+      "refinement": 2.6402930072569808e-05
+    },
+    {
+      "case": 42,
+      "split": "train",
+      "mode": 7,
+      "event": 34.5,
+      "refinement": 3.013958283103892e-05
+    },
+    {
+      "case": 49,
+      "split": "train",
+      "mode": 8,
+      "event": 19.5,
+      "refinement": 2.1234153603867463e-05
+    },
+    {
+      "case": 51,
+      "split": "train",
+      "mode": 8,
+      "event": 50.0,
+      "refinement": 2.5810547434622073e-05
+    },
+    {
+      "case": 52,
+      "split": "train",
+      "mode": 8,
+      "event": 60.0,
+      "refinement": 0.00013746214648074432
+    },
+    {
+      "case": 56,
+      "split": "train",
+      "mode": 9,
+      "event": 50.0,
+      "refinement": 5.96748728809285e-05
+    },
+    {
+      "case": 57,
+      "split": "train",
+      "mode": 9,
+      "event": 50.0,
+      "refinement": 2.5039341999615638e-05
+    },
+    {
+      "case": 58,
+      "split": "train",
+      "mode": 9,
+      "event": 23.0,
+      "refinement": 1.1555881698567393e-05
+    },
+    {
+      "case": 128,
+      "split": "diagnostic",
+      "mode": 2,
+      "event": 32.5,
+      "refinement": 5.105365274582489e-05
+    },
+    {
+      "case": 129,
+      "split": "diagnostic",
+      "mode": 3,
+      "event": 45.0,
+      "refinement": 1.0197895377031376e-05
+    },
+    {
+      "case": 130,
+      "split": "diagnostic",
+      "mode": 4,
+      "event": 45.0,
+      "refinement": 1.5713385602520295e-05
+    },
+    {
+      "case": 131,
+      "split": "diagnostic",
+      "mode": 5,
+      "event": 65.0,
+      "refinement": 1.660967237932694e-05
+    },
+    {
+      "case": 132,
+      "split": "diagnostic",
+      "mode": 6,
+      "event": 26.0,
+      "refinement": 1.9387313243519647e-05
+    },
+    {
+      "case": 133,
+      "split": "diagnostic",
+      "mode": 7,
+      "event": 50.0,
+      "refinement": 2.36566048470844e-05
+    },
+    {
+      "case": 134,
+      "split": "diagnostic",
+      "mode": 8,
+      "event": 45.0,
+      "refinement": 2.881588366089373e-05
+    },
+    {
+      "case": 135,
+      "split": "diagnostic",
+      "mode": 9,
+      "event": 28.5,
+      "refinement": 1.9022763681241144e-05
+    }
+  ]
+}

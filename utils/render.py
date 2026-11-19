@@ -32,7 +32,8 @@ def main():
     history = np.load(folder/'history.npy')
     fig, ax = plt.subplots(figsize=(8, 4.6), layout='constrained')
     ax.semilogy(history[:, 0], history[:, 1], label='Training loss', color='#347d9c', alpha=.75)
-    ax.semilogy(history[:, 0], history[:, 2], label='Validation coordinate MSE', color='#bc5d37')
+    if history.shape[1] > 2:
+        ax.semilogy(history[:, 0], history[:, 2], label='Validation coordinate MSE', color='#bc5d37')
     ax.set(xlabel='Training step', ylabel='Loss', title=folder.name)
     ax.grid(alpha=.2)
     ax.legend(frameon=False)
